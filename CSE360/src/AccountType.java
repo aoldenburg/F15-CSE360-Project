@@ -1,6 +1,6 @@
-//Stub enum - Needs work
-
-//TODO: Ensure this has all necessary account types
+/*
+ * Enumeration for Account Type
+ */
 public enum AccountType {
-	patient, doctor, nurse, labStaff, admin
+	Patient, Doctor, Nurse, LabStaff, HSPStaff, Admin
 }

@@ -8,6 +8,10 @@ public class Account {
 	//Account Login information
 	private String userName;
 	private String password;
+	
+	private String firstName;
+	private String lastName;
+	
 	//Personal Information
 	private String email;
 	private int cellNumber;
@@ -36,12 +40,12 @@ public class Account {
 	
 	private AccountType accountType;
 	
-	public void Account(String u, String p)
+	public Account(String u, String p)
 	{
 		userName = u;
 		password = p;
 	}
-	public void Account()
+	public Account()
 	{
 		
 	}
@@ -60,6 +64,22 @@ public class Account {
 	public String getPassword()
 	{
 		return password;
+	}
+	public void setFirstName(String s)
+	{
+		firstName = s;
+	}
+	public String getFirstName()
+	{
+		return firstName;
+	}
+	public void setLastName(String s)
+	{
+		lastName = s;
+	}
+	public String getLastName()
+	{
+		return lastName;
 	}
 	public void setEmail(String s)
 	{
