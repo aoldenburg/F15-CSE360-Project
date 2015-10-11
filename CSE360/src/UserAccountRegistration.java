@@ -2,10 +2,21 @@ import javax.swing.JApplet;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.border.Border;
+
+import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import javax.swing.JRadioButton;
 import javax.swing.JComboBox;
+import javax.swing.BorderFactory;
+import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 
@@ -37,6 +48,7 @@ public class UserAccountRegistration extends JDialog{
 	private JTextField workPhone;
 	private JTextField city;
 	private JTextField state;
+	private Border border;
 
 	/**
 	 * Create the applet.
@@ -51,12 +63,13 @@ public class UserAccountRegistration extends JDialog{
 		
 		userName = new JTextField();
 		userName.setColumns(10);
-		userName.setBounds(107, 29, 148, 20);
+		userName.setBounds(135, 29, 148, 20);
 		getContentPane().add(userName);
+		border = userName.getBorder();
 		
 		password = new JTextField();
 		password.setColumns(10);
-		password.setBounds(107, 60, 148, 20);
+		password.setBounds(135, 60, 148, 20);
 		getContentPane().add(password);
 		
 		JLabel label_1 = new JLabel("Password");
@@ -69,12 +82,12 @@ public class UserAccountRegistration extends JDialog{
 		
 		confirmPassword = new JTextField();
 		confirmPassword.setColumns(10);
-		confirmPassword.setBounds(107, 91, 148, 20);
+		confirmPassword.setBounds(135, 91, 148, 20);
 		getContentPane().add(confirmPassword);
 		
 		email = new JTextField();
 		email.setColumns(10);
-		email.setBounds(107, 122, 148, 20);
+		email.setBounds(135, 122, 148, 20);
 		getContentPane().add(email);
 		
 		JLabel label_3 = new JLabel("Email");
@@ -97,7 +110,7 @@ public class UserAccountRegistration extends JDialog{
 		
 		firstName = new JTextField();
 		firstName.setColumns(10);
-		firstName.setBounds(107, 178, 148, 20);
+		firstName.setBounds(135, 178, 148, 20);
 		getContentPane().add(firstName);
 		
 		JLabel lblLastName = new JLabel("Last Name");
@@ -106,7 +119,7 @@ public class UserAccountRegistration extends JDialog{
 		
 		lastName = new JTextField();
 		lastName.setColumns(10);
-		lastName.setBounds(107, 206, 148, 20);
+		lastName.setBounds(135, 206, 148, 20);
 		getContentPane().add(lastName);
 		
 		JLabel lblDateOfBirth = new JLabel("Date of Birth");
@@ -115,38 +128,43 @@ public class UserAccountRegistration extends JDialog{
 		
 		dobMonth = new JTextField();
 		dobMonth.setColumns(2);
-		dobMonth.setBounds(107, 234, 30, 20);
+		dobMonth.setBounds(135, 237, 30, 20);
 		getContentPane().add(dobMonth);
 		
 		dobDay = new JTextField();
 		dobDay.setColumns(2);
-		dobDay.setBounds(147, 234, 30, 20);
+		dobDay.setBounds(182, 237, 30, 20);
 		getContentPane().add(dobDay);
 		
 		dobYear = new JTextField();
 		dobYear.setColumns(2);
-		dobYear.setBounds(195, 234, 60, 20);
+		dobYear.setBounds(222, 237, 60, 20);
 		getContentPane().add(dobYear);
 		
 		lblGender = new JLabel("Gender");
 		lblGender.setBounds(10, 262, 70, 14);
 		getContentPane().add(lblGender);
 		
+		ButtonGroup gender = new ButtonGroup();
+		
 		JRadioButton rdbtnMale = new JRadioButton("Male");
-		rdbtnMale.setBounds(107, 261, 85, 23);
+		rdbtnMale.setBounds(135, 264, 85, 23);
 		getContentPane().add(rdbtnMale);
+		gender.add(rdbtnMale);
 		
 		JRadioButton rdbtnFemale = new JRadioButton("Female");
-		rdbtnFemale.setBounds(107, 287, 109, 23);
+		rdbtnFemale.setBounds(135, 287, 109, 23);
 		getContentPane().add(rdbtnFemale);
+		gender.add(rdbtnFemale);
 		
 		JLabel lblMaritalStatus = new JLabel("Marital Status");
 		lblMaritalStatus.setBounds(10, 321, 78, 14);
 		getContentPane().add(lblMaritalStatus);
 		
+		
 		JComboBox comboBox = new JComboBox();
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Single", "Married", "Divorced"}));
-		comboBox.setBounds(107, 317, 148, 20);
+		comboBox.setBounds(135, 318, 148, 20);
 		getContentPane().add(comboBox);
 		
 		JLabel lblCurrentAddress = new JLabel("Current Address");
@@ -154,7 +172,7 @@ public class UserAccountRegistration extends JDialog{
 		getContentPane().add(lblCurrentAddress);
 		
 		currentAddress = new JTextField();
-		currentAddress.setBounds(107, 351, 148, 20);
+		currentAddress.setBounds(135, 349, 148, 20);
 		getContentPane().add(currentAddress);
 		currentAddress.setColumns(10);
 		
@@ -163,7 +181,7 @@ public class UserAccountRegistration extends JDialog{
 		getContentPane().add(lblSsn);
 		
 		sSN = new JTextField();
-		sSN.setBounds(107, 450, 148, 20);
+		sSN.setBounds(135, 450, 148, 20);
 		getContentPane().add(sSN);
 		sSN.setColumns(10);
 		
@@ -223,7 +241,7 @@ public class UserAccountRegistration extends JDialog{
 		getContentPane().add(label_10);
 		
 		JLabel label_11 = new JLabel("Policy Number");
-		label_11.setBounds(312, 327, 70, 14);
+		label_11.setBounds(312, 327, 92, 14);
 		getContentPane().add(label_11);
 		
 		policyNumber = new JTextField();
@@ -232,7 +250,7 @@ public class UserAccountRegistration extends JDialog{
 		getContentPane().add(policyNumber);
 		
 		JLabel label_12 = new JLabel("Group Number");
-		label_12.setBounds(312, 359, 70, 14);
+		label_12.setBounds(312, 359, 92, 14);
 		getContentPane().add(label_12);
 		
 		groupNumber = new JTextField();
@@ -241,7 +259,7 @@ public class UserAccountRegistration extends JDialog{
 		getContentPane().add(groupNumber);
 		
 		JLabel label_13 = new JLabel("Effective Date");
-		label_13.setBounds(312, 387, 70, 14);
+		label_13.setBounds(312, 387, 92, 14);
 		getContentPane().add(label_13);
 		
 		effectiveMonth = new JTextField();
@@ -265,7 +283,7 @@ public class UserAccountRegistration extends JDialog{
 		getContentPane().add(policyHolder);
 		
 		JLabel label_14 = new JLabel("Policy Holder");
-		label_14.setBounds(312, 418, 70, 14);
+		label_14.setBounds(312, 418, 92, 14);
 		getContentPane().add(label_14);
 		
 		cellPhone = new JTextField();
@@ -304,7 +322,7 @@ public class UserAccountRegistration extends JDialog{
 		
 		city = new JTextField();
 		city.setColumns(10);
-		city.setBounds(107, 382, 148, 20);
+		city.setBounds(135, 380, 148, 20);
 		getContentPane().add(city);
 		
 		JLabel lblState = new JLabel("State");
@@ -313,12 +331,432 @@ public class UserAccountRegistration extends JDialog{
 		
 		state = new JTextField();
 		state.setColumns(10);
-		state.setBounds(107, 415, 148, 20);
+		state.setBounds(135, 419, 148, 20);
 		getContentPane().add(state);
 		
 		JButton btnSubmit = new JButton("Submit");
 		btnSubmit.setBounds(466, 449, 89, 23);
 		getContentPane().add(btnSubmit);
+		btnSubmit.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				
+boolean validInput = true;
+				
+				if(!validUserName())
+				{
+					validInput = false;
+					JOptionPane.showMessageDialog(getContentPane(), "Username must meet the following criteria:\n1. Must be at least 5 characters long\n2. Must contain only letters and numbers", "ERROR", JOptionPane.ERROR_MESSAGE);
+					userName.setBorder(BorderFactory.createLineBorder(Color.RED));
+				}
+				
+				if(!validPassword())
+				{
+					validInput = false;
+					JOptionPane.showMessageDialog(getContentPane(), "Password must meet the following criteria:\n1. Must be at least 7 characters long\n2. Must contain only letters and numbers", "ERROR", JOptionPane.ERROR_MESSAGE);
+					password.setBorder(BorderFactory.createLineBorder(Color.RED));
+				}
+				else
+				{
+					password.setBorder(border);
+				}
+				
+				if(!passwordCompare())
+				{
+					validInput = false;
+					JOptionPane.showMessageDialog(getContentPane(), "Passwords do not match.", "ERROR", JOptionPane.ERROR_MESSAGE);
+					confirmPassword.setBorder(BorderFactory.createLineBorder(Color.RED));
+				}
+				else
+				{
+					confirmPassword.setBorder(border);
+				}
+				
+				if(!validEmail())
+				{
+					validInput = false;
+					JOptionPane.showMessageDialog(getContentPane(), "Please enter a valid email address.", "ERROR", JOptionPane.ERROR_MESSAGE);
+					email.setBorder(BorderFactory.createLineBorder(Color.RED));
+				}
+				else
+				{
+					email.setBorder(border);
+				}
+				
+				if(!validBirthMonth())
+				{
+					validInput = false;
+					JOptionPane.showMessageDialog(getContentPane(), "Please enter a valid month. (1-12)", "ERROR", JOptionPane.ERROR_MESSAGE);
+					dobMonth.setBorder(BorderFactory.createLineBorder(Color.RED));
+				}
+			}
+		});
 		
 	}
+	private boolean passwordCompare()
+	{
+		if(password.getText().equals(confirmPassword.getText()))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+	private boolean validPassword()
+	{
+		String passwordText = password.getText();
+		
+		if(passwordText.length() >= 7)
+		{
+			if(passwordText.contains("!"))
+			{
+				return false;
+			}
+			else if(passwordText.contains("@"))
+			{
+				return false;
+			}
+			else if(passwordText.contains("#"))
+			{
+				return false;
+			}
+			else if(passwordText.contains("$"))
+			{
+				return false;
+			}
+			else if(passwordText.contains("%"))
+			{
+				return false;
+			}
+			else if(passwordText.contains("^"))
+			{
+				return false;
+			}
+			else if(passwordText.contains("&"))
+			{
+				return false;
+			}
+			else if(passwordText.contains("*"))
+			{
+				return false;
+			}
+			else if(passwordText.contains("("))
+			{
+				return false;
+			}
+			else if(passwordText.contains(")"))
+			{
+				return false;
+			}
+			else if(passwordText.contains("_"))
+			{
+				return false;
+			}
+			else if(passwordText.contains("-"))
+			{
+				return false;
+			}
+			else if(passwordText.contains("+"))
+			{
+				return false;
+			}
+			else if(passwordText.contains("="))
+			{
+				return false;
+			}
+			else if(passwordText.contains("["))
+			{
+				return false;
+			}
+			else if(passwordText.contains("]"))
+			{
+				return false;
+			}
+			else if(passwordText.contains("{"))
+			{
+				return false;
+			}
+			else if(passwordText.contains("}"))
+			{
+				return false;
+			}
+			else if(passwordText.contains("|"))
+			{
+				return false;
+			}
+			else if(passwordText.contains("\\"))
+			{
+				return false;
+			}
+			else if(passwordText.contains(";"))
+			{
+				return false;
+			}
+			else if(passwordText.contains(":"))
+			{
+				return false;
+			}
+			else if(passwordText.contains("\'"))
+			{
+				return false;
+			}
+			else if(passwordText.contains("\""))
+			{
+				return false;
+			}
+			else if(passwordText.contains("<"))
+			{
+				return false;
+			}
+			else if(passwordText.contains(">"))
+			{
+				return false;
+			}
+			else if(passwordText.contains("?"))
+			{
+				return false;
+			}
+			else if(passwordText.contains("/"))
+			{
+				return false;
+			}
+			else if(passwordText.contains(","))
+			{
+				return false;
+			}
+			else if(passwordText.contains("."))
+			{
+				return false;
+			}
+			else if(passwordText.contains("`"))
+			{
+				return false;
+			}
+			else if(passwordText.contains("~"))
+			{
+				return false;
+			}
+			else if(passwordText.contains(" "))
+			{
+				return false;
+			}
+			else
+			{
+				return true;
+			}
+		}
+		else
+		{
+			return false;
+		}
+	}
+	private boolean validUserName()
+	{
+		String userNameText = userName.getText();
+		
+		if(userNameText.length() >= 5)
+		{
+			if(userNameText.contains("!"))
+			{
+				return false;
+			}
+			else if(userNameText.contains("@"))
+			{
+				return false;
+			}
+			else if(userNameText.contains("#"))
+			{
+				return false;
+			}
+			else if(userNameText.contains("$"))
+			{
+				return false;
+			}
+			else if(userNameText.contains("%"))
+			{
+				return false;
+			}
+			else if(userNameText.contains("^"))
+			{
+				return false;
+			}
+			else if(userNameText.contains("&"))
+			{
+				return false;
+			}
+			else if(userNameText.contains("*"))
+			{
+				return false;
+			}
+			else if(userNameText.contains("("))
+			{
+				return false;
+			}
+			else if(userNameText.contains(")"))
+			{
+				return false;
+			}
+			else if(userNameText.contains("_"))
+			{
+				return false;
+			}
+			else if(userNameText.contains("-"))
+			{
+				return false;
+			}
+			else if(userNameText.contains("+"))
+			{
+				return false;
+			}
+			else if(userNameText.contains("="))
+			{
+				return false;
+			}
+			else if(userNameText.contains("["))
+			{
+				return false;
+			}
+			else if(userNameText.contains("]"))
+			{
+				return false;
+			}
+			else if(userNameText.contains("{"))
+			{
+				return false;
+			}
+			else if(userNameText.contains("}"))
+			{
+				return false;
+			}
+			else if(userNameText.contains("|"))
+			{
+				return false;
+			}
+			else if(userNameText.contains("\\"))
+			{
+				return false;
+			}
+			else if(userNameText.contains(";"))
+			{
+				return false;
+			}
+			else if(userNameText.contains(":"))
+			{
+				return false;
+			}
+			else if(userNameText.contains("\'"))
+			{
+				return false;
+			}
+			else if(userNameText.contains("\""))
+			{
+				return false;
+			}
+			else if(userNameText.contains("<"))
+			{
+				return false;
+			}
+			else if(userNameText.contains(">"))
+			{
+				return false;
+			}
+			else if(userNameText.contains("?"))
+			{
+				return false;
+			}
+			else if(userNameText.contains("/"))
+			{
+				return false;
+			}
+			else if(userNameText.contains(","))
+			{
+				return false;
+			}
+			else if(userNameText.contains("."))
+			{
+				return false;
+			}
+			else if(userNameText.contains("`"))
+			{
+				return false;
+			}
+			else if(userNameText.contains("~"))
+			{
+				return false;
+			}
+			else if(userNameText.contains(" "))
+			{
+				return false;
+			}
+			else
+			{
+				return true;
+			}
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+	private boolean validEmail()
+	{
+		String emailString = email.getText();
+		
+		Pattern p = Pattern.compile("[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}");
+		
+		Matcher m = p.matcher(emailString);
+		
+		if(m.matches())
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	private boolean validWorkPhone()
+	{
+		String phone = workPhone.getText();
+		
+		phone = phone.replace("-", "");
+		phone = phone.replace("(", "");
+		phone = phone.replace(")", "");
+		
+		return true;
+	}
+
+	private boolean validBirthMonth()
+	{
+		int i = Integer.parseInt(dobMonth.getText());
+		if(i > 12 || i < 1)
+		{
+			return false;
+		}
+		else
+		{
+			return true;
+		}
+	}
+
+	private boolean validBirthDay()
+	{
+		int i = Integer.parseInt(dobDay.getText());
+		if(i > 31 || i < 1)
+		{
+			return false;
+		}
+		else
+		{
+			return true;
+		}
+	}
+
+
+
+
 }
