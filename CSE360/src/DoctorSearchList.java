@@ -10,12 +10,14 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JDialog;
+
 import java.awt.event.ActionListener;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.awt.event.ActionEvent;
 
-public class DoctorSearchList extends JFrame {
+public class DoctorSearchList extends JDialog {
 
 	private JPanel contentPane;
 	private JTextField textFieldName;

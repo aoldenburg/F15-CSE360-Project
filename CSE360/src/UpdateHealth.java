@@ -7,9 +7,10 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JTable;
 
-public class UpdateHealth extends JFrame {
+public class UpdateHealth extends JDialog {
 
 	private JPanel contentPane;
 	private JTextField textField_1;
