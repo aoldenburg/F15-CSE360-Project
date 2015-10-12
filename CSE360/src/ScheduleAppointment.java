@@ -36,7 +36,7 @@ public class ScheduleAppointment extends JDialog {
 	 * Create the frame.
 	 */
 	public ScheduleAppointment() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 493, 561);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

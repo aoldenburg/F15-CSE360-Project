@@ -36,7 +36,7 @@ public class UpdateHealth extends JDialog {
 	 * Create the frame.
 	 */
 	public UpdateHealth() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 523, 549);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

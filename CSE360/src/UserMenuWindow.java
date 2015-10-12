@@ -67,7 +67,7 @@ public class UserMenuWindow extends JFrame {
 		JButton btnScheduleAppointment = new JButton("Schedule Appointment");
 		btnScheduleAppointment.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ScheduleAppointment sAppt = new ScheduleAppointment();
+				DoctorList sAppt = new DoctorList();
 				sAppt.setVisible(true);
 			}
 		});

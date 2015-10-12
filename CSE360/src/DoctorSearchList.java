@@ -45,7 +45,7 @@ public class DoctorSearchList extends JDialog {
 	 * Create the frame.
 	 */
 	public DoctorSearchList() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -53,11 +53,11 @@ public class DoctorSearchList extends JDialog {
 		contentPane.setLayout(null);
 		
 		JLabel lblSearchByName = new JLabel("Search By Name:");
-		lblSearchByName.setBounds(10, 11, 82, 14);
+		lblSearchByName.setBounds(10, 11, 198, 14);
 		contentPane.add(lblSearchByName);
 		
 		JLabel lblFindADoctor = new JLabel("Find a Doctor:");
-		lblFindADoctor.setBounds(10, 67, 82, 14);
+		lblFindADoctor.setBounds(10, 67, 198, 14);
 		contentPane.add(lblFindADoctor);
 		
 		textFieldName = new JTextField();
@@ -66,7 +66,7 @@ public class DoctorSearchList extends JDialog {
 		textFieldName.setColumns(10);
 		
 		JLabel lblZipCode = new JLabel("Zip Code");
-		lblZipCode.setBounds(10, 92, 46, 14);
+		lblZipCode.setBounds(10, 92, 198, 14);
 		contentPane.add(lblZipCode);
 		
 		textFieldZipCode = new JTextField();
@@ -75,7 +75,7 @@ public class DoctorSearchList extends JDialog {
 		textFieldZipCode.setColumns(10);
 		
 		JLabel lblCategory = new JLabel("Category");
-		lblCategory.setBounds(10, 148, 46, 14);
+		lblCategory.setBounds(10, 148, 198, 14);
 		contentPane.add(lblCategory);
 		
 		textFieldCategory = new JTextField();
@@ -84,7 +84,7 @@ public class DoctorSearchList extends JDialog {
 		textFieldCategory.setColumns(10);
 		
 		JLabel lblInsuranceType = new JLabel("Insurance Type");
-		lblInsuranceType.setBounds(10, 204, 82, 14);
+		lblInsuranceType.setBounds(10, 204, 198, 14);
 		contentPane.add(lblInsuranceType);
 		
 		JButton btnSubmit = new JButton("Submit");
@@ -268,10 +268,11 @@ public class DoctorSearchList extends JDialog {
 			{
 				return false;
 			}
-			else
+			else if(doctorNameText.equals(""))
 			{
-				return true;
+				return false;
 			}
+			else return true;
 	
 		
 	}

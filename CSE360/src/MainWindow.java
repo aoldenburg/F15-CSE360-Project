@@ -61,14 +61,7 @@ public class MainWindow {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frmIpims = new JFrame();
-		frmIpims.setTitle("IPIMS");
-		frmIpims.setBounds(100, 100, 450, 300);
-		frmIpims.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		textField = new JTextField();
-		frmIpims.getContentPane().add(textField, BorderLayout.CENTER);
-		textField.setColumns(10);
+		frmIpims = new UserMenuWindow();
 		
 	}
 
