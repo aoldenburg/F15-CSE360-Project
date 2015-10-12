@@ -1,7 +1,9 @@
+import java.awt.Color;
 import java.awt.Dialog.ModalityType;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.JApplet;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -42,6 +44,21 @@ public class LogInWindow extends JDialog {
 		getContentPane().add(password);
 		
 		btnLogin = new JButton("Login");
+		btnLogin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0)
+			{
+				if(username.getText().equals(""))
+						{
+							JOptionPane.showMessageDialog(getContentPane(), "Please enter a Username", "ERROR", JOptionPane.ERROR_MESSAGE);
+							username.setBorder(BorderFactory.createLineBorder(Color.RED));
+						}
+				if(password.getText().equals(""))
+				{
+					JOptionPane.showMessageDialog(getContentPane(), "Please enter a Password", "ERROR", JOptionPane.ERROR_MESSAGE);
+					password.setBorder(BorderFactory.createLineBorder(Color.RED));
+				}
+			}
+		});
 		btnLogin.setBounds(239, 70, 89, 23);
 		getContentPane().add(btnLogin);
 		
