@@ -7,10 +7,11 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
 import javax.swing.JCheckBox;
+import javax.swing.JDialog;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
-public class ScheduleAppointment extends JFrame {
+public class ScheduleAppointment extends JDialog {
 
 	private JPanel contentPane;
 	private JTextField textFieldReason;

@@ -7,9 +7,10 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JTable;
 import javax.swing.JLabel;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JList;
 
-public class AppointmentList extends JFrame {
+public class AppointmentList extends JDialog {
 
 	private JPanel contentPane;
 	private JTable table;
@@ -34,7 +35,7 @@ public class AppointmentList extends JFrame {
 	 * Create the frame.
 	 */
 	public AppointmentList() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 454, 504);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

@@ -11,10 +11,11 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
 import javax.swing.JComboBox;
+import javax.swing.JDialog;
 import javax.swing.JButton;
 import javax.swing.DefaultComboBoxModel;
 
-public class StaffAccountCreation extends JApplet {
+public class StaffAccountCreation extends JDialog {
 	private JTextField userName;
 	private JTextField password;
 	private JTextField confirmPassword;
@@ -26,9 +27,7 @@ public class StaffAccountCreation extends JApplet {
 	private Border border;
 	private JComboBox accountType;
 
-	/**
-	 * Create the applet.
-	 */
+
 	public StaffAccountCreation() {
 		getContentPane().setLayout(null);
 		getContentPane().setSize(450, 550);
