@@ -25,7 +25,7 @@ public class LogInWindow extends JDialog {
 	public LogInWindow() {
 		getContentPane().setLayout(null);
 		
-		JLabel lblUsername = new JLabel("Username");
+		JLabel lblUsername = new JLabel("UserName");
 		lblUsername.setBounds(10, 11, 86, 14);
 		getContentPane().add(lblUsername);
 		
