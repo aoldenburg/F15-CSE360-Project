@@ -188,7 +188,7 @@ public class UpdateHealth extends JDialog {
 			{
 				JOptionPane.showConfirmDialog(null, "Alert will be sent to your Doctor", "Alert Message", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
 			}
-			alert = false;
+			alert = false;  
 		}
 		if(chckbxCongestion.isSelected())
 		{
