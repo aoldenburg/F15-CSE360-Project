@@ -18,6 +18,7 @@ import javax.swing.JTable;
 import javax.swing.JCheckBox;
 import javax.swing.JDialog;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 
 public class UpdateHealth extends JDialog {
 
@@ -151,10 +152,17 @@ public class UpdateHealth extends JDialog {
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm");
 		Date date = new Date();
 		health += dateFormat.format(date) + ": ";
+		boolean alert = false;
 		
 		if(chckbxChestPain.isSelected())
 		{
 			health += "Chest Pain, ";
+			alert = true;
+			if(alert == true)
+			{
+				JOptionPane.showConfirmDialog(null, "Alert will be sent to your Doctor", "Alert Message", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
+			}
+			alert = false;
 		}
 		if(chckbxNausea.isSelected())
 		{
@@ -175,6 +183,12 @@ public class UpdateHealth extends JDialog {
 		if(chckbxFever.isSelected())
 		{
 			health += "Fever, ";
+			alert = true;
+			if(alert == true)
+			{
+				JOptionPane.showConfirmDialog(null, "Alert will be sent to your Doctor", "Alert Message", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
+			}
+			alert = false;
 		}
 		if(chckbxCongestion.isSelected())
 		{
