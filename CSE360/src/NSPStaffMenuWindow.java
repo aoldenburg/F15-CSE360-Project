@@ -17,7 +17,7 @@ public class NSPStaffMenuWindow extends JFrame {
 	private JPanel contentPane;
 
 	/**
-	 * Launch the application. Here
+	 * Launch the application.
 	 * 
 	 */
 	public static void main(String[] args) {
