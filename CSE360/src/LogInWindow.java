@@ -61,9 +61,9 @@ public class LogInWindow extends JDialog {
 				
 				Account a = stub.accessAccount(username.getText(), password.getText());
 				
-				if(a.equals(null))
+				if(a == null)
 				{
-					JOptionPane.showMessageDialog(null, "Error Invalid Username and/or password");
+					JOptionPane.showMessageDialog(getContentPane(), "Error Invalid Username and/or password", "ERROR", JOptionPane.Error_Message);
 				}
 			}
 		});
