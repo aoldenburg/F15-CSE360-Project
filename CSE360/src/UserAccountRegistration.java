@@ -21,7 +21,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import org.eclipse.wb.swing.FocusTraversalOnArray;
 import java.awt.Component;
-
+//test
 public class UserAccountRegistration extends JDialog{
 	private JTextField userName;
 	private JTextField password;
