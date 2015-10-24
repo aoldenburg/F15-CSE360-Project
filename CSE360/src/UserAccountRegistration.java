@@ -51,6 +51,7 @@ public class UserAccountRegistration extends JDialog{
 	private JTextField city;
 	private JTextField state;
 	private Border border;
+	private Gender genderEnum;
 
 
 	public UserAccountRegistration() {
@@ -151,11 +152,33 @@ public class UserAccountRegistration extends JDialog{
 		rdbtnMale.setBounds(135, 264, 85, 23);
 		getContentPane().add(rdbtnMale);
 		gender.add(rdbtnMale);
+		rdbtnMale.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent evt)
+			{
+				if(evt.getActionCommand() == "Male")
+				{
+					genderEnum = Gender.Male;
+				}				
+			}
+		});
 		
 		JRadioButton rdbtnFemale = new JRadioButton("Female");
 		rdbtnFemale.setBounds(135, 287, 109, 23);
 		getContentPane().add(rdbtnFemale);
 		gender.add(rdbtnFemale);
+		rdbtnFemale.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent evt)
+			{
+				if(evt.getActionCommand() == "Female")
+				{
+					genderEnum = Gender.Female;
+				}		
+			}
+		});
+		
+		
 		
 		JLabel lblMaritalStatus = new JLabel("Marital Status");
 		lblMaritalStatus.setBounds(10, 321, 106, 14);
@@ -472,7 +495,7 @@ public class UserAccountRegistration extends JDialog{
 					workPhone.setBorder(border);
 				}
 				//if all error checking is okay then create account
-				if(validInput = true)
+				if(validInput)
 				{
 					Account acct = new Account();
 					acct.setUserName(userName.getText());
@@ -482,9 +505,11 @@ public class UserAccountRegistration extends JDialog{
 					acct.setEmail(email.getText());
 					acct.setCellNumber(Integer.parseInt(cellPhone.getText()));
 					acct.setWorkNumber(Integer.parseInt(workPhone.getText()));
-				//	acct.setEffectiveDate(Integer.parseInt());
-					 
+					acct.setBirthDate(dobMonth.toString()+"/"+dobDay.toString()+"/"+dobYear.toString());
+					acct.setGender(genderEnum);
+					
 				}
+			
 			}
 		});
 		
