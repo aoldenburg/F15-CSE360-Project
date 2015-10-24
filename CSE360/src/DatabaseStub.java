@@ -1,4 +1,10 @@
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class DatabaseStub implements Database {
 	
@@ -6,9 +12,13 @@ public class DatabaseStub implements Database {
 	
 	public DatabaseStub()
 	{
+		
+		
 		Account a = new Account("admin", "admin");
 		a.setAccountType(AccountType.Admin);
-		
+		a.setFirstName("Allen");
+		a.setLastName("James");
+		a.setAccountType(AccountType.Patient);
 		accounts.add(a);
 		
 		a = new Account("Doctor", "Doctor");
@@ -26,13 +36,19 @@ public class DatabaseStub implements Database {
 		a.setLastName("Smith");
 		
 		accounts.add(a);
+		
+		saveFile();
+		getFile();
 	
 	}
 
 	@Override
 	public void createAccount(Account a) {
 		
+		
+		
 		accounts.add(a);
+		saveFile();
 	}
 
 	@Override
@@ -62,6 +78,8 @@ public class DatabaseStub implements Database {
 				accounts.set(i, a);
 			}
 		}
+		
+		saveFile();
 		
 	}
 
@@ -125,5 +143,70 @@ public class DatabaseStub implements Database {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	private void saveFile()
+	{
+		PrintWriter writer;
+		try {
+			writer = new PrintWriter("database.txt", "UTF-8");
+			
+			for(int i = 0; i < accounts.size(); i++)
+			{
+				Account a = accounts.get(i);
+				String s = null;
+				if(a.getAccountType() == AccountType.Doctor)
+				{
+					s = "2";
+				}
+				else if(a.getAccountType() == AccountType.Patient)
+				{
+					s = "1";
+				}
+				
+				writer.println(a.getUserName() + "/" + a.getPassword() + "/" + a.getFirstName() + "/" + a.getLastName() + "/" + s);
+			}
+			writer.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	private void getFile()
+	{
+		try {
+			Scanner in = new Scanner(new FileReader("database.txt"));
+			
+			while(in.hasNextLine())
+			{
+				String[] account = in.nextLine().split("/");
+				
+				Account a = new Account(account[0], account[1]);
+				
+				a.setFirstName(account[2]);
+				a.setLastName(account[3]);
+				if(account[4].equals("1"))
+				{
+					a.setAccountType(AccountType.Patient);
+				}
+				else if(account[4].equals("2"))
+				{
+					a.setAccountType(AccountType.Doctor);
+				}
+				
+				accounts.add(a);
+				
+			}
+			
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 }
+
