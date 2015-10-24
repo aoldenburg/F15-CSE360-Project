@@ -512,7 +512,7 @@ public class UserAccountRegistration extends JDialog{
 			
 			}
 		});
-		
+		 
 	}
 	private boolean passwordCompare()
 	{
