@@ -64,7 +64,7 @@ public class MainWindow {
 		frmIpims = new UserMenuWindow();
 		
 	}
-		static JMenuBar PatientMenu() {
+	static JMenuBar PatientMenu() {
 		JMenuBar menuBar = new JMenuBar();
 		JMenu AppointmentBtn = new JMenu("Appointment");
 		menuBar.add(AppointmentBtn);
