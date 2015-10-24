@@ -19,7 +19,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JDialog;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
-//test
+
 public class UpdateHealth extends JDialog {
 
 	private JPanel contentPane;
