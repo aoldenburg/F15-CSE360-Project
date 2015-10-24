@@ -38,27 +38,7 @@ public class Login {
 		connection=sqliteConnection.dbConnector();
 	}
 
-	
-	JButton btnSave = new JButton("Save");
-	btnSave.addActionListener(new ActionListener() {
-		public void actionPerformed(ActionEvent argO) {
 		
-				//StaffAccount is the name of the database
-				String query="insert into StaffAccount (UserName,Password) " + "values (?,?)";
-				PreparedStatement pst=connection.prepareStatement(query);
-				pst.setString(1, textFieldUN.getText() );
-				pst.setString(2, passwordField.getText() );
-				
-				pst.execute();
-				
-				JOptionPane.showMessageDialog(null, "Data Saved");
-				
-				pst.close ();
-		}
-	}
-	
-	
-	
 	/**
 	 * Initialize the contents of the frame.
 	 */

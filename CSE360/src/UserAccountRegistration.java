@@ -342,7 +342,7 @@ public class UserAccountRegistration extends JDialog{
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				
-boolean validInput = true;
+				boolean validInput = true;
 				
 				if(!validUserName())
 				{
@@ -470,6 +470,20 @@ boolean validInput = true;
 				else
 				{
 					workPhone.setBorder(border);
+				}
+				//if all error checking is okay then create account
+				if(validInput = true)
+				{
+					Account acct = new Account();
+					acct.setUserName(userName.getText());
+					acct.setPassword(password.getText());
+					acct.setFirstName(firstName.getText());
+					acct.setLastName(lastName.getText());
+					acct.setEmail(email.getText());
+					acct.setCellNumber(Integer.parseInt(cellPhone.getText()));
+					acct.setWorkNumber(Integer.parseInt(workPhone.getText()));
+				//	acct.setEffectiveDate(Integer.parseInt());
+					 
 				}
 			}
 		});
