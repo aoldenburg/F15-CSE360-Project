@@ -472,7 +472,15 @@ public class UserAccountRegistration extends JDialog{
 					workPhone.setBorder(border);
 				}
 				//if all error checking is okay then create account
-				
+				if(validInput = true)
+				{
+					Account acct = new Account();
+					acct.setUserName(userName.getText());
+					acct.setPassword(password.getText());
+					acct.setFirstName(firstName.getText());
+					acct.setLastName(lastName.getText());
+					acct.setEmail(email.getText());
+				}
 			}
 		});
 		
