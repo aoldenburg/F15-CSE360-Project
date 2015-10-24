@@ -57,6 +57,14 @@ public class LogInWindow extends JDialog {
 					JOptionPane.showMessageDialog(getContentPane(), "Please enter a Password", "ERROR", JOptionPane.ERROR_MESSAGE);
 					password.setBorder(BorderFactory.createLineBorder(Color.RED));
 				}
+				DatabaseStub stub = new DatabaseStub();
+				
+				Account a = stub.accessAccount(username.getText(), password.getText());
+				
+				if(a.equals(null))
+				{
+					JOptionPane.showMessageDialog(null, "Error Invalid Username and/or password");
+				}
 			}
 		});
 		btnLogin.setBounds(239, 70, 89, 23);
