@@ -483,7 +483,7 @@ public class UserAccountRegistration extends JDialog{
 					acct.setCellNumber(Integer.parseInt(cellPhone.getText()));
 					acct.setWorkNumber(Integer.parseInt(workPhone.getText()));
 				//	acct.setEffectiveDate(Integer.parseInt());
-					
+					 
 				}
 			}
 		});
