@@ -52,6 +52,8 @@ public class UserAccountRegistration extends JDialog{
 	private JTextField state;
 	private Border border;
 	private Gender genderEnum;
+	private String maritalStatus;
+	private boolean sms;
 
 
 	public UserAccountRegistration() {
@@ -334,10 +336,30 @@ public class UserAccountRegistration extends JDialog{
 		JRadioButton radioButton = new JRadioButton("Yes");
 		radioButton.setBounds(410, 88, 51, 23);
 		getContentPane().add(radioButton);
+		radioButton.addActionListener( new ActionListener()
+			{
+				public void actionPerformed(ActionEvent evt)
+				{
+					if(evt.getActionCommand() == "Yes")
+					{
+						sms = true;
+					}
+				}
+			});
 		
 		JRadioButton radioButton_1 = new JRadioButton("No");
 		radioButton_1.setBounds(463, 88, 56, 23);
 		getContentPane().add(radioButton_1);
+		radioButton_1.addActionListener( new ActionListener()
+		{
+			public void actionPerformed(ActionEvent evt)
+			{
+				if(evt.getActionCommand() == "No")
+				{
+					sms = false;
+				}
+			}
+		});
 		
 		JLabel lblCity = new JLabel("City");
 		lblCity.setBounds(10, 385, 92, 14);
@@ -507,7 +529,25 @@ public class UserAccountRegistration extends JDialog{
 					acct.setWorkNumber(Integer.parseInt(workPhone.getText()));
 					acct.setBirthDate(dobMonth.toString()+"/"+dobDay.toString()+"/"+dobYear.toString());
 					acct.setGender(genderEnum);
-					
+					acct.setStreetAddress(currentAddress.getText());
+					acct.setCity(city.getText());
+					acct.setState(state.getText());
+					acct.setSSN(Integer.parseInt(sSN.getText()));
+					acct.setEmergencyContactName(emergencyContactName.getText());
+					acct.setEmergencyContactRelationship(emergencyContactRelationship.getText());
+					acct.setEmergencyContactPhone(Integer.parseInt(emergencyContactPhone.getText()));
+					acct.setInsuranceName(insuranceName.getText());
+					acct.setInsuranceAddress(insuranceAddress.getText());
+					acct.setPolicyNumber(policyNumber.getText());
+					acct.setGroupNumber(groupNumber.getText());
+					acct.setEffectiveDate(
+							effectiveMonth.getText() 
+							+ "/"
+							+ effectiveDay.getText()
+							+ "/"
+							+ effectiveYear.getText()
+							);
+					acct.setPolicyHolder(policyHolder.getText());
 				}
 			
 			}
