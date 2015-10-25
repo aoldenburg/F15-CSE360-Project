@@ -88,11 +88,11 @@ public class UserMenuWindow extends JFrame {
 			}
 		});
 		panel_1.add(btnUpdateAppointment);
-		btnUpdateAppointment.setEnabled(false);
+	//	btnUpdateAppointment.setEnabled(false);
 		
 		JButton btnCancelAppointment = new JButton("Cancel Appointment");
 		panel_1.add(btnCancelAppointment);
-		btnCancelAppointment.setEnabled(false);
+		//btnCancelAppointment.setEnabled(false);
 		
 		JButton btnUpdateHealthInformation = new JButton("Update Health Information");
 		btnUpdateHealthInformation.addActionListener(new ActionListener() {
@@ -105,9 +105,9 @@ public class UserMenuWindow extends JFrame {
 		
 		JButton btnSendAlertconcernsconditions = new JButton("Send Alert/Concerns/Conditions");
 		panel_1.add(btnSendAlertconcernsconditions);
-		btnSendAlertconcernsconditions.setEnabled(false);
+		//btnSendAlertconcernsconditions.setEnabled(false);
 		JButton btnLogOut = new JButton("Log Out");
-		btnLogOut.setEnabled(false);
+	//	btnLogOut.setEnabled(false);
 		btnLogOut.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				

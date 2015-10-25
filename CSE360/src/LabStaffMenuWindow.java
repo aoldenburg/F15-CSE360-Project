@@ -19,7 +19,7 @@ public class LabStaffMenuWindow extends JFrame {
 	/**
 	 * Launch the application
 	 */
-	public static void main(String[] args) {
+/*	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -32,7 +32,7 @@ public class LabStaffMenuWindow extends JFrame {
 			}
 		});
 	}
-	
+	*/
 	public LabStaffMenuWindow(){
 		
 		setTitle("Lab Staff Main Menu");
@@ -59,7 +59,7 @@ public class LabStaffMenuWindow extends JFrame {
 			}
 		});
 		panel_1.add(btnUpdateLabRecords);
-		btnUpdateLabRecords.setEnabled(false);
+		//btnUpdateLabRecords.setEnabled(false);
 		
 		JButton btnEnterLabRecords = new JButton("Enter/Upload Lab Records");
 		btnEnterLabRecords.addActionListener(new ActionListener() {
@@ -67,10 +67,10 @@ public class LabStaffMenuWindow extends JFrame {
 			}
 		});
 		panel_1.add(btnEnterLabRecords);
-		btnEnterLabRecords.setEnabled(false);
+		//btnEnterLabRecords.setEnabled(false);
 		
 		JButton btnLogOut = new JButton("Log Out");
-		btnLogOut.setEnabled(false);
+		//btnLogOut.setEnabled(false);
 		btnLogOut.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}

@@ -60,7 +60,7 @@ public class NSPStaffMenuWindow extends JFrame {
 			}
 		});
 		panel_1.add(btnUpdateMedicalReports);
-		btnUpdateMedicalReports.setEnabled(false);
+	//	btnUpdateMedicalReports.setEnabled(false);
 		
 		JButton btnUploadMedicalHistory = new JButton("Upload Medical History");
 		btnUploadMedicalHistory.addActionListener(new ActionListener() {
@@ -68,7 +68,7 @@ public class NSPStaffMenuWindow extends JFrame {
 			}
 		});
 		panel_1.add(btnUploadMedicalHistory);
-		btnUploadMedicalHistory.setEnabled(false);
+	//	btnUploadMedicalHistory.setEnabled(false);
 		
 		JButton btnUpdateMedicalHistory = new JButton("Update Medical History");
 		btnUpdateMedicalHistory.addActionListener(new ActionListener() {
@@ -76,7 +76,7 @@ public class NSPStaffMenuWindow extends JFrame {
 			}
 		});
 		panel_1.add(btnUpdateMedicalHistory);
-		btnUpdateMedicalHistory.setEnabled(false);
+	//	btnUpdateMedicalHistory.setEnabled(false);
 		
 		JButton btnAlert = new JButton("Issue Emergency Alert to HSP Staff");
 		btnAlert.addActionListener(new ActionListener() {
@@ -87,7 +87,7 @@ public class NSPStaffMenuWindow extends JFrame {
 		btnAlert.setEnabled(false);
 		
 		JButton btnLogOut = new JButton("Log Out");
-		btnLogOut.setEnabled(false);
+	//	btnLogOut.setEnabled(false);
 		btnLogOut.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}

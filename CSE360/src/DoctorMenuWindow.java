@@ -52,7 +52,7 @@ public class DoctorMenuWindow extends JFrame{
 			}
 		});
 		panel_1.add(btnAccessPatientRecords);
-		btnAccessPatientRecords.setEnabled(false);
+//		btnAccessPatientRecords.setEnabled(false);
 		
 		JButton btnAccessLabRecords = new JButton("Access Lab Records");
 		btnAccessLabRecords.addActionListener(new ActionListener() {
@@ -60,7 +60,7 @@ public class DoctorMenuWindow extends JFrame{
 			}
 		});
 		panel_1.add(btnAccessLabRecords);
-		btnAccessLabRecords.setEnabled(false);
+//		btnAccessLabRecords.setEnabled(false);
 		
 		JButton btnUpdateHealthCondition = new JButton("Update Health Condition");
 		btnUpdateHealthCondition.addActionListener(new ActionListener() {
@@ -68,7 +68,7 @@ public class DoctorMenuWindow extends JFrame{
 			}
 		});
 		panel_1.add(btnUpdateHealthCondition);
-		btnUpdateHealthCondition.setEnabled(false);
+	//	btnUpdateHealthCondition.setEnabled(false);
 		
 		JButton btnEPrescribe = new JButton("E-Prescribe Medication");
 		btnEPrescribe.addActionListener(new ActionListener() {
@@ -76,10 +76,10 @@ public class DoctorMenuWindow extends JFrame{
 			}
 		});
 		panel_1.add(btnEPrescribe);
-		btnEPrescribe.setEnabled(false);
+	//	btnEPrescribe.setEnabled(false);
 		
 		JButton btnLogOut = new JButton("Log Out");
-		btnLogOut.setEnabled(false);
+//		btnLogOut.setEnabled(false);
 		btnLogOut.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}

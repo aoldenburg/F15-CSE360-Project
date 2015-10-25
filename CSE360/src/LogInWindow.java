@@ -69,7 +69,7 @@ public class LogInWindow extends JFrame {
 					//======================================================
 					//LoginWindow->Patient, Doc, nurse, nsp, or lab MainMenu
 					//======================================================
-					acctType = 2;
+					acctType = 4;
 					switch(acctType)
 					{
 						case 0:

@@ -52,10 +52,10 @@ public class NurseMenuWindow extends JFrame{
 			}
 		});
 		panel_1.add(btnUpdateHealthCondition);
-		btnUpdateHealthCondition.setEnabled(false);
+	//	btnUpdateHealthCondition.setEnabled(false);
 		
 		JButton btnLogOut = new JButton("Log Out");
-		btnLogOut.setEnabled(false);
+	//	btnLogOut.setEnabled(false);
 		btnLogOut.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
