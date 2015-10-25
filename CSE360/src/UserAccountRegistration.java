@@ -55,7 +55,7 @@ public class UserAccountRegistration extends JDialog{
 	private String maritalStatus;
 	private boolean sms;
  
- 
+  
 	public UserAccountRegistration() {
 		setTitle("User Account Registration");
 		getContentPane().setLayout(null);
