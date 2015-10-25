@@ -83,8 +83,8 @@ public class Login {
 					{
 						JOptionPane.showMessageDialog(null, "UserName and password is correct");
 						frame.dispose();
-						EmployeeInfo emplInfo=new EmployeeInfo();
-						emplInfo.setVisible(true);
+						//EmployeeInfo emplInfo=new EmployeeInfo();
+						//emplInfo.setVisible(true);
 					}
 					else if(count>1)
 					{

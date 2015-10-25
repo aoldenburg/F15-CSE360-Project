@@ -11,20 +11,22 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 
-public class LogInWindow extends JDialog {
+public class LogInWindow extends JFrame {
 	public JTextField username;
 	public JTextField password;
 	
 	public JButton btnNewPatient;
 	public JButton btnLogin;
+	private int acctType;
 
 	/**
 	 * Create the applet.
 	 */
-	public LogInWindow() {
+	public LogInWindow() 
+	{
 		getContentPane().setLayout(null);
-		
 		JLabel lblUsername = new JLabel("UserName");
 		lblUsername.setBounds(10, 11, 86, 14);
 		getContentPane().add(lblUsername);
@@ -43,52 +45,100 @@ public class LogInWindow extends JDialog {
 		password.setBounds(106, 39, 224, 20);
 		getContentPane().add(password);
 		
+		//Login Button
 		btnLogin = new JButton("Login");
-		btnLogin.addActionListener(new ActionListener() {
+		btnLogin.setBounds(239, 70, 89, 23);
+		getContentPane().add(btnLogin);
+		btnLogin.addActionListener(new ActionListener() 
+		{
 			public void actionPerformed(ActionEvent arg0)
 			{
 				if(username.getText().equals(""))
-						{
-							JOptionPane.showMessageDialog(getContentPane(), "Please enter a Username", "ERROR", JOptionPane.ERROR_MESSAGE);
-							username.setBorder(BorderFactory.createLineBorder(Color.RED));
-						}
-				if(password.getText().equals(""))
+				{
+					JOptionPane.showMessageDialog(getContentPane(), "Please enter a Username", "ERROR", JOptionPane.ERROR_MESSAGE);
+					username.setBorder(BorderFactory.createLineBorder(Color.RED));
+				}
+				else if(password.getText().equals(""))
 				{
 					JOptionPane.showMessageDialog(getContentPane(), "Please enter a Password", "ERROR", JOptionPane.ERROR_MESSAGE);
 					password.setBorder(BorderFactory.createLineBorder(Color.RED));
 				}
-				DatabaseStub stub = new DatabaseStub();
-				
-				Account a = stub.accessAccount(username.getText(), password.getText());
-				
-				if(a == null)
+				else
 				{
-					JOptionPane.showMessageDialog(getContentPane(), "Error Invalid Username and/or password", "ERROR", JOptionPane.ERROR_MESSAGE);
+					
+					//======================================================
+					//LoginWindow->Patient, Doc, nurse, nsp, or lab MainMenu
+					//======================================================
+					acctType = 2;
+					switch(acctType)
+					{
+						case 0:
+						{
+							Frames.userMenu.setSize(580,580);
+							Frames.userMenu.setLocationRelativeTo(null);
+							Frames.login.setVisible(false); 
+							Frames.userMenu.setVisible(true);
+							break;
+						}
+						case 1:
+						{
+							Frames.docMenu.setSize(580,580);
+							Frames.docMenu.setLocationRelativeTo(null);
+							Frames.login.setVisible(false); 
+							Frames.docMenu.setVisible(true);
+							break;
+						}
+						case 2:
+						{
+							Frames.nurseMenu.setSize(580,580);
+							Frames.nurseMenu.setLocationRelativeTo(null);
+							Frames.login.setVisible(false); 
+							Frames.nurseMenu.setVisible(true);
+							break;
+						}
+						case 3:
+						{
+							Frames.labMenu.setSize(580,580);
+							Frames.labMenu.setLocationRelativeTo(null);
+							Frames.login.setVisible(false); 
+							Frames.labMenu.setVisible(true);
+							break;
+						}
+						case 4:
+						{
+							Frames.nspMenu.setSize(580,580);
+							Frames.nspMenu.setLocationRelativeTo(null);
+							Frames.login.setVisible(false); 
+							Frames.nspMenu.setVisible(true);
+							break;
+						}
+					}
+					
 				}
-			}
-		});
-		btnLogin.setBounds(239, 70, 89, 23);
-		getContentPane().add(btnLogin);
-		
-		btnNewPatient = new JButton("New Patient");
-		btnNewPatient.setBounds(106, 70, 123, 23);
-		getContentPane().add(btnNewPatient);
-		btnNewPatient.addActionListener(new ActionListener(){
-
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				UserAccountRegistration newUser = new UserAccountRegistration();
-				newUser.setModalityType(ModalityType.DOCUMENT_MODAL);
-				newUser.setSize(580,580);
-				newUser.setLocationRelativeTo(null);
-				newUser.setVisible(true);
-				
 			}
 			
 		});
-		
-		
 
+		
+		//New Patient Button
+		btnNewPatient = new JButton("New Patient");
+		btnNewPatient.setBounds(106, 70, 123, 23);
+		getContentPane().add(btnNewPatient);
+		btnNewPatient.addActionListener(new ActionListener()
+		{
+			//==================================
+			//LoginWindow->UserRegistration()
+			//===================================
+			public void actionPerformed(ActionEvent arg0) 
+			{
+				Frames.userReg.setModalityType(ModalityType.DOCUMENT_MODAL);
+				Frames.userReg.setSize(580,580);
+				Frames.userReg.setLocationRelativeTo(null);
+				Frames.login.setVisible(false); 
+				Frames.userReg.setVisible(true);
+			}
+		});
+		//return returnValue;
 	}
 	
 }

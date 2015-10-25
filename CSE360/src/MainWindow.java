@@ -12,14 +12,14 @@ import java.awt.BorderLayout;
 //tester
 public class MainWindow {
 
-	private JFrame frmIpims;
-	private MainWindow window;
+	//private JFrame frmIpims;
+	//private MainWindow window;
 	private JTextField textField;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -30,13 +30,16 @@ public class MainWindow {
 				}
 			}
 		});
-	}
+	}*/
 
 	/**
 	 * Create the application.
 	 */
-	public MainWindow() {
-		LogInWindow logIn = new LogInWindow();
+	public MainWindow() 
+	{
+	
+		
+		/*LogInWindow logIn = new LogInWindow();
 		logIn.setModalityType(ModalityType.DOCUMENT_MODAL);
 		logIn.setSize(360, 145);
 		logIn.setLocationRelativeTo(null);
@@ -54,19 +57,19 @@ public class MainWindow {
 				
 			}
 			
-		});
+		});*/
 		
-		initialize();
+	//	initialize();
 		
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
-		frmIpims = new UserMenuWindow();
+	//private void initialize() {
+	//	frmIpims = new UserMenuWindow();
 		
-	}
+	//}
 	static JMenuBar PatientMenu() {
 		JMenuBar menuBar = new JMenuBar();
 		JMenu AppointmentBtn = new JMenu("Appointment");

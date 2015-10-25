@@ -531,8 +531,8 @@ public class StaffAccountCreation extends JDialog {
 		
 		//Set contact information
 		a.setEmail(email.getText());
-		a.setCellNumber(Integer.parseInt(cellPhone.getText()));
-		a.setWorkNumber(Integer.parseInt(workPhone.getText()));
+		a.setCellNumber(cellPhone.getText());
+		a.setWorkNumber(workPhone.getText());
 		
 		//Set account type
 		a.setAccountType((AccountType)accountType.getSelectedItem());
