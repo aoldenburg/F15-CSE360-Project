@@ -88,7 +88,7 @@ public class LogInWindow extends JFrame {
 							Frames.docMenu.setVisible(true);
 							break;
 						}
-						case 2:
+						case 2: 
 						{
 							Frames.nurseMenu.setSize(580,580);
 							Frames.nurseMenu.setLocationRelativeTo(null);
