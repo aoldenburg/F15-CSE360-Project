@@ -54,7 +54,7 @@ public class UserAccountRegistration extends JDialog{
 	private Gender genderEnum;
 	private String maritalStatus;
 	private boolean sms;
-
+ 
 
 	public UserAccountRegistration() {
 		setTitle("User Account Registration");
