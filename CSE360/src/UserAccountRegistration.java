@@ -525,9 +525,9 @@ public class UserAccountRegistration extends JDialog{
 					acct.setFirstName(firstName.getText());
 					acct.setLastName(lastName.getText());
 					acct.setEmail(email.getText());
-					acct.setCellNumber(Integer.parseInt(cellPhone.getText()));
-					acct.setWorkNumber(Integer.parseInt(workPhone.getText()));
-					acct.setBirthDate(dobMonth.toString()+"/"+dobDay.toString()+"/"+dobYear.toString());
+					acct.setCellNumber(cellPhone.getText());
+					acct.setWorkNumber(workPhone.getText());
+					acct.setBirthDate(dobMonth.getText() +"/"+dobDay.getText()+"/"+dobYear.getText());
 					acct.setGender(genderEnum);
 					acct.setStreetAddress(currentAddress.getText());
 					acct.setCity(city.getText());
@@ -535,7 +535,7 @@ public class UserAccountRegistration extends JDialog{
 					acct.setSSN(Integer.parseInt(sSN.getText()));
 					acct.setEmergencyContactName(emergencyContactName.getText());
 					acct.setEmergencyContactRelationship(emergencyContactRelationship.getText());
-					acct.setEmergencyContactPhone(Integer.parseInt(emergencyContactPhone.getText()));
+					//acct.setEmergencyContactPhone(Integer.parseInt(emergencyContactPhone.getText()));
 					acct.setInsuranceName(insuranceName.getText());
 					acct.setInsuranceAddress(insuranceAddress.getText());
 					acct.setPolicyNumber(policyNumber.getText());
@@ -548,7 +548,8 @@ public class UserAccountRegistration extends JDialog{
 							+ effectiveYear.getText()
 							);
 					acct.setPolicyHolder(policyHolder.getText());
-				}
+					DatabaseStub db = new DatabaseStub();
+					db.createAccount(acct);			}
 			
 			}
 		});

@@ -63,7 +63,7 @@ public class LogInWindow extends JDialog {
 				
 				if(a == null)
 				{
-					JOptionPane.showMessageDialog(getContentPane(), "Error Invalid Username and/or password", "ERROR", JOptionPane.Error_Message);
+					JOptionPane.showMessageDialog(getContentPane(), "Error Invalid Username and/or password", "ERROR", JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		});

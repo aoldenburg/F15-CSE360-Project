@@ -14,8 +14,8 @@ public class Account {
 	
 	//Personal Information
 	private String email;
-	private int cellNumber;
-	private int workNumber;
+	private String cellNumber;
+	private String workNumber;
 	private Date birthDate;
 	private Gender gender;
 	private String maritalStatus;
@@ -89,19 +89,19 @@ public class Account {
 	{
 		return email;
 	}
-	public void setCellNumber(int i)
+	public void setCellNumber(String i)
 	{
 		cellNumber = i;
 	}
-	public int getCellNumber()
+	public String getCellNumber()
 	{
 		return cellNumber;
 	}
-	public void setWorkNumber(int i)
+	public void setWorkNumber(String i)
 	{
 		workNumber = i;
 	}
-	public int getWorkNumber()
+	public String getWorkNumber()
 	{
 		return workNumber;
 	}
