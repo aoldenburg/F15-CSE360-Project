@@ -21,7 +21,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import org.eclipse.wb.swing.FocusTraversalOnArray;
 import java.awt.Component;
-//test
+//test2
 public class UserAccountRegistration extends JDialog{
 	private JTextField userName;
 	private JTextField password;
@@ -494,8 +494,8 @@ public class UserAccountRegistration extends JDialog{
 				{
 					effectiveYear.setBorder(border);
 				}
-				
-				if(!validCellPhone())
+				//TODO: Fix Validation
+				/*if(!validCellPhone())
 				{
 					validInput = false;
 					JOptionPane.showMessageDialog(getContentPane(), "Please enter a valid phone number. (4801222134)", "ERROR", JOptionPane.ERROR_MESSAGE);
@@ -515,7 +515,7 @@ public class UserAccountRegistration extends JDialog{
 				else
 				{
 					workPhone.setBorder(border);
-				}
+				}*/
 				//if all error checking is okay then create account
 				if(validInput)
 				{
