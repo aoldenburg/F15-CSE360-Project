@@ -31,6 +31,9 @@ public class IPIMS extends JPanel
 		{
 			public void run()
 			{
+				//==============================
+				//database started in Frames.java
+				//===============================
 				UIManager.put("swing.boldMetal",  Boolean.FALSE);
 				try
 				{

@@ -174,7 +174,7 @@ public class StaffAccountCreation extends JDialog {
 				if( validInput = true)
 				{
 					Account a = new Account();
-					a.setUserName(userName.getText());	
+				//	a.setUserName(userName.getText());	
 				}
 			}  
 			

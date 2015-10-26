@@ -13,5 +13,8 @@ public class Frames
 	public static LabStaffMenuWindow labMenu = new LabStaffMenuWindow();
 	public static NurseMenuWindow nurseMenu = new NurseMenuWindow();
 	public static NSPStaffMenuWindow nspMenu = new NSPStaffMenuWindow();
+	//======================================
+	//Frames.java -> sqliteConnection.java
+	//=======================================
 	public static Connection con = sqliteConnection.dbConnector();
 }

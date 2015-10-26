@@ -10,6 +10,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.sql.SQLException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -55,6 +57,7 @@ public class UserAccountRegistration extends JDialog{
 	private Gender genderEnum;
 	private String maritalStatus;
 	private boolean sms;
+	String type;
  
   
 	public UserAccountRegistration() {
@@ -183,17 +186,49 @@ public class UserAccountRegistration extends JDialog{
 		
 		
 		
-		JLabel lblMaritalStatus = new JLabel("Marital Status");
+		JLabel lblMaritalStatus = new JLabel("Account Type");
 		lblMaritalStatus.setBounds(10, 321, 106, 14);
 		getContentPane().add(lblMaritalStatus);
 		
 		
 		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Single", "Married", "Divorced"}));
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"", "PATIENT", "DOCTOR", "NURSE", "HSP", "LAB"}));
 		comboBox.setBounds(135, 318, 148, 20);
 		getContentPane().add(comboBox);
+		comboBox.addItemListener(new ItemListener()
+		{
+	
+		public void itemStateChanged(ItemEvent evt) 
+		{
+			if(evt.getStateChange() == ItemEvent.SELECTED)
+			
+				if(evt.getItem() == "PATIENT")
+				{
+					type = "PATIENT";
+				}
+				else if(evt.getItem() == "DOCTOR")
+				{
+					type = "DOCTOR";
+				}
+				else if(evt.getItem() == "NURSE")
+				{
+					type = "NURSE";
+				}
+				else if(evt.getItem() == "HSP")
+				{
+					type = "HSP";
+				}
+				else if(evt.getItem() == "LAB")
+				{
+					type = "LAB";
+				}
+			System.out.println(type);
+		}
+		});
 		
-		JLabel lblCurrentAddress = new JLabel("Current Address");
+		
+		
+	/*	JLabel lblCurrentAddress = new JLabel("Current Address");
 		lblCurrentAddress.setBounds(10, 354, 106, 14);
 		getContentPane().add(lblCurrentAddress);
 		
@@ -201,6 +236,7 @@ public class UserAccountRegistration extends JDialog{
 		currentAddress.setBounds(135, 349, 148, 20);
 		getContentPane().add(currentAddress);
 		currentAddress.setColumns(10);
+		*/
 		
 		JLabel lblSsn = new JLabel("SSN");
 		lblSsn.setBounds(10, 453, 46, 14);
@@ -211,7 +247,7 @@ public class UserAccountRegistration extends JDialog{
 		getContentPane().add(sSN);
 		sSN.setColumns(10);
 		
-		JLabel label_4 = new JLabel("Emergency Contact Information");
+	/*	JLabel label_4 = new JLabel("Emergency Contact Information");
 		label_4.setFont(new Font("Tahoma", Font.BOLD, 11));
 		label_4.setBounds(312, 122, 226, 14);
 		getContentPane().add(label_4);
@@ -243,6 +279,8 @@ public class UserAccountRegistration extends JDialog{
 		label_7.setBounds(312, 212, 70, 14);
 		getContentPane().add(label_7);
 		
+		*/
+		
 		JLabel label_8 = new JLabel("Primary Insurance Information");
 		label_8.setFont(new Font("Tahoma", Font.BOLD, 11));
 		label_8.setBounds(312, 237, 226, 14);
@@ -257,7 +295,7 @@ public class UserAccountRegistration extends JDialog{
 		insuranceName.setBounds(407, 265, 148, 20);
 		getContentPane().add(insuranceName);
 		
-		insuranceAddress = new JTextField();
+		/*insuranceAddress = new JTextField();
 		insuranceAddress.setColumns(10);
 		insuranceAddress.setBounds(407, 296, 148, 20);
 		getContentPane().add(insuranceAddress);
@@ -310,14 +348,14 @@ public class UserAccountRegistration extends JDialog{
 		
 		JLabel label_14 = new JLabel("Policy Holder");
 		label_14.setBounds(312, 418, 92, 14);
-		getContentPane().add(label_14);
+		getContentPane().add(label_14);*/
 		
 		cellPhone = new JTextField();
 		cellPhone.setColumns(10);
 		cellPhone.setBounds(410, 55, 148, 20);
 		getContentPane().add(cellPhone);
 		
-		workPhone = new JTextField();
+	/*	workPhone = new JTextField();
 		workPhone.setColumns(10);
 		workPhone.setBounds(410, 24, 148, 20);
 		getContentPane().add(workPhone);
@@ -325,6 +363,7 @@ public class UserAccountRegistration extends JDialog{
 		JLabel label_15 = new JLabel("Work Phone");
 		label_15.setBounds(313, 27, 78, 14);
 		getContentPane().add(label_15);
+		*/
 		
 		JLabel label_16 = new JLabel("Cell Phone");
 		label_16.setBounds(313, 58, 60, 14);
@@ -362,7 +401,7 @@ public class UserAccountRegistration extends JDialog{
 			}
 		});
 		
-		JLabel lblCity = new JLabel("City");
+	/*	JLabel lblCity = new JLabel("City");
 		lblCity.setBounds(10, 385, 92, 14);
 		getContentPane().add(lblCity);
 		
@@ -379,6 +418,7 @@ public class UserAccountRegistration extends JDialog{
 		state.setColumns(10);
 		state.setBounds(135, 419, 148, 20);
 		getContentPane().add(state);
+		*/
 		
 		JButton btnSubmit = new JButton("Submit");
 		btnSubmit.setBounds(466, 449, 89, 23);
@@ -524,25 +564,26 @@ public class UserAccountRegistration extends JDialog{
 					
 					Account acct = new Account();
 					
-					acct.setUserName(userName.getText());
 					
-					/*acct.setPassword(password.getText());
+					
+					acct.setUserName(userName.getText(), type);
+			/*		acct.setPassword(password.getText());
 					acct.setFirstName(firstName.getText());
 					acct.setLastName(lastName.getText());
 					acct.setEmail(email.getText());
-					acct.setCellNumber(cellPhone.getText());
-					acct.setWorkNumber(workPhone.getText());
-					acct.setBirthDate(dobMonth.getText() +"/"+dobDay.getText()+"/"+dobYear.getText());
+					//acct.setCellNumber(cellPhone.getText());
+					//acct.setWorkNumber(workPhone.getText());
+			//		acct.setBirthDate(dobMonth.getText() +"/"+dobDay.getText()+"/"+dobYear.getText());
 					acct.setGender(genderEnum);
-					acct.setStreetAddress(currentAddress.getText());
-					acct.setCity(city.getText());
-					acct.setState(state.getText());
+				//	acct.setStreetAddress(currentAddress.getText());
+				//	acct.setCity(city.getText());
+				//	acct.setState(state.getText());
 					acct.setSSN(Integer.parseInt(sSN.getText()));
-					acct.setEmergencyContactName(emergencyContactName.getText());
-					acct.setEmergencyContactRelationship(emergencyContactRelationship.getText());
+					//acct.setEmergencyContactName(emergencyContactName.getText());
+				//	acct.setEmergencyContactRelationship(emergencyContactRelationship.getText());
 					//acct.setEmergencyContactPhone(Integer.parseInt(emergencyContactPhone.getText()));
 					acct.setInsuranceName(insuranceName.getText());
-					acct.setInsuranceAddress(insuranceAddress.getText());
+			/*		acct.setInsuranceAddress(insuranceAddress.getText());
 					acct.setPolicyNumber(policyNumber.getText());
 					acct.setGroupNumber(groupNumber.getText());
 					acct.setEffectiveDate(

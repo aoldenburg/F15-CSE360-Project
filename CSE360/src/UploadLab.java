@@ -62,7 +62,7 @@ public class UploadLab extends JDialog {
 					public void actionPerformed(ActionEvent e) {
 						JFileChooser fs = new JFileChooser(new File("c:\\"));
 						fs.setDialogTitle("Open a File");
-						fs.setFileFilter(new FileTypeFilter(".txt", "Text File"));
+						//fs.setFileFilter(new FileTypeFilter(".txt", "Text File"));
 						int result = fs.showOpenDialog(null);
 						if (result == JFileChooser.APPROVE_OPTION){
 							try{
@@ -97,7 +97,7 @@ public class UploadLab extends JDialog {
 					public void actionPerformed(ActionEvent e) {
 						JFileChooser fs = new JFileChooser(new File("c:\\"));
 						fs.setDialogTitle("Save a File");
-						fs.setFileFilter(new FileTypeFilter(".txt","Text File"));
+			//			fs.setFileFilter(new FileTypeFilter(".txt","Text File"));
 						int result = fs.showSaveDialog(null);
 						if (result == JFileChooser.APPROVE_OPTION){
 							String content = textFieldContent.getText();

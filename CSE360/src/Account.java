@@ -52,9 +52,9 @@ public class Account
 	{
 		
 	}
-	public void setUserName(String s)
+	public void setUserName(String s, String t)
 	{
-		insert("PATIENT", "USERNAME", s);
+		insert(t, "USERNAME", s);
 	}
 	public String getUserName()
 	{
@@ -62,7 +62,7 @@ public class Account
 	}
 	public void setPassword(String s)
 	{
-		password = s;
+		insert("PATIENT", "PASSWORD", s);
 	}
 	public String getPassword()
 	{
@@ -70,11 +70,11 @@ public class Account
 	}
 	public void setFirstName(String s)
 	{
-		firstName = s;
+		insert("PATIENT", "FIRSTNAME", s);
 	}
 	public String getFirstName()
 	{
-		return firstName;
+		return firstName;	
 	}
 	public void setLastName(String s)
 	{
@@ -300,7 +300,7 @@ public class Account
 					" FROM " + table +
 					" WHERE "+ attribute +
 					" = " + "\"" + text + "\";";
-			System.out.println(query);
+
 			ResultSet rs = stmt.executeQuery(query);
 			while(rs.next())
 			{
