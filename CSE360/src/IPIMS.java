@@ -31,17 +31,6 @@ public class IPIMS extends JPanel
 		{
 			public void run()
 			{
-				//Initializes db with tables
-				sqliteConnection sql = new sqliteConnection();
-				try 
-				{
-					sql.dbInit();
-				}
-				catch (SQLException e) 
-				{
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
 				UIManager.put("swing.boldMetal",  Boolean.FALSE);
 				try
 				{

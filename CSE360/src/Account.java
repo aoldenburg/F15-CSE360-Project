@@ -4,7 +4,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.sql.*;
 
-public class Account {
+public class Account
+{
 	
 	//Account Login information
 	private String userName;
@@ -38,8 +39,9 @@ public class Account {
 	private String groupNumber;
 	private Date effectiveDate;
 	private String policyHolder;
-	
+	private Statement stmt;
 	private AccountType accountType;
+	private String sql;
 	
 	public Account(String u, String p)
 	{
@@ -52,9 +54,22 @@ public class Account {
 	}
 	public void setUserName(String s)
 	{
-		
-					
-	//	userName = s;
+		try
+		{
+			Frames.con.setAutoCommit(false);
+			stmt = Frames.con.createStatement();
+			sql = 	"INSERT INTO PATIENT (USERNAME)" 
+					+ "VALUES (" + "'"+ s + "'"+")";
+			stmt.executeUpdate(sql);
+			stmt.close();
+			Frames.con.commit();
+			Frames.con.close();
+		}
+		catch(Exception e)
+		{
+			System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+		    System.exit(0);
+		}
 	}
 	public String getUserName()
 	{

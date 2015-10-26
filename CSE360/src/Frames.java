@@ -1,8 +1,9 @@
 import java.sql.Connection;
+import java.sql.Statement;
 
 import javax.swing.JFrame;
 
-public class Frames 
+public class Frames
 {
 	public static LogInWindow login = new LogInWindow();
 	public static UserAccountRegistration userReg = new UserAccountRegistration();
