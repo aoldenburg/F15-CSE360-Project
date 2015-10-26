@@ -121,7 +121,7 @@ public class ScheduleAppointment extends JDialog {
 		contentPane.add(chckbxAm);
 		
 		JCheckBox chckbxAm_1 = new JCheckBox("9 am");
-		chckbxAm_1.setBounds(78, 287, 49, 23);
+		chckbxAm_1.setBounds(78, 287, 56, 23);
 		contentPane.add(chckbxAm_1);
 		
 		JCheckBox chckbxAm_2 = new JCheckBox("10 am");

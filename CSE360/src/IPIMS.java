@@ -1,4 +1,5 @@
 import java.awt.Dialog.ModalityType;
+import java.sql.*;
 import java.io.IOException;
 import java.util.Hashtable;
 
@@ -18,7 +19,7 @@ public class IPIMS extends JPanel
 	{
 		
 		//============================
-		//2.) startIPIMS()->LogInWindow()
+		//2.) startIPIMS()->LogInWindow.java
 		//============================
 		Frames.login.setSize(360, 145);
 		Frames.login.setLocationRelativeTo(null);
@@ -26,6 +27,23 @@ public class IPIMS extends JPanel
 	}
 	public static void main(String [] args) throws IOException
 	{
+		//======================
+		//0.) Starts Database
+		//======================
+		
+		try
+		{
+			Class.forName("org.sqlite.JDBC");
+			Connection c = DriverManager.getConnection("jdbc:sqlite:ipims.db");
+		}
+		catch (Exception e)	
+		{
+			System.err.println( e.getClass().getName() + ": " + e.getMessage());
+			System.exit(0);
+		}
+		System.out.println("Opened DB successfully");
+		
+		
 		javax.swing.SwingUtilities.invokeLater(new Runnable()
 		{
 			public void run()

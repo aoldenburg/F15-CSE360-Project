@@ -67,7 +67,7 @@ public class LogInWindow extends JFrame {
 				{
 					
 					//======================================================
-					//LoginWindow->Patient, Doc, nurse, nsp, or lab MainMenu
+					//3.)LoginWindow->Patient, Doc, nurse, nsp, or lab MainMenu
 					//======================================================
 					acctType = 4;
 					switch(acctType)
@@ -127,7 +127,7 @@ public class LogInWindow extends JFrame {
 		btnNewPatient.addActionListener(new ActionListener()
 		{
 			//==================================
-			//LoginWindow->UserRegistration()
+			//4.)LoginWindow->UserRegistration()
 			//===================================
 			public void actionPerformed(ActionEvent arg0) 
 			{
