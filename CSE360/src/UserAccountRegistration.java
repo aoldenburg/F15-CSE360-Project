@@ -558,7 +558,7 @@ public class UserAccountRegistration extends JDialog{
 					workPhone.setBorder(border);
 				}*/
 				//if all error checking is okay then create account
-				if(validInput)
+				if(validInput && type != null)
 				{
 					
 					
