@@ -26,10 +26,9 @@ public class sqliteConnection {
 	public void dbInit() throws SQLException
 	{
 		Statement stmt;
-		
 		stmt = Frames.con.createStatement();
 		
-		String sql = "CREATE TABLE COMPANY" +
+		String sql = "CREATE TABLE IF NOT EXISTS COMPANY" +
 					"(ID INT PRIMARY KEY NOT NULL)";
 		stmt.executeUpdate(sql);
 		stmt.close();
