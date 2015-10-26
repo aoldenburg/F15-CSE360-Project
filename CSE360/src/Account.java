@@ -54,22 +54,7 @@ public class Account
 	}
 	public void setUserName(String s)
 	{
-		try
-		{
-			Frames.con.setAutoCommit(false);
-			stmt = Frames.con.createStatement();
-			sql = 	"INSERT INTO PATIENT (USERNAME)" 
-					+ "VALUES (" + "'"+ s + "'"+")";
-			stmt.executeUpdate(sql);
-			stmt.close();
-			Frames.con.commit();
-			Frames.con.close();
-		}
-		catch(Exception e)
-		{
-			System.err.println( e.getClass().getName() + ": " + e.getMessage() );
-		    System.exit(0);
-		}
+		insert("PATIENT", "USERNAME", s);
 	}
 	public String getUserName()
 	{
@@ -301,6 +286,50 @@ public class Account
 	public AccountType getAccountType()
 	{
 		return accountType;
+	}
+	public int insert(String table, String attribute, String text)
+	{
+		//queries and then inserts
+		try
+		{
+			int okay = 0;
+			String test  = "";
+			Frames.con.setAutoCommit(false);
+			stmt = Frames.con.createStatement();
+			String query = "SELECT " + attribute +
+					" FROM " + table +
+					" WHERE "+ attribute +
+					" = " + "\"" + text + "\";";
+			System.out.println(query);
+			ResultSet rs = stmt.executeQuery(query);
+			while(rs.next())
+			{
+				test = rs.getString(attribute);
+				System.out.println(test);
+			}
+			if(test == "")
+			{
+				okay = 1;
+			}
+			if(okay == 1)
+			{
+				Frames.con.setAutoCommit(false);
+				stmt = Frames.con.createStatement();
+				sql = 	"INSERT INTO" + "'" + table + "'" + "(" + "'" + attribute + "'"+")" 
+						+ "VALUES (" + "'"+ text + "'"+")";
+				stmt.executeUpdate(sql);
+				stmt.close();
+				Frames.con.commit();
+				return okay;
+			}
+			return okay;
+		}
+		catch(Exception e)
+		{
+			System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+		    System.exit(0);
+		    return 0;
+		}
 	}
 }
 
