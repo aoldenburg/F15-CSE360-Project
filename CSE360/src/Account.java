@@ -2,6 +2,7 @@ import java.util.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.sql.*;
 
 public class Account {
 	
@@ -51,7 +52,9 @@ public class Account {
 	}
 	public void setUserName(String s)
 	{
-		userName = s;
+		
+					
+	//	userName = s;
 	}
 	public String getUserName()
 	{

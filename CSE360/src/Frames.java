@@ -1,3 +1,5 @@
+import java.sql.Connection;
+
 import javax.swing.JFrame;
 
 public class Frames 
@@ -10,4 +12,5 @@ public class Frames
 	public static LabStaffMenuWindow labMenu = new LabStaffMenuWindow();
 	public static NurseMenuWindow nurseMenu = new NurseMenuWindow();
 	public static NSPStaffMenuWindow nspMenu = new NSPStaffMenuWindow();
+	public static Connection con = sqliteConnection.dbConnector();
 }

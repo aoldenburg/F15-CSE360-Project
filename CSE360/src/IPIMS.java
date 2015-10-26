@@ -27,23 +27,6 @@ public class IPIMS extends JPanel
 	}
 	public static void main(String [] args) throws IOException
 	{
-		//======================
-		//0.) Starts Database
-		//======================
-		
-		try
-		{
-			Class.forName("org.sqlite.JDBC");
-			Connection c = DriverManager.getConnection("jdbc:sqlite:ipims.db");
-		}
-		catch (Exception e)	
-		{
-			System.err.println( e.getClass().getName() + ": " + e.getMessage());
-			System.exit(0);
-		}
-		System.out.println("Opened DB successfully");
-		
-		
 		javax.swing.SwingUtilities.invokeLater(new Runnable()
 		{
 			public void run()

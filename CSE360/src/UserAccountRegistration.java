@@ -10,6 +10,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -389,7 +390,7 @@ public class UserAccountRegistration extends JDialog{
 				
 				boolean validInput = true;
 				
-				if(!validUserName())
+				/*if(!validUserName())
 				{
 					validInput = false;
 					JOptionPane.showMessageDialog(getContentPane(), "Username must meet the following criteria:\n1. Must be at least 5 characters long\n2. Must contain only letters and numbers", "ERROR", JOptionPane.ERROR_MESSAGE);
@@ -519,9 +520,13 @@ public class UserAccountRegistration extends JDialog{
 				//if all error checking is okay then create account
 				if(validInput)
 				{
+					
+					
 					Account acct = new Account();
+					
 					acct.setUserName(userName.getText());
-					acct.setPassword(password.getText());
+					
+					/*acct.setPassword(password.getText());
 					acct.setFirstName(firstName.getText());
 					acct.setLastName(lastName.getText());
 					acct.setEmail(email.getText());
@@ -549,7 +554,8 @@ public class UserAccountRegistration extends JDialog{
 							);
 					acct.setPolicyHolder(policyHolder.getText());
 					DatabaseStub db = new DatabaseStub();
-					db.createAccount(acct);			}
+					db.createAccount(acct);			*/
+				}
 			
 			}
 		});
