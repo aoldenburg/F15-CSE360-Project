@@ -41,7 +41,7 @@ public class ScheduleAppointment extends JDialog {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(null);
+		contentPane.setLayout(null); 
 		
 		JLabel lblHaveYouSeen = new JLabel("Have you seen this doctor before?*");
 		lblHaveYouSeen.setBounds(10, 11, 172, 14);
