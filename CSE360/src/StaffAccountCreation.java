@@ -525,7 +525,7 @@ public class StaffAccountCreation extends JDialog {
 		//Initialize new account variable with username and password
 		Account a = new Account(userName.getText(), password.getText());
 		
-		//Set personal info
+/*		//Set personal info
 		a.setFirstName(firstName.getText());
 		a.setLastName(lastName.getText());
 		
@@ -538,6 +538,6 @@ public class StaffAccountCreation extends JDialog {
 		a.setAccountType((AccountType)accountType.getSelectedItem());
 		
 		//TODO: Insert New Account into Database 
-		
+		*/
 	}
 }

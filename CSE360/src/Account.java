@@ -60,7 +60,7 @@ public class Account
 	{
 		return userName;
 	}
-	public void setPassword(String s)
+	public void setPassword(String s, String t)
 	{
 		insert("PATIENT", "PASSWORD", s);
 	}
@@ -68,7 +68,7 @@ public class Account
 	{
 		return password;
 	}
-	public void setFirstName(String s)
+	public void setFirstName(String s, String t)
 	{
 		insert("PATIENT", "FIRSTNAME", s);
 	}
@@ -76,7 +76,7 @@ public class Account
 	{
 		return firstName;	
 	}
-	public void setLastName(String s)
+	public void setLastName(String s, String t)
 	{
 		lastName = s;
 	}
@@ -84,7 +84,7 @@ public class Account
 	{
 		return lastName;
 	}
-	public void setEmail(String s)
+	public void setEmail(String s, String t)
 	{
 		email = s;
 	}
@@ -92,7 +92,7 @@ public class Account
 	{
 		return email;
 	}
-	public void setCellNumber(String i)
+	public void setCellNumber(String i, String t)
 	{
 		cellNumber = i;
 	}
@@ -108,7 +108,7 @@ public class Account
 	{
 		return workNumber;
 	}
-	public void setBirthDate(Date d)
+	public void setBirthDate(Date d, String t)
 	{
 		birthDate = d;
 	}
@@ -134,7 +134,7 @@ public class Account
 		return format.format(birthDate);
 		
 	}
-	public void setGender(Gender g)
+	public void setGender(Gender g, String t)
 	{
 		gender = g;
 	}
@@ -174,7 +174,7 @@ public class Account
 	{
 		return state;
 	}
-	public void setSSN(int i)
+	public void setSSN(int i, String t)
 	{
 		ssn = i;
 	}
@@ -182,7 +182,7 @@ public class Account
 	{
 		return ssn;
 	}
-	public void setAllowSms(boolean b)
+	public void setAllowSms(boolean b, String t)
 	{
 		allowSms = b;
 	}
@@ -214,7 +214,7 @@ public class Account
 	{
 		return emergencyContactPhone;
 	}
-	public void setInsuranceName(String s)
+	public void setInsuranceName(String s, String t)
 	{
 		primaryInsuranceName = s;
 	}
