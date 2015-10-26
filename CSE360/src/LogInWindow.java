@@ -121,7 +121,7 @@ public class LogInWindow extends JFrame {
 
 		
 		//New Patient Button
-		btnNewPatient = new JButton("New Patient");
+		btnNewPatient = new JButton("New User");
 		btnNewPatient.setBounds(106, 70, 123, 23);
 		getContentPane().add(btnNewPatient);
 		btnNewPatient.addActionListener(new ActionListener()
