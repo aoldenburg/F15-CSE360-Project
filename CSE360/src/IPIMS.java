@@ -31,6 +31,7 @@ public class IPIMS extends JPanel
 		{
 			public void run()
 			{
+				sqliteConnection.init();
 				//==============================
 				//database started in Frames.java
 				//===============================

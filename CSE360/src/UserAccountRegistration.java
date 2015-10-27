@@ -58,6 +58,7 @@ public class UserAccountRegistration extends JDialog{
 	private String maritalStatus;
 	private boolean sms;
 	String type;
+	boolean once = true;
  
   
 	public UserAccountRegistration() {
@@ -558,7 +559,7 @@ public class UserAccountRegistration extends JDialog{
 					workPhone.setBorder(border);
 				}*/
 				//if all error checking is okay then create account
-				if(validInput && type != null)
+				if(validInput && type != null && once == true)
 				{
 					
 					
@@ -596,8 +597,13 @@ public class UserAccountRegistration extends JDialog{
 					acct.setPolicyHolder(policyHolder.getText());
 					DatabaseStub db = new DatabaseStub();
 					db.createAccount(acct);			*/
+					once = false; //so submit is only pressed once
+					
 				}
-			
+				else
+				{
+					JOptionPane.showConfirmDialog(null, "Please choose an account type.", "Alert Message", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
+				}
 			}
 		});
 		 

@@ -1,4 +1,7 @@
 import java.util.Date;
+
+import javax.swing.JOptionPane;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -321,6 +324,10 @@ public class Account
 				stmt.close();
 				Frames.con.commit();
 				return okay;
+			}
+			else
+			{
+				JOptionPane.showConfirmDialog(null, "Username already exists", "Alert Message", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
 			}
 			return okay;
 		}

@@ -19,7 +19,7 @@ public class LogInWindow extends JFrame {
 	
 	public JButton btnNewPatient;
 	public JButton btnLogin;
-	private int acctType;
+	private String acctType;
 
 	/**
 	 * Create the applet.
@@ -69,10 +69,10 @@ public class LogInWindow extends JFrame {
 					//======================================================
 					//3.)LoginWindow->Patient, Doc, nurse, nsp, or lab MainMenu
 					//======================================================
-					acctType = 4;
+					acctType = "DOCTOR";
 					switch(acctType)
 					{
-						case 0:
+						case "PATIENT":
 						{
 							Frames.userMenu.setSize(580,580);
 							Frames.userMenu.setLocationRelativeTo(null);
@@ -80,7 +80,7 @@ public class LogInWindow extends JFrame {
 							Frames.userMenu.setVisible(true);
 							break;
 						}
-						case 1:
+						case "DOCTOR":
 						{
 							Frames.docMenu.setSize(580,580);
 							Frames.docMenu.setLocationRelativeTo(null);
@@ -88,7 +88,7 @@ public class LogInWindow extends JFrame {
 							Frames.docMenu.setVisible(true);
 							break;
 						}
-						case 2: 
+						case "NURSE": 
 						{
 							Frames.nurseMenu.setSize(580,580);
 							Frames.nurseMenu.setLocationRelativeTo(null);
@@ -96,7 +96,7 @@ public class LogInWindow extends JFrame {
 							Frames.nurseMenu.setVisible(true);
 							break;
 						}
-						case 3:
+						case "LAB":
 						{
 							Frames.labMenu.setSize(580,580);
 							Frames.labMenu.setLocationRelativeTo(null);
@@ -104,7 +104,7 @@ public class LogInWindow extends JFrame {
 							Frames.labMenu.setVisible(true);
 							break;
 						}
-						case 4:
+						case "NSP":
 						{
 							Frames.nspMenu.setSize(580,580);
 							Frames.nspMenu.setLocationRelativeTo(null);
