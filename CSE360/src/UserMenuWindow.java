@@ -66,25 +66,37 @@ public class UserMenuWindow extends JFrame {
 		
 		JButton btnScheduleAppointment = new JButton("Schedule Appointment");
 		btnScheduleAppointment.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				DoctorList sAppt = new DoctorList();
-				sAppt.setVisible(true);
+			public void actionPerformed(ActionEvent e) 
+			{
+				Frames.appt.setSize(580,580);
+				Frames.appt.setLocationRelativeTo(null);
+				Frames.userMenu.setVisible(false); 
+				Frames.appt.setVisible(true);
+				
 			}
 		});
 		panel_1.add(btnScheduleAppointment);
 		
 		JButton btnViewAppointments = new JButton("View Appointments");
 		btnViewAppointments.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				AppointmentList apptList = new AppointmentList();
-				apptList.setVisible(true);
+			public void actionPerformed(ActionEvent arg0) 
+			{
+				Frames.list.setSize(580,580);
+				Frames.list.setLocationRelativeTo(null);
+				Frames.userMenu.setVisible(false); 
+				Frames.list.setVisible(true);
 			}
 		});
 		panel_1.add(btnViewAppointments);
 		
 		JButton btnUpdateAppointment = new JButton("Update Appointment");
 		btnUpdateAppointment.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e) 
+			{
+				Frames.appt.setSize(580,580);
+				Frames.appt.setLocationRelativeTo(null);
+				Frames.userMenu.setVisible(false); 
+				Frames.appt.setVisible(true);
 			}
 		});
 		panel_1.add(btnUpdateAppointment);
@@ -96,29 +108,35 @@ public class UserMenuWindow extends JFrame {
 		
 		JButton btnUpdateHealthInformation = new JButton("Update Health Information");
 		btnUpdateHealthInformation.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				UpdateHealth updateHealth = new UpdateHealth();
-				updateHealth.setVisible(true);
+			public void actionPerformed(ActionEvent e) 
+			{
+				Frames.cond.setSize(580,580);
+				Frames.cond.setLocationRelativeTo(null);
+				Frames.userMenu.setVisible(false); 
+				Frames.cond.setVisible(true);
 			}
 		});
 		panel_1.add(btnUpdateHealthInformation);
 		
-		JButton btnSendAlertconcernsconditions = new JButton("Send Alert/Concerns/Conditions");
+		/*JButton btnSendAlertconcernsconditions = new JButton("Send Alert/Concerns/Conditions");
 		panel_1.add(btnSendAlertconcernsconditions);
 		//btnSendAlertconcernsconditions.setEnabled(false);
 		JButton btnLogOut = new JButton("Log Out");
 	//	btnLogOut.setEnabled(false);
 		btnLogOut.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e) 
+			{
 				
 				
 			}
 		});
 		panel_1.add(btnLogOut);
+		*/
 		
 		JButton btnExitProgram = new JButton("Exit Program");
 		btnExitProgram.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e) 
+			{
 				System.exit(0);
 			}
 		});
