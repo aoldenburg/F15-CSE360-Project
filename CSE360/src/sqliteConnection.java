@@ -36,13 +36,15 @@ public class sqliteConnection {
 	      
 	      String sql = "CREATE TABLE IF NOT EXISTS PATIENT("
 	      		+ "USERNAME TEXT NOT NULL, "
-	      		+ "FIRSTNAME TEXT,"
-	      		+ "LASTNAME TEXT NOT NULL,"
-	      		+ "TYPE TEXT NOT NULL"
-	      		+ ""
-	      		+ "PRIMARY KEY(USERNAME, LASTNAME));";
-	      System.out.print(sql);
-	    		  
+	      		+ "FIRSTNAME TEXT, "
+	      		+ "LASTNAME TEXT, "
+	      		+ "PASSWORD TEXT, "
+	      		+ "EMAIL TEXT, "
+	      		+ "GENDER TEXT, "
+	      		+ "SSN TEXT, "
+	      		+ "INSURANCENAME TEXT, "
+	      		+ "PRIMARY KEY(USERNAME, LASTNAME, SSN));";
+	      
 	    		  
 	      stmt.executeUpdate(sql);
 	      stmt.close();

@@ -54,7 +54,7 @@ public class UserAccountRegistration extends JDialog{
 	private JTextField city;
 	private JTextField state;
 	private Border border;
-	private Gender genderEnum;
+	private String genderStr;
 	private String maritalStatus;
 	private boolean sms;
 	String type;
@@ -165,7 +165,7 @@ public class UserAccountRegistration extends JDialog{
 			{
 				if(evt.getActionCommand() == "Male")
 				{
-					genderEnum = Gender.Male;
+					genderStr = "M";
 				}				
 			}
 		});
@@ -180,7 +180,7 @@ public class UserAccountRegistration extends JDialog{
 			{
 				if(evt.getActionCommand() == "Female")
 				{
-					genderEnum = Gender.Female;
+					genderStr = "F";
 				}		
 			}
 		});
@@ -431,7 +431,7 @@ public class UserAccountRegistration extends JDialog{
 				
 				boolean validInput = true;
 				
-				/*if(!validUserName())
+			/*	if(!validUserName())
 				{
 					validInput = false;
 					JOptionPane.showMessageDialog(getContentPane(), "Username must meet the following criteria:\n1. Must be at least 5 characters long\n2. Must contain only letters and numbers", "ERROR", JOptionPane.ERROR_MESSAGE);
@@ -568,22 +568,22 @@ public class UserAccountRegistration extends JDialog{
 					
 					
 					acct.setUserName(userName.getText(), type);
-			/*		acct.setPassword(password.getText());
-					acct.setFirstName(firstName.getText());
-					acct.setLastName(lastName.getText());
-					acct.setEmail(email.getText());
+					acct.setPassword(password.getText(), type);
+					acct.setFirstName(firstName.getText(), type);
+					acct.setLastName(lastName.getText(), type);
+					acct.setEmail(email.getText(), type);
 					//acct.setCellNumber(cellPhone.getText());
 					//acct.setWorkNumber(workPhone.getText());
 			//		acct.setBirthDate(dobMonth.getText() +"/"+dobDay.getText()+"/"+dobYear.getText());
-					acct.setGender(genderEnum);
+					acct.setGender(genderStr, type);
 				//	acct.setStreetAddress(currentAddress.getText());
 				//	acct.setCity(city.getText());
 				//	acct.setState(state.getText());
-					acct.setSSN(Integer.parseInt(sSN.getText()));
+					acct.setSSN(sSN.getText(), type);
 					//acct.setEmergencyContactName(emergencyContactName.getText());
 				//	acct.setEmergencyContactRelationship(emergencyContactRelationship.getText());
 					//acct.setEmergencyContactPhone(Integer.parseInt(emergencyContactPhone.getText()));
-					acct.setInsuranceName(insuranceName.getText());
+					acct.setInsuranceName(insuranceName.getText(), type);
 			/*		acct.setInsuranceAddress(insuranceAddress.getText());
 					acct.setPolicyNumber(policyNumber.getText());
 					acct.setGroupNumber(groupNumber.getText());

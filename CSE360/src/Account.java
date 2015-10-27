@@ -27,7 +27,7 @@ public class Account
 	private String streetAddress;
 	private String city;
 	private String state;
-	private int ssn;
+	private String ssn;
 	private boolean allowSms;
 	
 	//Emergency Contact Variables
@@ -65,7 +65,7 @@ public class Account
 	}
 	public void setPassword(String s, String t)
 	{
-		insert("PATIENT", "PASSWORD", s);
+		insert(t, "PASSWORD", s);
 	}
 	public String getPassword()
 	{
@@ -73,7 +73,7 @@ public class Account
 	}
 	public void setFirstName(String s, String t)
 	{
-		insert("PATIENT", "FIRSTNAME", s);
+		insert(t, "FIRSTNAME", s);
 	}
 	public String getFirstName()
 	{
@@ -81,7 +81,7 @@ public class Account
 	}
 	public void setLastName(String s, String t)
 	{
-		lastName = s;
+		insert(t, "LASTNAME", s);
 	}
 	public String getLastName()
 	{
@@ -89,7 +89,7 @@ public class Account
 	}
 	public void setEmail(String s, String t)
 	{
-		email = s;
+		insert(t, "EMAIL", s);
 	}
 	public String getEmail()
 	{
@@ -137,9 +137,9 @@ public class Account
 		return format.format(birthDate);
 		
 	}
-	public void setGender(Gender g, String t)
+	public void setGender(String g, String t)
 	{
-		gender = g;
+		insert(t, "GENDER", g);
 	}
 	public Gender getGender()
 	{
@@ -177,7 +177,7 @@ public class Account
 	{
 		return state;
 	}
-	public void setSSN(int i, String t)
+	public void setSSN(String i, String t)
 	{
 		ssn = i;
 	}
