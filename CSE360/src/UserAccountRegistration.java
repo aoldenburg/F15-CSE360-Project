@@ -431,7 +431,7 @@ public class UserAccountRegistration extends JDialog{
 				
 				boolean validInput = true;
 				
-			/*	if(!validUserName())
+				if(!validUserName())
 				{
 					validInput = false;
 					JOptionPane.showMessageDialog(getContentPane(), "Username must meet the following criteria:\n1. Must be at least 5 characters long\n2. Must contain only letters and numbers", "ERROR", JOptionPane.ERROR_MESSAGE);
@@ -471,7 +471,7 @@ public class UserAccountRegistration extends JDialog{
 					email.setBorder(border);
 				}
 				
-				if(!validBirthMonth())
+		/*		if(!validBirthMonth())
 				{
 					validInput = false;
 					JOptionPane.showMessageDialog(getContentPane(), "Please enter a valid month. (1-12)", "ERROR", JOptionPane.ERROR_MESSAGE);

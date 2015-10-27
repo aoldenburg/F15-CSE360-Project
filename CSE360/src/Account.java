@@ -310,7 +310,7 @@ public class Account
 			while(rs.next())
 			{
 				test = rs.getString(attribute);
-				System.out.println(test);
+				
 			}
 			if(test == "")
 			{
@@ -366,6 +366,87 @@ public class Account
 		    System.exit(0);
 		}
 	}
+	
+	
+	
+	
+	
+	
+	
+	public String find(String username, String pass)
+	{
+		//queries and then inserts
+		try
+		{
+			
+			String test  = "";
+			String acctype = "";
+			Frames.con.setAutoCommit(false);
+			stmt = Frames.con.createStatement();
+			
+			 for(int i = 0; i < 5; i++)
+		     {
+		    	  switch(i)
+		    	  {
+		    	  	case 0:
+		    	  	{
+		    	  		acctype = "PATIENT";
+		   
+		    	  		break;
+		    	  	}
+		    	  	case 1:
+		    	  	{
+		    	  		acctype = "DOCTOR";
+		    	  		break;
+		    	  	}
+		    	  	case 2:
+		    	  	{
+		    	  		acctype = "NURSE";
+		    	  		break;
+		    	  	}
+		    	  	case 3:
+		    	  	{
+		    	  		acctype = "LAB";
+		    	  		break;
+		    	  	}
+		    	  	case 4:
+		    	  	{
+		    	  		acctype = "NSP";
+		    	  		break;
+		    	  	}
+		    	  }
+			
+			
+				String query = "SELECT *" +
+						" FROM " + "'"+ acctype + "'"+
+						" WHERE USERNAME =  "+ "\"" + username + "\"" 
+						+ " AND PASSWORD = " + "\"" + pass +"\""+";";
+				
+				ResultSet rs = stmt.executeQuery(query);
+				while(rs.next())
+				{
+					test = rs.getString("USERNAME");
+				}
+				if(test != "")
+				{
+					return acctype;
+				}
+		     }
+			if(test == "")
+			{
+				JOptionPane.showConfirmDialog(null, "Couldnt find User Name!", "Alert Message", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
+				return "";
+			}
+		}
+		catch(Exception e)
+		{
+			System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+		    System.exit(0);
+		    return "";
+		}
+		return "";
+	}
+	
 }
 
 

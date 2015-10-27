@@ -20,7 +20,9 @@ public class LogInWindow extends JFrame {
 	public JButton btnNewPatient;
 	public JButton btnLogin;
 	private String acctType;
-
+	String user, pass;
+	
+	public Account act = new Account();
 	/**
 	 * Create the applet.
 	 */
@@ -65,11 +67,14 @@ public class LogInWindow extends JFrame {
 				}
 				else
 				{
+					user = username.getText();
+					pass = password.getText();
 					
 					//======================================================
 					//3.)LoginWindow->Patient, Doc, nurse, nsp, or lab MainMenu
 					//======================================================
-					acctType = "DOCTOR";
+					acctType = act.find(user, pass);
+					System.out.println("the acctype is" + acctType);
 					switch(acctType)
 					{
 						case "PATIENT":
@@ -111,6 +116,11 @@ public class LogInWindow extends JFrame {
 							Frames.login.setVisible(false); 
 							Frames.nspMenu.setVisible(true);
 							break;
+						}
+						default:
+						{
+							JOptionPane.showMessageDialog(getContentPane(), "Sorry, Username or Password not valid", "ERROR", JOptionPane.ERROR_MESSAGE);
+
 						}
 					}
 					
