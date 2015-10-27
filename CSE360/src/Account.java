@@ -55,9 +55,11 @@ public class Account
 	{
 		
 	}
-	public void setUserName(String s, String t)
+	public int setUserName(String s, String t)
 	{
-		insert(t, "USERNAME", s);
+		int ret;
+		ret = insert(t, "USERNAME", s);
+		return ret;
 	}
 	public String getUserName()
 	{
@@ -353,7 +355,7 @@ public class Account
 				stmt = Frames.con.createStatement();
 				sql = 	"UPDATE " + "'" + table + "'" + " set " + "'" + attribute + "'"+
 						" = " + "\""+ text + "\"" + " where USERNAME =" + " \""+ key +"\";";
-				System.out.println(sql);
+				
 				stmt.executeUpdate(sql);
 				stmt.close();
 				Frames.con.commit();

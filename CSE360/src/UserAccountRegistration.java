@@ -217,7 +217,7 @@ public class UserAccountRegistration extends JDialog{
 				}
 				else if(evt.getItem() == "HSP")
 				{
-					type = "HSP";
+					type = "NSP";
 				}
 				else if(evt.getItem() == "LAB")
 				{
@@ -566,40 +566,92 @@ public class UserAccountRegistration extends JDialog{
 					Account acct = new Account();
 					
 					
+					int okay = 0;
 					
-					acct.setUserName(userName.getText(), type);
 					
-					acct.setPassword(password.getText(), type, userName.getText());
-					acct.setFirstName(firstName.getText(), type, userName.getText());
-					acct.setLastName(lastName.getText(), type, userName.getText());
-					acct.setEmail(email.getText(), type, userName.getText());
-					//acct.setCellNumber(cellPhone.getText());
-					//acct.setWorkNumber(workPhone.getText());
-			//		acct.setBirthDate(dobMonth.getText() +"/"+dobDay.getText()+"/"+dobYear.getText());
-					acct.setGender(genderStr, type, userName.getText());
-				//	acct.setStreetAddress(currentAddress.getText());
-				//	acct.setCity(city.getText());
-				//	acct.setState(state.getText());
-					acct.setSSN(sSN.getText(), type, userName.getText());
-					//acct.setEmergencyContactName(emergencyContactName.getText());
-				//	acct.setEmergencyContactRelationship(emergencyContactRelationship.getText());
-					//acct.setEmergencyContactPhone(Integer.parseInt(emergencyContactPhone.getText()));
-					acct.setInsuranceName(insuranceName.getText(), type, userName.getText());
-			/*		acct.setInsuranceAddress(insuranceAddress.getText());
-					acct.setPolicyNumber(policyNumber.getText());
-					acct.setGroupNumber(groupNumber.getText());
-					acct.setEffectiveDate(
-							effectiveMonth.getText() 
-							+ "/"
-							+ effectiveDay.getText()
-							+ "/"
-							+ effectiveYear.getText()
-							);
-					acct.setPolicyHolder(policyHolder.getText());
-					DatabaseStub db = new DatabaseStub();
-					db.createAccount(acct);			*/
-					once = false; //so submit is only pressed once
+					okay = acct.setUserName(userName.getText(), type);
+					if(okay == 1)
+					{
+								
+						acct.setPassword(password.getText(), type, userName.getText());
+						acct.setFirstName(firstName.getText(), type, userName.getText());
+						acct.setLastName(lastName.getText(), type, userName.getText());
+						acct.setEmail(email.getText(), type, userName.getText());
+						//acct.setCellNumber(cellPhone.getText());
+						//acct.setWorkNumber(workPhone.getText());
+				//		acct.setBirthDate(dobMonth.getText() +"/"+dobDay.getText()+"/"+dobYear.getText());
+						acct.setGender(genderStr, type, userName.getText());
+					//	acct.setStreetAddress(currentAddress.getText());
+					//	acct.setCity(city.getText());
+					//	acct.setState(state.getText());
+						acct.setSSN(sSN.getText(), type, userName.getText());
+						//acct.setEmergencyContactName(emergencyContactName.getText());
+					//	acct.setEmergencyContactRelationship(emergencyContactRelationship.getText());
+						//acct.setEmergencyContactPhone(Integer.parseInt(emergencyContactPhone.getText()));
+						acct.setInsuranceName(insuranceName.getText(), type, userName.getText());
+				/*		acct.setInsuranceAddress(insuranceAddress.getText());
+						acct.setPolicyNumber(policyNumber.getText());
+						acct.setGroupNumber(groupNumber.getText());
+						acct.setEffectiveDate(
+								effectiveMonth.getText() 
+								+ "/"
+								+ effectiveDay.getText()
+								+ "/"
+								+ effectiveYear.getText()
+								);
+						acct.setPolicyHolder(policyHolder.getText());
+						DatabaseStub db = new DatabaseStub();
+						db.createAccount(acct);			*/
+						once = false; //so submit is only pressed once
+						
+						//========================================================
+						//USERACCOUNTREGISTRATION.JAVA -> PARTICULAR USERMENU.JAVA
+						//=========================================================
 					
+						switch(type)
+						{
+							case "PATIENT":
+							{
+								Frames.userMenu.setSize(580,580);
+								Frames.userMenu.setLocationRelativeTo(null);
+								Frames.userReg.setVisible(false); 
+								Frames.userMenu.setVisible(true);
+								break;
+							}
+							case "DOCTOR":
+							{
+								Frames.docMenu.setSize(580,580);
+								Frames.docMenu.setLocationRelativeTo(null);
+								Frames.userReg.setVisible(false); 
+								Frames.docMenu.setVisible(true);
+								break;
+							}
+							case "NURSE": 
+							{
+								Frames.nurseMenu.setSize(580,580);
+								Frames.nurseMenu.setLocationRelativeTo(null);
+								Frames.userReg.setVisible(false); 
+								Frames.nurseMenu.setVisible(true);
+								break;
+							}
+							case "LAB":
+							{
+								Frames.labMenu.setSize(580,580);
+								Frames.labMenu.setLocationRelativeTo(null);
+								Frames.userReg.setVisible(false); 
+								Frames.labMenu.setVisible(true);
+								break;
+							}
+							case "NSP":
+							{
+								Frames.nspMenu.setSize(580,580);
+								Frames.nspMenu.setLocationRelativeTo(null);
+								Frames.userReg.setVisible(false); 
+								Frames.nspMenu.setVisible(true);
+								break;
+							}
+						}
+					}
 				}
 				else
 				{
