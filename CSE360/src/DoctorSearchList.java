@@ -46,7 +46,7 @@ public class DoctorSearchList extends JDialog {
 	 */
 	public DoctorSearchList() {
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 238, 343);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -111,7 +111,7 @@ public class DoctorSearchList extends JDialog {
 				
 			}
 		});
-		btnSubmit.setBounds(335, 227, 89, 23);
+		btnSubmit.setBounds(119, 275, 89, 23);
 		contentPane.add(btnSubmit);
 		
 		textFieldInsuranceType = new JTextField();
