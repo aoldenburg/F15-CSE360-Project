@@ -82,7 +82,42 @@ public class sqliteConnection {
 		            stmt.executeUpdate(sql);
 	    	  }
 	      }
+	      sql = "CREATE TABLE IF NOT EXISTS SCHEDULE("
+	     		+ "PATIENTSSN TEXT,"
+	     		+ "DAY TEXT,"
+	     		+ "TIME,"
+	     		+ "DOCTERSSN,"
+	     		+ "PRIMARY KEY(PATIENTSSN));";
+	      stmt.executeUpdate(sql);
 	      
+	      sql = "CREATE TABLE IF NOT EXISTS CONDITION("
+		     		+ "PATIENTSSN TEXT,"
+		     		+ "COND TEXT,"
+		     		+ "LEVEL,"
+		     		+ "PRIMARY KEY(PATIENTSSN));";
+	      stmt.executeUpdate(sql);
+	      
+	      sql = "CREATE TABLE IF NOT EXISTS PRESCRIPT("
+		     		+ "PATIENTSSN TEXT,"
+		     		+ "PRESCRIPTIONNAME TEXT,"
+		     		+ "TIME,"
+		     		+ "DOCTERSSN,"
+		     		+ "PRIMARY KEY(PATIENTSSN));";
+	      stmt.executeUpdate(sql);
+	      
+	      sql = "CREATE TABLE IF NOT EXISTS LAB("
+		     		+ "PATIENTSSN TEXT,"
+		     		+ "HEARTRATE TEXT,"
+		     		+ "BLOODPRESSURE,"
+		     		+ "LABSSN,"
+		     		+ "PRIMARY KEY(PATIENTSSN));";
+	      stmt.executeUpdate(sql);
+	      
+	      sql = "CREATE TABLE IF NOT EXISTS HISTORY("
+		     		+ "PATIENTSSN TEXT,"
+		     		+ "MEDHISTORY TEXT,"
+		     		+ "PRIMARY KEY(PATIENTSSN));";
+	      stmt.executeUpdate(sql);
 	    		  
 	
 	      stmt.close();
