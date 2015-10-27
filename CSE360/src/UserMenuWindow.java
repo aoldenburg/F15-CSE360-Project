@@ -91,6 +91,12 @@ public class UserMenuWindow extends JFrame {
 	//	btnUpdateAppointment.setEnabled(false);
 		
 		JButton btnCancelAppointment = new JButton("Cancel Appointment");
+		btnUpdateAppointment.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				CancelAppointment cApp = new CancelAppointment();
+				cApp.setVisible(true);
+			}
+		});
 		panel_1.add(btnCancelAppointment);
 		//btnCancelAppointment.setEnabled(false);
 		
