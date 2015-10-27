@@ -9,6 +9,8 @@ import javax.swing.UIManager;
 //First class run
 public class IPIMS extends JPanel
 {
+	public IPIMS() {
+	}
 	//public static SwitchFrame switchFrame = new SwitchFrame();
 	//*******************
 	//Frames

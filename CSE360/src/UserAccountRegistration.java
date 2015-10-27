@@ -85,7 +85,7 @@ public class UserAccountRegistration extends JDialog{
 		getContentPane().add(label_1);
 		
 		JLabel label_2 = new JLabel("Confirm Password");
-		label_2.setBounds(10, 94, 106, 14);
+		label_2.setBounds(10, 94, 119, 14);
 		getContentPane().add(label_2);
 		
 		confirmPassword = new JTextField();
@@ -131,12 +131,12 @@ public class UserAccountRegistration extends JDialog{
 		getContentPane().add(lastName);
 		
 		JLabel lblDateOfBirth = new JLabel("Date of Birth");
-		lblDateOfBirth.setBounds(10, 237, 70, 14);
+		lblDateOfBirth.setBounds(10, 237, 85, 14);
 		getContentPane().add(lblDateOfBirth);
 		
 		dobMonth = new JTextField();
 		dobMonth.setColumns(2);
-		dobMonth.setBounds(135, 237, 30, 20);
+		dobMonth.setBounds(135, 238, 30, 20);
 		getContentPane().add(dobMonth);
 		
 		dobDay = new JTextField();
@@ -367,7 +367,7 @@ public class UserAccountRegistration extends JDialog{
 		*/
 		
 		JLabel label_16 = new JLabel("Cell Phone");
-		label_16.setBounds(313, 58, 60, 14);
+		label_16.setBounds(313, 58, 85, 14);
 		getContentPane().add(label_16);
 		
 		JLabel label_17 = new JLabel("Allow SMS");
@@ -375,7 +375,7 @@ public class UserAccountRegistration extends JDialog{
 		getContentPane().add(label_17);
 		
 		JRadioButton radioButton = new JRadioButton("Yes");
-		radioButton.setBounds(410, 88, 51, 23);
+		radioButton.setBounds(410, 88, 60, 23);
 		getContentPane().add(radioButton);
 		radioButton.addActionListener( new ActionListener()
 			{
