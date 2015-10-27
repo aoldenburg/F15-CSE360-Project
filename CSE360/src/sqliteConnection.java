@@ -31,22 +31,60 @@ public class sqliteConnection {
 	      Class.forName("org.sqlite.JDBC");
 	      Frames.con = DriverManager.getConnection("jdbc:sqlite:Ipims.db");
 	      System.out.println("Opened database successfully");
-
+	      String sql ="";
+	      String type ="";
 	      stmt = Frames.con.createStatement();
-	      
-	      String sql = "CREATE TABLE IF NOT EXISTS PATIENTS("
-	      		+ "USERNAME TEXT, "
-	      		+ "FIRSTNAME TEXT, "
-	      		+ "LASTNAME TEXT, "
-	      		+ "PASSWORD TEXT, "
-	      		+ "EMAIL TEXT, "
-	      		+ "GENDER TEXT, "
-	      		+ "SSN TEXT, "
-	      		+ "INSURANCENAME TEXT, "
-	      		+ "PRIMARY KEY(USERNAME, LASTNAME, SSN));";
+	      for(int i = 0; i < 5; i++)
+	      {
+	    	  switch(i)
+	    	  {
+	    	  	case 0:
+	    	  	{
+	    	  		type = "PATIENT";
+	    	  		System.out.println(type);
+	    	  		break;
+	    	  	}
+	    	  	case 1:
+	    	  	{
+	    	  		type = "DOCTOR";
+	    	  		break;
+	    	  	}
+	    	  	case 2:
+	    	  	{
+	    	  		type = "NURSE";
+	    	  		break;
+	    	  	}
+	    	  	case 3:
+	    	  	{
+	    	  		type = "LAB";
+	    	  		break;
+	    	  	}
+	    	  	case 4:
+	    	  	{
+	    	  		type = "NSP";
+	    	  		break;
+	    	  	}
+	    	  }
+	    	  if(type != "")
+	    	  {
+		       		sql = "CREATE TABLE IF NOT EXISTS "+ "'"+type+"'"+"("
+		      		+ "USERNAME TEXT, "
+		      		+ "FIRSTNAME TEXT, "
+		      		+ "LASTNAME TEXT, "
+		      		+ "PASSWORD TEXT, "
+		      		+ "EMAIL TEXT, "
+		      		+ "GENDER TEXT, "
+		      		+ "SSN TEXT, "
+		      		+ "INSURANCENAME TEXT, "
+		      		+ "PRIMARY KEY(USERNAME, LASTNAME, SSN));";
+		       		System.out.println(sql);
+		       		
+		            stmt.executeUpdate(sql);
+	    	  }
+	      }
 	      
 	    		  
-	      stmt.executeUpdate(sql);
+	
 	      stmt.close();
 	    }
 	    catch ( Exception e ) 
