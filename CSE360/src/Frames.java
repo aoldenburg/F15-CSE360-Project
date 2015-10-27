@@ -17,7 +17,7 @@ public class Frames
 	public static ScheduleAppointment appt = new ScheduleAppointment();
 	public static AppointmentList list = new AppointmentList();
 	public static UpdateHealth cond = new UpdateHealth();
-//	public static UpdateAppointment update = new UpdateAppointment();
+	public static UpdateAppointment update = new UpdateAppointment();
 	//======================================
 	//Frames.java -> sqliteConnection.java
 	//=======================================

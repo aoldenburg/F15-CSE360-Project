@@ -93,10 +93,10 @@ public class UserMenuWindow extends JFrame {
 		btnUpdateAppointment.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
-				Frames.appt.setSize(580,580);
-				Frames.appt.setLocationRelativeTo(null);
+				Frames.update.setSize(580,580);
+				Frames.update.setLocationRelativeTo(null);
 				Frames.userMenu.setVisible(false); 
-				Frames.appt.setVisible(true);
+				Frames.update.setVisible(true);
 			}
 		});
 		panel_1.add(btnUpdateAppointment);

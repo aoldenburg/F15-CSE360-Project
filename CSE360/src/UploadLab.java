@@ -24,7 +24,7 @@ public class UploadLab extends JDialog {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+/*	public static void main(String[] args) {
 		try {
 			
 			UploadLab dialog = new UploadLab();
@@ -34,7 +34,7 @@ public class UploadLab extends JDialog {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
+	}*/
 
 	/**
 	 * Create the dialog.

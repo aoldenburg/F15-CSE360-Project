@@ -17,7 +17,7 @@ public class DoctorList extends JDialog {
 	private JButton btnNewButton;
 	public int numberOfDoctors = 55; //whereverTheDoctorsAreStored.length(); 55 was arbitrarily chosen for testing 
 	
-	public static void main(String[] args) {
+/*	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -28,7 +28,7 @@ public class DoctorList extends JDialog {
 				}
 			}
 		});
-	}
+	}*/
 
 	public DoctorList() {
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
