@@ -93,7 +93,7 @@ public class ScheduleAppointment extends JDialog {
 		chckbxSunday.setBounds(195, 210, 85, 23);
 		
 		JLabel lblWhatTimesOf = new JLabel("What times of the day are you available?*");
-		lblWhatTimesOf.setBounds(10, 266, 240, 14);
+		lblWhatTimesOf.setBounds(10, 266, 250, 14);
 		
 		JLabel lblReasonForAppointment = new JLabel("Reason for Appointment:*");
 		lblReasonForAppointment.setBounds(10, 355, 213, 14);
