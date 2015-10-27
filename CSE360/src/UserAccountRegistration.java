@@ -10,6 +10,9 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.sql.SQLException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -51,9 +54,11 @@ public class UserAccountRegistration extends JDialog{
 	private JTextField city;
 	private JTextField state;
 	private Border border;
-	private Gender genderEnum;
+	private String genderStr;
 	private String maritalStatus;
 	private boolean sms;
+	String type;
+	boolean once = true;
  
   
 	public UserAccountRegistration() {
@@ -80,7 +85,7 @@ public class UserAccountRegistration extends JDialog{
 		getContentPane().add(label_1);
 		
 		JLabel label_2 = new JLabel("Confirm Password");
-		label_2.setBounds(10, 94, 106, 14);
+		label_2.setBounds(10, 94, 119, 14);
 		getContentPane().add(label_2);
 		
 		confirmPassword = new JTextField();
@@ -126,12 +131,12 @@ public class UserAccountRegistration extends JDialog{
 		getContentPane().add(lastName);
 		
 		JLabel lblDateOfBirth = new JLabel("Date of Birth");
-		lblDateOfBirth.setBounds(10, 237, 70, 14);
+		lblDateOfBirth.setBounds(10, 237, 85, 14);
 		getContentPane().add(lblDateOfBirth);
 		
 		dobMonth = new JTextField();
 		dobMonth.setColumns(2);
-		dobMonth.setBounds(135, 237, 30, 20);
+		dobMonth.setBounds(135, 238, 30, 20);
 		getContentPane().add(dobMonth);
 		
 		dobDay = new JTextField();
@@ -160,7 +165,7 @@ public class UserAccountRegistration extends JDialog{
 			{
 				if(evt.getActionCommand() == "Male")
 				{
-					genderEnum = Gender.Male;
+					genderStr = "M";
 				}				
 			}
 		});
@@ -175,24 +180,56 @@ public class UserAccountRegistration extends JDialog{
 			{
 				if(evt.getActionCommand() == "Female")
 				{
-					genderEnum = Gender.Female;
+					genderStr = "F";
 				}		
 			}
 		});
 		
 		
 		
-		JLabel lblMaritalStatus = new JLabel("Marital Status");
+		JLabel lblMaritalStatus = new JLabel("Account Type");
 		lblMaritalStatus.setBounds(10, 321, 106, 14);
 		getContentPane().add(lblMaritalStatus);
 		
 		
 		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Single", "Married", "Divorced"}));
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"", "PATIENT", "DOCTOR", "NURSE", "HSP", "LAB"}));
 		comboBox.setBounds(135, 318, 148, 20);
 		getContentPane().add(comboBox);
+		comboBox.addItemListener(new ItemListener()
+		{
+	
+		public void itemStateChanged(ItemEvent evt) 
+		{
+			if(evt.getStateChange() == ItemEvent.SELECTED)
+			
+				if(evt.getItem() == "PATIENT")
+				{
+					type = "PATIENT";
+				}
+				else if(evt.getItem() == "DOCTOR")
+				{
+					type = "DOCTOR";
+				}
+				else if(evt.getItem() == "NURSE")
+				{
+					type = "NURSE";
+				}
+				else if(evt.getItem() == "HSP")
+				{
+					type = "NSP";
+				}
+				else if(evt.getItem() == "LAB")
+				{
+					type = "LAB";
+				}
+			System.out.println(type);
+		}
+		});
 		
-		JLabel lblCurrentAddress = new JLabel("Current Address");
+		
+		
+	/*	JLabel lblCurrentAddress = new JLabel("Current Address");
 		lblCurrentAddress.setBounds(10, 354, 106, 14);
 		getContentPane().add(lblCurrentAddress);
 		
@@ -200,6 +237,7 @@ public class UserAccountRegistration extends JDialog{
 		currentAddress.setBounds(135, 349, 148, 20);
 		getContentPane().add(currentAddress);
 		currentAddress.setColumns(10);
+		*/
 		
 		JLabel lblSsn = new JLabel("SSN");
 		lblSsn.setBounds(10, 453, 46, 14);
@@ -210,7 +248,7 @@ public class UserAccountRegistration extends JDialog{
 		getContentPane().add(sSN);
 		sSN.setColumns(10);
 		
-		JLabel label_4 = new JLabel("Emergency Contact Information");
+	/*	JLabel label_4 = new JLabel("Emergency Contact Information");
 		label_4.setFont(new Font("Tahoma", Font.BOLD, 11));
 		label_4.setBounds(312, 122, 226, 14);
 		getContentPane().add(label_4);
@@ -242,6 +280,8 @@ public class UserAccountRegistration extends JDialog{
 		label_7.setBounds(312, 212, 70, 14);
 		getContentPane().add(label_7);
 		
+		*/
+		
 		JLabel label_8 = new JLabel("Primary Insurance Information");
 		label_8.setFont(new Font("Tahoma", Font.BOLD, 11));
 		label_8.setBounds(312, 237, 226, 14);
@@ -256,7 +296,7 @@ public class UserAccountRegistration extends JDialog{
 		insuranceName.setBounds(407, 265, 148, 20);
 		getContentPane().add(insuranceName);
 		
-		insuranceAddress = new JTextField();
+		/*insuranceAddress = new JTextField();
 		insuranceAddress.setColumns(10);
 		insuranceAddress.setBounds(407, 296, 148, 20);
 		getContentPane().add(insuranceAddress);
@@ -309,14 +349,14 @@ public class UserAccountRegistration extends JDialog{
 		
 		JLabel label_14 = new JLabel("Policy Holder");
 		label_14.setBounds(312, 418, 92, 14);
-		getContentPane().add(label_14);
+		getContentPane().add(label_14);*/
 		
 		cellPhone = new JTextField();
 		cellPhone.setColumns(10);
 		cellPhone.setBounds(410, 55, 148, 20);
 		getContentPane().add(cellPhone);
 		
-		workPhone = new JTextField();
+	/*	workPhone = new JTextField();
 		workPhone.setColumns(10);
 		workPhone.setBounds(410, 24, 148, 20);
 		getContentPane().add(workPhone);
@@ -324,9 +364,10 @@ public class UserAccountRegistration extends JDialog{
 		JLabel label_15 = new JLabel("Work Phone");
 		label_15.setBounds(313, 27, 78, 14);
 		getContentPane().add(label_15);
+		*/
 		
 		JLabel label_16 = new JLabel("Cell Phone");
-		label_16.setBounds(313, 58, 60, 14);
+		label_16.setBounds(313, 58, 85, 14);
 		getContentPane().add(label_16);
 		
 		JLabel label_17 = new JLabel("Allow SMS");
@@ -334,7 +375,7 @@ public class UserAccountRegistration extends JDialog{
 		getContentPane().add(label_17);
 		
 		JRadioButton radioButton = new JRadioButton("Yes");
-		radioButton.setBounds(410, 88, 51, 23);
+		radioButton.setBounds(410, 88, 60, 23);
 		getContentPane().add(radioButton);
 		radioButton.addActionListener( new ActionListener()
 			{
@@ -361,7 +402,7 @@ public class UserAccountRegistration extends JDialog{
 			}
 		});
 		
-		JLabel lblCity = new JLabel("City");
+	/*	JLabel lblCity = new JLabel("City");
 		lblCity.setBounds(10, 385, 92, 14);
 		getContentPane().add(lblCity);
 		
@@ -378,6 +419,7 @@ public class UserAccountRegistration extends JDialog{
 		state.setColumns(10);
 		state.setBounds(135, 419, 148, 20);
 		getContentPane().add(state);
+		*/
 		
 		JButton btnSubmit = new JButton("Submit");
 		btnSubmit.setBounds(466, 449, 89, 23);
@@ -429,7 +471,7 @@ public class UserAccountRegistration extends JDialog{
 					email.setBorder(border);
 				}
 				
-				if(!validBirthMonth())
+		/*		if(!validBirthMonth())
 				{
 					validInput = false;
 					JOptionPane.showMessageDialog(getContentPane(), "Please enter a valid month. (1-12)", "ERROR", JOptionPane.ERROR_MESSAGE);
@@ -517,40 +559,104 @@ public class UserAccountRegistration extends JDialog{
 					workPhone.setBorder(border);
 				}*/
 				//if all error checking is okay then create account
-				if(validInput)
+				if(validInput && type != null && once == true)
 				{
+					
+					
 					Account acct = new Account();
-					acct.setUserName(userName.getText());
-					acct.setPassword(password.getText());
-					acct.setFirstName(firstName.getText());
-					acct.setLastName(lastName.getText());
-					acct.setEmail(email.getText());
-					acct.setCellNumber(cellPhone.getText());
-					acct.setWorkNumber(workPhone.getText());
-					acct.setBirthDate(dobMonth.getText() +"/"+dobDay.getText()+"/"+dobYear.getText());
-					acct.setGender(genderEnum);
-					acct.setStreetAddress(currentAddress.getText());
-					acct.setCity(city.getText());
-					acct.setState(state.getText());
-					acct.setSSN(Integer.parseInt(sSN.getText()));
-					acct.setEmergencyContactName(emergencyContactName.getText());
-					acct.setEmergencyContactRelationship(emergencyContactRelationship.getText());
-					//acct.setEmergencyContactPhone(Integer.parseInt(emergencyContactPhone.getText()));
-					acct.setInsuranceName(insuranceName.getText());
-					acct.setInsuranceAddress(insuranceAddress.getText());
-					acct.setPolicyNumber(policyNumber.getText());
-					acct.setGroupNumber(groupNumber.getText());
-					acct.setEffectiveDate(
-							effectiveMonth.getText() 
-							+ "/"
-							+ effectiveDay.getText()
-							+ "/"
-							+ effectiveYear.getText()
-							);
-					acct.setPolicyHolder(policyHolder.getText());
-					DatabaseStub db = new DatabaseStub();
-					db.createAccount(acct);			}
-			
+					
+					
+					int okay = 0;
+					
+					
+					okay = acct.setUserName(userName.getText(), type);
+					if(okay == 1)
+					{
+								
+						acct.setPassword(password.getText(), type, userName.getText());
+						acct.setFirstName(firstName.getText(), type, userName.getText());
+						acct.setLastName(lastName.getText(), type, userName.getText());
+						acct.setEmail(email.getText(), type, userName.getText());
+						//acct.setCellNumber(cellPhone.getText());
+						//acct.setWorkNumber(workPhone.getText());
+				//		acct.setBirthDate(dobMonth.getText() +"/"+dobDay.getText()+"/"+dobYear.getText());
+						acct.setGender(genderStr, type, userName.getText());
+					//	acct.setStreetAddress(currentAddress.getText());
+					//	acct.setCity(city.getText());
+					//	acct.setState(state.getText());
+						acct.setSSN(sSN.getText(), type, userName.getText());
+						//acct.setEmergencyContactName(emergencyContactName.getText());
+					//	acct.setEmergencyContactRelationship(emergencyContactRelationship.getText());
+						//acct.setEmergencyContactPhone(Integer.parseInt(emergencyContactPhone.getText()));
+						acct.setInsuranceName(insuranceName.getText(), type, userName.getText());
+				/*		acct.setInsuranceAddress(insuranceAddress.getText());
+						acct.setPolicyNumber(policyNumber.getText());
+						acct.setGroupNumber(groupNumber.getText());
+						acct.setEffectiveDate(
+								effectiveMonth.getText() 
+								+ "/"
+								+ effectiveDay.getText()
+								+ "/"
+								+ effectiveYear.getText()
+								);
+						acct.setPolicyHolder(policyHolder.getText());
+						DatabaseStub db = new DatabaseStub();
+						db.createAccount(acct);			*/
+						once = false; //so submit is only pressed once
+						
+						//========================================================
+						//USERACCOUNTREGISTRATION.JAVA -> PARTICULAR USERMENU.JAVA
+						//=========================================================
+					
+						switch(type)
+						{
+							case "PATIENT":
+							{
+								Frames.userMenu.setSize(580,580);
+								Frames.userMenu.setLocationRelativeTo(null);
+								Frames.userReg.setVisible(false); 
+								Frames.userMenu.setVisible(true);
+								break;
+							}
+							case "DOCTOR":
+							{
+								Frames.docMenu.setSize(580,580);
+								Frames.docMenu.setLocationRelativeTo(null);
+								Frames.userReg.setVisible(false); 
+								Frames.docMenu.setVisible(true);
+								break;
+							}
+							case "NURSE": 
+							{
+								Frames.nurseMenu.setSize(580,580);
+								Frames.nurseMenu.setLocationRelativeTo(null);
+								Frames.userReg.setVisible(false); 
+								Frames.nurseMenu.setVisible(true);
+								break;
+							}
+							case "LAB":
+							{
+								Frames.labMenu.setSize(580,580);
+								Frames.labMenu.setLocationRelativeTo(null);
+								Frames.userReg.setVisible(false); 
+								Frames.labMenu.setVisible(true);
+								break;
+							}
+							case "NSP":
+							{
+								Frames.nspMenu.setSize(580,580);
+								Frames.nspMenu.setLocationRelativeTo(null);
+								Frames.userReg.setVisible(false); 
+								Frames.nspMenu.setVisible(true);
+								break;
+							}
+						}
+					}
+				}
+				else
+				{
+					JOptionPane.showConfirmDialog(null, "Please choose an account type.", "Alert Message", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
+				}
 			}
 		});
 		 

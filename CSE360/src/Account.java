@@ -1,9 +1,14 @@
 import java.util.Date;
+
+import javax.swing.JOptionPane;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.sql.*;
 
-public class Account {
+public class Account
+{
 	
 	//Account Login information
 	private String userName;
@@ -22,7 +27,7 @@ public class Account {
 	private String streetAddress;
 	private String city;
 	private String state;
-	private int ssn;
+	private String ssn;
 	private boolean allowSms;
 	
 	//Emergency Contact Variables
@@ -37,8 +42,9 @@ public class Account {
 	private String groupNumber;
 	private Date effectiveDate;
 	private String policyHolder;
-	
+	private Statement stmt;
 	private AccountType accountType;
+	private String sql;
 	
 	public Account(String u, String p)
 	{
@@ -49,47 +55,49 @@ public class Account {
 	{
 		
 	}
-	public void setUserName(String s)
+	public int setUserName(String s, String t)
 	{
-		userName = s;
+		int ret;
+		ret = insert(t, "USERNAME", s);
+		return ret;
 	}
 	public String getUserName()
 	{
 		return userName;
 	}
-	public void setPassword(String s)
+	public void setPassword(String s, String t, String key)
 	{
-		password = s;
+		update(t, "PASSWORD", s, key);
 	}
 	public String getPassword()
 	{
 		return password;
 	}
-	public void setFirstName(String s)
+	public void setFirstName(String s, String t, String key)
 	{
-		firstName = s;
+		update(t, "FIRSTNAME", s, key);
 	}
 	public String getFirstName()
 	{
-		return firstName;
+		return firstName;	
 	}
-	public void setLastName(String s)
+	public void setLastName(String s, String t, String key)
 	{
-		lastName = s;
+		update(t, "LASTNAME", s, key);
 	}
 	public String getLastName()
 	{
 		return lastName;
 	}
-	public void setEmail(String s)
+	public void setEmail(String s, String t, String key)
 	{
-		email = s;
+		update(t, "EMAIL", s, key);
 	}
 	public String getEmail()
 	{
 		return email;
 	}
-	public void setCellNumber(String i)
+	public void setCellNumber(String i, String t)
 	{
 		cellNumber = i;
 	}
@@ -105,7 +113,7 @@ public class Account {
 	{
 		return workNumber;
 	}
-	public void setBirthDate(Date d)
+	public void setBirthDate(Date d, String t)
 	{
 		birthDate = d;
 	}
@@ -131,9 +139,9 @@ public class Account {
 		return format.format(birthDate);
 		
 	}
-	public void setGender(Gender g)
+	public void setGender(String g, String t, String key)
 	{
-		gender = g;
+		update(t, "GENDER", g, key);
 	}
 	public Gender getGender()
 	{
@@ -171,15 +179,15 @@ public class Account {
 	{
 		return state;
 	}
-	public void setSSN(int i)
+	public void setSSN(String i, String t, String key)
 	{
-		ssn = i;
+		update(t, "SSN", i, key);
 	}
-	public int getSSN()
+	public String getSSN()
 	{
 		return ssn;
 	}
-	public void setAllowSms(boolean b)
+	public void setAllowSms(boolean b, String t)
 	{
 		allowSms = b;
 	}
@@ -211,9 +219,9 @@ public class Account {
 	{
 		return emergencyContactPhone;
 	}
-	public void setInsuranceName(String s)
+	public void setInsuranceName(String s, String t, String key)
 	{
-		primaryInsuranceName = s;
+		update(t, "INSURANCENAME", s, key);
 	}
 	public String getInsuranceName()
 	{
@@ -284,6 +292,161 @@ public class Account {
 	{
 		return accountType;
 	}
+	public int insert(String table, String attribute, String text)
+	{
+		//queries and then inserts
+		try
+		{
+			int okay = 0;
+			String test  = "";
+			Frames.con.setAutoCommit(false);
+			stmt = Frames.con.createStatement();
+			String query = "SELECT " + attribute +
+					" FROM " + table +
+					" WHERE "+ attribute +
+					" = " + "\"" + text + "\";";
+
+			ResultSet rs = stmt.executeQuery(query);
+			while(rs.next())
+			{
+				test = rs.getString(attribute);
+				
+			}
+			if(test == "")
+			{
+				okay = 1;
+			}
+			if(okay == 1)
+			{
+				Frames.con.setAutoCommit(false);
+				stmt = Frames.con.createStatement();
+				sql = 	"INSERT INTO" + "'" + table + "'" + "(" + "'" + attribute + "'"+")" 
+						+ "VALUES (" + "'"+ text + "'"+")";
+				stmt.executeUpdate(sql);
+				stmt.close();
+				Frames.con.commit();
+				return okay;
+			}
+			else
+			{
+				JOptionPane.showConfirmDialog(null, "Username already exists", "Alert Message", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
+			}
+			return okay;
+		}
+		catch(Exception e)
+		{
+			System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+		    System.exit(0);
+		    return 0;
+		}
+	}
+	
+	
+	public void update(String table, String attribute, String text, String key)
+	{
+		//queries and then inserts
+		try
+		{
+			
+			Frames.con.setAutoCommit(false);
+			stmt = Frames.con.createStatement();
+			
+				Frames.con.setAutoCommit(false);
+				stmt = Frames.con.createStatement();
+				sql = 	"UPDATE " + "'" + table + "'" + " set " + "'" + attribute + "'"+
+						" = " + "\""+ text + "\"" + " where USERNAME =" + " \""+ key +"\";";
+				
+				stmt.executeUpdate(sql);
+				stmt.close();
+				Frames.con.commit();
+		}
+		catch(Exception e)
+		{
+			System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+		    System.exit(0);
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	public String find(String username, String pass)
+	{
+		//queries and then inserts
+		try
+		{
+			
+			String test  = "";
+			String acctype = "";
+			Frames.con.setAutoCommit(false);
+			stmt = Frames.con.createStatement();
+			
+			 for(int i = 0; i < 5; i++)
+		     {
+		    	  switch(i)
+		    	  {
+		    	  	case 0:
+		    	  	{
+		    	  		acctype = "PATIENT";
+		   
+		    	  		break;
+		    	  	}
+		    	  	case 1:
+		    	  	{
+		    	  		acctype = "DOCTOR";
+		    	  		break;
+		    	  	}
+		    	  	case 2:
+		    	  	{
+		    	  		acctype = "NURSE";
+		    	  		break;
+		    	  	}
+		    	  	case 3:
+		    	  	{
+		    	  		acctype = "LAB";
+		    	  		break;
+		    	  	}
+		    	  	case 4:
+		    	  	{
+		    	  		acctype = "NSP";
+		    	  		break;
+		    	  	}
+		    	  }
+			
+			
+				String query = "SELECT *" +
+						" FROM " + "'"+ acctype + "'"+
+						" WHERE USERNAME =  "+ "\"" + username + "\"" 
+						+ " AND PASSWORD = " + "\"" + pass +"\""+";";
+				
+				ResultSet rs = stmt.executeQuery(query);
+				while(rs.next())
+				{
+					test = rs.getString("USERNAME");
+				}
+				if(test != "")
+				{
+					return acctype;
+				}
+		     }
+			if(test == "")
+			{
+				JOptionPane.showConfirmDialog(null, "Couldnt find User Name!", "Alert Message", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
+				return "";
+			}
+		}
+		catch(Exception e)
+		{
+			System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+		    System.exit(0);
+		    return "";
+		}
+		return "";
+	}
+	
 }
 
 

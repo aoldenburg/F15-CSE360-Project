@@ -19,8 +19,10 @@ public class LogInWindow extends JFrame {
 	
 	public JButton btnNewPatient;
 	public JButton btnLogin;
-	private int acctType;
-
+	private String acctType;
+	String user, pass;
+	
+	public Account act = new Account();
 	/**
 	 * Create the applet.
 	 */
@@ -65,14 +67,17 @@ public class LogInWindow extends JFrame {
 				}
 				else
 				{
+					user = username.getText();
+					pass = password.getText();
 					
 					//======================================================
-					//LoginWindow->Patient, Doc, nurse, nsp, or lab MainMenu
+					//3.)LoginWindow->Patient, Doc, nurse, nsp, or lab MainMenu
 					//======================================================
-					acctType = 4;
+					acctType = act.find(user, pass);
+					System.out.println("the acctype is" + acctType);
 					switch(acctType)
 					{
-						case 0:
+						case "PATIENT":
 						{
 							Frames.userMenu.setSize(580,580);
 							Frames.userMenu.setLocationRelativeTo(null);
@@ -80,7 +85,7 @@ public class LogInWindow extends JFrame {
 							Frames.userMenu.setVisible(true);
 							break;
 						}
-						case 1:
+						case "DOCTOR":
 						{
 							Frames.docMenu.setSize(580,580);
 							Frames.docMenu.setLocationRelativeTo(null);
@@ -88,7 +93,7 @@ public class LogInWindow extends JFrame {
 							Frames.docMenu.setVisible(true);
 							break;
 						}
-						case 2: 
+						case "NURSE": 
 						{
 							Frames.nurseMenu.setSize(580,580);
 							Frames.nurseMenu.setLocationRelativeTo(null);
@@ -96,7 +101,7 @@ public class LogInWindow extends JFrame {
 							Frames.nurseMenu.setVisible(true);
 							break;
 						}
-						case 3:
+						case "LAB":
 						{
 							Frames.labMenu.setSize(580,580);
 							Frames.labMenu.setLocationRelativeTo(null);
@@ -104,13 +109,18 @@ public class LogInWindow extends JFrame {
 							Frames.labMenu.setVisible(true);
 							break;
 						}
-						case 4:
+						case "NSP":
 						{
 							Frames.nspMenu.setSize(580,580);
 							Frames.nspMenu.setLocationRelativeTo(null);
 							Frames.login.setVisible(false); 
 							Frames.nspMenu.setVisible(true);
 							break;
+						}
+						default:
+						{
+							JOptionPane.showMessageDialog(getContentPane(), "Sorry, Username or Password not valid", "ERROR", JOptionPane.ERROR_MESSAGE);
+
 						}
 					}
 					
@@ -121,13 +131,13 @@ public class LogInWindow extends JFrame {
 
 		
 		//New Patient Button
-		btnNewPatient = new JButton("New Patient");
+		btnNewPatient = new JButton("New User");
 		btnNewPatient.setBounds(106, 70, 123, 23);
 		getContentPane().add(btnNewPatient);
 		btnNewPatient.addActionListener(new ActionListener()
 		{
 			//==================================
-			//LoginWindow->UserRegistration()
+			//4.)LoginWindow->UserRegistration()
 			//===================================
 			public void actionPerformed(ActionEvent arg0) 
 			{

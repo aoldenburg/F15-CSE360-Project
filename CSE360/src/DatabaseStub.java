@@ -13,7 +13,7 @@ public class DatabaseStub implements Database {
 	public DatabaseStub()
 	{
 		
-		
+/*		
 		Account a = new Account("admin", "admin");
 		a.setAccountType(AccountType.Admin);
 		a.setFirstName("Allen");
@@ -39,7 +39,7 @@ public class DatabaseStub implements Database {
 		
 		saveFile();
 		getFile();
-	
+	*/
 	}
 
 	@Override
@@ -186,7 +186,7 @@ public class DatabaseStub implements Database {
 				String[] account = in.nextLine().split("/");
 				
 				Account a = new Account(account[0], account[1]);
-				
+			/*	
 				a.setFirstName(account[2]);
 				a.setLastName(account[3]);
 				if(account[4].equals("1"))
@@ -199,6 +199,7 @@ public class DatabaseStub implements Database {
 				}
 				
 				accounts.add(a);
+				*/
 				
 			}
 			

@@ -19,7 +19,7 @@ public class ScheduleAppointment extends JDialog {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -30,7 +30,7 @@ public class ScheduleAppointment extends JDialog {
 				}
 			}
 		});
-	}
+	}*/
 
 	/**
 	 * Create the frame.
@@ -41,7 +41,7 @@ public class ScheduleAppointment extends JDialog {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(null);
+		contentPane.setLayout(null); 
 		
 		JLabel lblHaveYouSeen = new JLabel("Have you seen this doctor before?*");
 		lblHaveYouSeen.setBounds(10, 11, 172, 14);
@@ -121,7 +121,7 @@ public class ScheduleAppointment extends JDialog {
 		contentPane.add(chckbxAm);
 		
 		JCheckBox chckbxAm_1 = new JCheckBox("9 am");
-		chckbxAm_1.setBounds(78, 287, 49, 23);
+		chckbxAm_1.setBounds(78, 287, 56, 23);
 		contentPane.add(chckbxAm_1);
 		
 		JCheckBox chckbxAm_2 = new JCheckBox("10 am");

@@ -1,4 +1,5 @@
 import java.awt.Dialog.ModalityType;
+import java.sql.*;
 import java.io.IOException;
 import java.util.Hashtable;
 
@@ -8,6 +9,8 @@ import javax.swing.UIManager;
 //First class run
 public class IPIMS extends JPanel
 {
+	public IPIMS() {
+	}
 	//public static SwitchFrame switchFrame = new SwitchFrame();
 	//*******************
 	//Frames
@@ -18,7 +21,7 @@ public class IPIMS extends JPanel
 	{
 		
 		//============================
-		//2.) startIPIMS()->LogInWindow()
+		//2.) startIPIMS()->LogInWindow.java
 		//============================
 		Frames.login.setSize(360, 145);
 		Frames.login.setLocationRelativeTo(null);
@@ -30,6 +33,10 @@ public class IPIMS extends JPanel
 		{
 			public void run()
 			{
+				sqliteConnection.init();
+				//==============================
+				//database started in Frames.java
+				//===============================
 				UIManager.put("swing.boldMetal",  Boolean.FALSE);
 				try
 				{
