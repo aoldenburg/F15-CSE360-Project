@@ -568,22 +568,23 @@ public class UserAccountRegistration extends JDialog{
 					
 					
 					acct.setUserName(userName.getText(), type);
-					acct.setPassword(password.getText(), type);
-					acct.setFirstName(firstName.getText(), type);
-					acct.setLastName(lastName.getText(), type);
-					acct.setEmail(email.getText(), type);
+					
+					acct.setPassword(password.getText(), type, userName.getText());
+					acct.setFirstName(firstName.getText(), type, userName.getText());
+					acct.setLastName(lastName.getText(), type, userName.getText());
+					acct.setEmail(email.getText(), type, userName.getText());
 					//acct.setCellNumber(cellPhone.getText());
 					//acct.setWorkNumber(workPhone.getText());
 			//		acct.setBirthDate(dobMonth.getText() +"/"+dobDay.getText()+"/"+dobYear.getText());
-					acct.setGender(genderStr, type);
+					acct.setGender(genderStr, type, userName.getText());
 				//	acct.setStreetAddress(currentAddress.getText());
 				//	acct.setCity(city.getText());
 				//	acct.setState(state.getText());
-					acct.setSSN(sSN.getText(), type);
+					acct.setSSN(sSN.getText(), type, userName.getText());
 					//acct.setEmergencyContactName(emergencyContactName.getText());
 				//	acct.setEmergencyContactRelationship(emergencyContactRelationship.getText());
 					//acct.setEmergencyContactPhone(Integer.parseInt(emergencyContactPhone.getText()));
-					acct.setInsuranceName(insuranceName.getText(), type);
+					acct.setInsuranceName(insuranceName.getText(), type, userName.getText());
 			/*		acct.setInsuranceAddress(insuranceAddress.getText());
 					acct.setPolicyNumber(policyNumber.getText());
 					acct.setGroupNumber(groupNumber.getText());

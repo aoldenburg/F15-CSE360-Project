@@ -34,8 +34,8 @@ public class sqliteConnection {
 
 	      stmt = Frames.con.createStatement();
 	      
-	      String sql = "CREATE TABLE IF NOT EXISTS PATIENT("
-	      		+ "USERNAME TEXT NOT NULL, "
+	      String sql = "CREATE TABLE IF NOT EXISTS PATIENTS("
+	      		+ "USERNAME TEXT, "
 	      		+ "FIRSTNAME TEXT, "
 	      		+ "LASTNAME TEXT, "
 	      		+ "PASSWORD TEXT, "

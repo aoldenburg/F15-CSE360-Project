@@ -63,33 +63,33 @@ public class Account
 	{
 		return userName;
 	}
-	public void setPassword(String s, String t)
+	public void setPassword(String s, String t, String key)
 	{
-		insert(t, "PASSWORD", s);
+		update(t, "PASSWORD", s, key);
 	}
 	public String getPassword()
 	{
 		return password;
 	}
-	public void setFirstName(String s, String t)
+	public void setFirstName(String s, String t, String key)
 	{
-		insert(t, "FIRSTNAME", s);
+		update(t, "FIRSTNAME", s, key);
 	}
 	public String getFirstName()
 	{
 		return firstName;	
 	}
-	public void setLastName(String s, String t)
+	public void setLastName(String s, String t, String key)
 	{
-		insert(t, "LASTNAME", s);
+		update(t, "LASTNAME", s, key);
 	}
 	public String getLastName()
 	{
 		return lastName;
 	}
-	public void setEmail(String s, String t)
+	public void setEmail(String s, String t, String key)
 	{
-		insert(t, "EMAIL", s);
+		update(t, "EMAIL", s, key);
 	}
 	public String getEmail()
 	{
@@ -137,9 +137,9 @@ public class Account
 		return format.format(birthDate);
 		
 	}
-	public void setGender(String g, String t)
+	public void setGender(String g, String t, String key)
 	{
-		insert(t, "GENDER", g);
+		update(t, "GENDER", g, key);
 	}
 	public Gender getGender()
 	{
@@ -177,11 +177,11 @@ public class Account
 	{
 		return state;
 	}
-	public void setSSN(String i, String t)
+	public void setSSN(String i, String t, String key)
 	{
-		ssn = i;
+		update(t, "SSN", i, key);
 	}
-	public int getSSN()
+	public String getSSN()
 	{
 		return ssn;
 	}
@@ -217,9 +217,9 @@ public class Account
 	{
 		return emergencyContactPhone;
 	}
-	public void setInsuranceName(String s, String t)
+	public void setInsuranceName(String s, String t, String key)
 	{
-		primaryInsuranceName = s;
+		update(t, "PASSWORD", s, key);
 	}
 	public String getInsuranceName()
 	{
@@ -336,6 +336,32 @@ public class Account
 			System.err.println( e.getClass().getName() + ": " + e.getMessage() );
 		    System.exit(0);
 		    return 0;
+		}
+	}
+	
+	
+	public void update(String table, String attribute, String text, String key)
+	{
+		//queries and then inserts
+		try
+		{
+			
+			Frames.con.setAutoCommit(false);
+			stmt = Frames.con.createStatement();
+			
+				Frames.con.setAutoCommit(false);
+				stmt = Frames.con.createStatement();
+				sql = 	"UPDATE " + "'" + table + "'" + " set " + "'" + attribute + "'"+
+						" = " + "\""+ text + "\"" + " where USERNAME =" + " \""+ key +"\";";
+				System.out.println(sql);
+				stmt.executeUpdate(sql);
+				stmt.close();
+				Frames.con.commit();
+		}
+		catch(Exception e)
+		{
+			System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+		    System.exit(0);
 		}
 	}
 }
