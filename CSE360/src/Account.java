@@ -219,7 +219,7 @@ public class Account
 	}
 	public void setInsuranceName(String s, String t, String key)
 	{
-		update(t, "PASSWORD", s, key);
+		update(t, "INSURANCENAME", s, key);
 	}
 	public String getInsuranceName()
 	{

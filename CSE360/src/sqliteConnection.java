@@ -41,7 +41,7 @@ public class sqliteConnection {
 	    	  	case 0:
 	    	  	{
 	    	  		type = "PATIENT";
-	    	  		System.out.println(type);
+	   
 	    	  		break;
 	    	  	}
 	    	  	case 1:
@@ -77,7 +77,7 @@ public class sqliteConnection {
 		      		+ "SSN TEXT, "
 		      		+ "INSURANCENAME TEXT, "
 		      		+ "PRIMARY KEY(USERNAME, LASTNAME, SSN));";
-		       		System.out.println(sql);
+		       		
 		       		
 		            stmt.executeUpdate(sql);
 	    	  }
