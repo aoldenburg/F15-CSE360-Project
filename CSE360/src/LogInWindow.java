@@ -76,7 +76,7 @@ public class LogInWindow extends JFrame {
 				{
 					user = username.getText();
 					pass = String.valueOf(password.getPassword());
-					System.out.println(pass);
+					//System.out.println(pass); //for testing
 					
 					//======================================================
 					//3.)LoginWindow->Patient, Doc, nurse, nsp, or lab MainMenu
