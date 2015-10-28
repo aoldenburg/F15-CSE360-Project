@@ -36,58 +36,25 @@ public class Frames
 		{
 			String test  = "";
 			con.setAutoCommit(false);
-		//	String acctype = "";
+
 			Statement stmt = con.createStatement();
-			String sql = "";
+
 			
-			
-			/* for(int i = 0; i < 5; i++)
-		     {
-		    	  switch(i)
-		    	  {
-		    	  	case 0:
-		    	  	{
-		    	  		acctype = "PATIENT";
-		   
-		    	  		break;
-		    	  	}
-		    	  	case 1:
-		    	  	{
-		    	  		acctype = "DOCTOR";
-		    	  		break;
-		    	  	}
-		    	  	case 2:
-		    	  	{
-		    	  		acctype = "NURSE";
-		    	  		break;
-		    	  	}
-		    	  	case 3:
-		    	  	{
-		    	  		acctype = "LAB";
-		    	  		break;
-		    	  	}
-		    	  	case 4:
-		    	  	{
-		    	  		acctype = "NSP";
-		    	  		break;
-		    	  	}
-		    	  }*/
-			
-			
-			/*	String query = "SELECT " + "'" + attr + "'" +
+			String query = "SELECT " + "'" + attr + "'" +
 						" FROM " + "'"+ table + "'"
-						+ " WHERE " + "'" +  = " + "\"" + find +"\""+";";
-				
-				
+						+ " WHERE "  + attr  + " = " + "'" + find +"'"+";";
+
 				ResultSet rs = stmt.executeQuery(query);
 				
+
 				while(rs.next())
 				{
-					test = rs.getString("USERNAME");
+					
+					System.out.println("hel");
+					test = rs.getString("'"+attr+"'");
+				
 				}
 			
-		*/
-				
 		    // }
 		}
 		catch(Exception e)
