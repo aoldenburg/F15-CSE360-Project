@@ -72,7 +72,6 @@ public class UserMenuWindow extends JFrame {
 				Frames.appt.setLocationRelativeTo(null);
 				Frames.userMenu.setVisible(false); 
 				Frames.appt.setVisible(true);
-				
 			}
 		});
 		panel_1.add(btnScheduleAppointment);
@@ -104,9 +103,12 @@ public class UserMenuWindow extends JFrame {
 		
 		JButton btnCancelAppointment = new JButton("Cancel Appointment");
 		btnUpdateAppointment.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				CancelAppointment cApp = new CancelAppointment();
-				cApp.setVisible(true);
+			public void actionPerformed(ActionEvent e) 
+			{
+				Frames.cancel.setSize(580,580);
+				Frames.cancel.setLocationRelativeTo(null);
+				Frames.userMenu.setVisible(false); 
+				Frames.cancel.setVisible(true);
 			}
 		});
 		panel_1.add(btnCancelAppointment);

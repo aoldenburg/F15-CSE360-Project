@@ -18,8 +18,18 @@ public class Frames
 	public static AppointmentList list = new AppointmentList();
 	public static UpdateHealth cond = new UpdateHealth();
 	public static UpdateAppointment update = new UpdateAppointment();
+	public static CancelAppointment cancel = new CancelAppointment();
+	public static EPrescribeWindow prescribe = new EPrescribeWindow();
+	
+	public static String user = "";
+
 	//======================================
 	//Frames.java -> sqliteConnection.java
 	//=======================================
 	public static Connection con = sqliteConnection.dbConnector();
+	
+	public static void find(String find, String attr, String table)
+	{
+		System.out.println("h");
+	}
 }

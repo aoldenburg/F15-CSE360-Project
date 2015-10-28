@@ -300,8 +300,9 @@ public class Account
 			int okay = 0;
 			String test  = "";
 			Frames.con.setAutoCommit(false);
+			String acctype = "";
 			stmt = Frames.con.createStatement();
-			String query = "SELECT " + attribute +
+			/*String query = "SELECT " + attribute +
 					" FROM " + table +
 					" WHERE "+ attribute +
 					" = " + "\"" + text + "\";";
@@ -311,27 +312,78 @@ public class Account
 			{
 				test = rs.getString(attribute);
 				
-			}
-			if(test == "")
-			{
-				okay = 1;
-			}
-			if(okay == 1)
-			{
-				Frames.con.setAutoCommit(false);
-				stmt = Frames.con.createStatement();
-				sql = 	"INSERT INTO" + "'" + table + "'" + "(" + "'" + attribute + "'"+")" 
-						+ "VALUES (" + "'"+ text + "'"+")";
-				stmt.executeUpdate(sql);
-				stmt.close();
-				Frames.con.commit();
+			}*/
+			
+			
+			 for(int i = 0; i < 5; i++)
+		     {
+		    	  switch(i)
+		    	  {
+		    	  	case 0:
+		    	  	{
+		    	  		acctype = "PATIENT";
+		   
+		    	  		break;
+		    	  	}
+		    	  	case 1:
+		    	  	{
+		    	  		acctype = "DOCTOR";
+		    	  		break;
+		    	  	}
+		    	  	case 2:
+		    	  	{
+		    	  		acctype = "NURSE";
+		    	  		break;
+		    	  	}
+		    	  	case 3:
+		    	  	{
+		    	  		acctype = "LAB";
+		    	  		break;
+		    	  	}
+		    	  	case 4:
+		    	  	{
+		    	  		acctype = "NSP";
+		    	  		break;
+		    	  	}
+		    	  }
+			
+			
+				String query = "SELECT USERNAME " +
+						" FROM " + "'"+ acctype + "'"
+						+ " WHERE USERNAME = " + "\"" + text +"\""+";";
+				
+				ResultSet rs = stmt.executeQuery(query);
+				
+				while(rs.next())
+				{
+					test = rs.getString("USERNAME");
+					System.out.println(query);
+				}
+			
+			
+			
+			
+				if(test == "")
+				{
+					okay = 1;
+				}
+				if(okay == 1)
+				{
+					Frames.con.setAutoCommit(false);
+					stmt = Frames.con.createStatement();
+					sql = 	"INSERT INTO" + "'" + table + "'" + "(" + "'" + attribute + "'"+")" 
+							+ "VALUES (" + "'"+ text + "'"+")";
+					stmt.executeUpdate(sql);
+					stmt.close();
+					Frames.con.commit();
+					return okay;
+				}
+				else
+				{
+					JOptionPane.showConfirmDialog(null, "Username already exists", "Alert Message", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
+				}
 				return okay;
-			}
-			else
-			{
-				JOptionPane.showConfirmDialog(null, "Username already exists", "Alert Message", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
-			}
-			return okay;
+		     }
 		}
 		catch(Exception e)
 		{
@@ -339,6 +391,7 @@ public class Account
 		    System.exit(0);
 		    return 0;
 		}
+		return 0;
 	}
 	
 	

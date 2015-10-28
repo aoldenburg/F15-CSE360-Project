@@ -10,6 +10,8 @@ import javax.swing.JCheckBox;
 import javax.swing.JDialog;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class ScheduleAppointment extends JDialog {
 
@@ -48,10 +50,18 @@ public class ScheduleAppointment extends JDialog {
 		contentPane.add(lblHaveYouSeen);
 		
 		JRadioButton rdbtnYes = new JRadioButton("Yes");
+		rdbtnYes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		rdbtnYes.setBounds(10, 32, 64, 23);
 		contentPane.add(rdbtnYes);
 		
 		JRadioButton rdbtnNo = new JRadioButton("No");
+		rdbtnNo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		rdbtnNo.setBounds(110, 32, 109, 23);
 		contentPane.add(rdbtnNo);
 		
@@ -60,10 +70,18 @@ public class ScheduleAppointment extends JDialog {
 		contentPane.add(lblDoYouPrefer);
 		
 		JRadioButton rdbtnMale = new JRadioButton("Male");
+		rdbtnMale.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		rdbtnMale.setBounds(6, 107, 70, 23);
 		contentPane.add(rdbtnMale);
 		
 		JRadioButton rdbtnFemale = new JRadioButton("Female");
+		rdbtnFemale.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		rdbtnFemale.setBounds(110, 107, 109, 23);
 		contentPane.add(rdbtnFemale);
 		
@@ -72,30 +90,60 @@ public class ScheduleAppointment extends JDialog {
 		contentPane.add(lblWhatDaysOf);
 		
 		JCheckBox chckbxMonday = new JCheckBox("Monday");
+		chckbxMonday.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) 
+			{
+				
+			}
+		});
 		chckbxMonday.setBounds(6, 184, 64, 23);
 		contentPane.add(chckbxMonday);
 		
 		JCheckBox chckbxTuesday = new JCheckBox("Tuesday");
+		chckbxTuesday.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		chckbxTuesday.setBounds(68, 184, 70, 23);
 		contentPane.add(chckbxTuesday);
 		
 		JCheckBox chckbxWednesday = new JCheckBox("Wednesday");
+		chckbxWednesday.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		chckbxWednesday.setBounds(140, 184, 83, 23);
 		contentPane.add(chckbxWednesday);
 		
 		JCheckBox chckbxThurday = new JCheckBox("Thurday");
+		chckbxThurday.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		chckbxThurday.setBounds(224, 184, 83, 23);
 		contentPane.add(chckbxThurday);
 		
 		JCheckBox chckbxFriday = new JCheckBox("Friday");
+		chckbxFriday.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		chckbxFriday.setBounds(6, 210, 64, 23);
 		contentPane.add(chckbxFriday);
 		
 		JCheckBox chckbxSaturday = new JCheckBox("Saturday");
+		chckbxSaturday.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		chckbxSaturday.setBounds(68, 210, 70, 23);
 		contentPane.add(chckbxSaturday);
 		
 		JCheckBox chckbxSunday = new JCheckBox("Sunday");
+		chckbxSunday.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		chckbxSunday.setBounds(139, 210, 97, 23);
 		contentPane.add(chckbxSunday);
 		
@@ -117,34 +165,66 @@ public class ScheduleAppointment extends JDialog {
 		contentPane.add(btnSubmit);
 		
 		JCheckBox chckbxAm = new JCheckBox("8 am");
+		chckbxAm.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		chckbxAm.setBounds(10, 287, 49, 23);
 		contentPane.add(chckbxAm);
 		
 		JCheckBox chckbxAm_1 = new JCheckBox("9 am");
+		chckbxAm_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		chckbxAm_1.setBounds(78, 287, 56, 23);
 		contentPane.add(chckbxAm_1);
 		
 		JCheckBox chckbxAm_2 = new JCheckBox("10 am");
+		chckbxAm_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		chckbxAm_2.setBounds(153, 287, 66, 23);
 		contentPane.add(chckbxAm_2);
 		
 		JCheckBox chckbxAm_3 = new JCheckBox("11 am");
+		chckbxAm_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		chckbxAm_3.setBounds(224, 287, 66, 23);
 		contentPane.add(chckbxAm_3);
 		
 		JCheckBox chckbxPm = new JCheckBox("12 pm");
+		chckbxPm.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		chckbxPm.setBounds(10, 313, 66, 23);
 		contentPane.add(chckbxPm);
 		
 		JCheckBox chckbxPm_1 = new JCheckBox("1 pm");
+		chckbxPm_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		chckbxPm_1.setBounds(78, 313, 66, 23);
 		contentPane.add(chckbxPm_1);
 		
 		JCheckBox chckbxPm_2 = new JCheckBox("2 pm");
+		chckbxPm_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		chckbxPm_2.setBounds(153, 313, 66, 23);
 		contentPane.add(chckbxPm_2);
 		
 		JCheckBox chckbxPm_3 = new JCheckBox("3 pm");
+		chckbxPm_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		chckbxPm_3.setBounds(224, 313, 66, 23);
 		contentPane.add(chckbxPm_3);
 	}

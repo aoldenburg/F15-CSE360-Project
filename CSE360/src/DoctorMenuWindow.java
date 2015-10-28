@@ -72,9 +72,9 @@ public class DoctorMenuWindow extends JFrame{
 		
 		JButton btnEPrescribe = new JButton("E-Prescribe Medication");
 		btnEPrescribe.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				EPrescribeWindow ePrescribe = new EPrescribeWindow();
-				ePrescribe.setVisible(true);
+			public void actionPerformed(ActionEvent e) 
+			{
+				
 			}
 		});
 		panel_1.add(btnEPrescribe);
