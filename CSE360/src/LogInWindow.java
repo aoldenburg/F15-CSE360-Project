@@ -43,7 +43,7 @@ public class LogInWindow extends JFrame {
 		JLabel lblPassword = new JLabel("Password");
 		lblPassword.setBounds(10, 42, 86, 14);
 		getContentPane().add(lblPassword);
-		
+		 
 /*		password = new JTextField();
 		password.setColumns(10);
 		password.setBounds(106, 39, 224, 20);
