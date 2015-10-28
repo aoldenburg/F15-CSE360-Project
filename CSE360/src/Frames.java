@@ -40,11 +40,11 @@ public class Frames
 			String query = "SELECT " + "'" + attr + "'" +
 						" FROM " + "'"+ table + "'"
 						+ " WHERE "  + attr  + " = " + "'" + find +"'"+";";
-				ResultSet rs = stmt.executeQuery(query);
-				while(rs.next())
-				{
-					test = rs.getString("'"+attr+"'");
-				}
+			ResultSet rs = stmt.executeQuery(query);
+			while(rs.next())
+			{
+				test = rs.getString("'"+attr+"'");
+			}
 		}
 		catch(Exception e)
 		{
@@ -76,10 +76,26 @@ public class Frames
 		try
 		{
 			String sql = "";
+			String test = "";
+			String num = "";
+			int counter = 0;
 			Frames.con.setAutoCommit(false);
 			Statement stmt = Frames.con.createStatement();
 			sql = 	"UPDATE " + "'" + table + "'" + " set " + "'" + attr + "'"+
 					" = " + "\""+ value + "\"" + " where USERNAME =" + " \""+ user +"\";";
+			
+		/*	num = "SELECT USERNAME " +
+					" FROM " + "'"+ table + "'"
+					+ " WHERE USERNAME " + " = " + "\"" + user +"\""+";";
+			
+			ResultSet rs = stmt.executeQuery(num);
+			while(rs.next())
+			{
+				test = rs.getString("USERNAME");
+				counter++;
+			}
+			System.out.println(counter);*/
+			
 			stmt.executeUpdate(sql);
 			stmt.close();
 			Frames.con.commit();

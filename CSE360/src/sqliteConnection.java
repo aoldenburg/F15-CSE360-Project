@@ -86,37 +86,32 @@ public class sqliteConnection {
 	     		+ "USERNAME TEXT,"
 	     		+ "DAY TEXT,"
 	     		+ "TIME,"
-	     		+ "DOCTERSSN,"
-	     		+ "PRIMARY KEY(USERNAME));";
+	     		+ "DOCTERSSN);";
 	      stmt.executeUpdate(sql);
 	      
 	      sql = "CREATE TABLE IF NOT EXISTS CONDITION("
 		     		+ "USERNAME TEXT,"
 		     		+ "COND TEXT,"
-		     		+ "LEVEL,"
-		     		+ "PRIMARY KEY(USERNAME));";
+		     		+ "LEVEL);";
 	      stmt.executeUpdate(sql);
 	      
 	      sql = "CREATE TABLE IF NOT EXISTS PRESCRIPT("
 		     		+ "USERNAME TEXT,"
 		     		+ "PRESCRIPTIONNAME TEXT,"
 		     		+ "TIME,"
-		     		+ "DOCTERSSN,"
-		     		+ "PRIMARY KEY(USERNAME));";
+		     		+ "DOCTERSSN);";
 	      stmt.executeUpdate(sql);
 	      
 	      sql = "CREATE TABLE IF NOT EXISTS LAB("
 		     		+ "USERNAME TEXT,"
 		     		+ "HEARTRATE TEXT,"
 		     		+ "BLOODPRESSURE,"
-		     		+ "LABSSN,"
-		     		+ "PRIMARY KEY(USERNAME));";
+		     		+ "LABSSN);";
 	      stmt.executeUpdate(sql);
 	      
 	      sql = "CREATE TABLE IF NOT EXISTS HISTORY("
 		     		+ "USERNAME TEXT,"
-		     		+ "MEDHISTORY TEXT,"
-		     		+ "PRIMARY KEY(USERNAME));";
+		     		+ "MEDHISTORY TEXT);";
 	      stmt.executeUpdate(sql);
 	    		  
 	
