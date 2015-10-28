@@ -1,7 +1,9 @@
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.Statement;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 public class Frames
 {
@@ -30,6 +32,67 @@ public class Frames
 	
 	public static void find(String find, String attr, String table)
 	{
-		System.out.println("h");
+		try
+		{
+			String test  = "";
+			con.setAutoCommit(false);
+			String acctype = "";
+			Statement stmt = con.createStatement();
+			String sql = "";
+			
+			
+			 for(int i = 0; i < 5; i++)
+		     {
+		    	  switch(i)
+		    	  {
+		    	  	case 0:
+		    	  	{
+		    	  		acctype = "PATIENT";
+		   
+		    	  		break;
+		    	  	}
+		    	  	case 1:
+		    	  	{
+		    	  		acctype = "DOCTOR";
+		    	  		break;
+		    	  	}
+		    	  	case 2:
+		    	  	{
+		    	  		acctype = "NURSE";
+		    	  		break;
+		    	  	}
+		    	  	case 3:
+		    	  	{
+		    	  		acctype = "LAB";
+		    	  		break;
+		    	  	}
+		    	  	case 4:
+		    	  	{
+		    	  		acctype = "NSP";
+		    	  		break;
+		    	  	}
+		    	  }
+			
+			
+				String query = "SELECT USERNAME " +
+						" FROM " + "'"+ acctype + "'"
+						+ " WHERE USERNAME = " + "\"" + find +"\""+";";
+				
+				ResultSet rs = stmt.executeQuery(query);
+				
+				while(rs.next())
+				{
+					test = rs.getString("USERNAME");
+				}
+			
+		
+				
+		     }
+		}
+		catch(Exception e)
+		{
+			System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+		    System.exit(0);
+		}
 	}
 }

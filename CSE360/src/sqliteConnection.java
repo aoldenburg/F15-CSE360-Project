@@ -83,40 +83,40 @@ public class sqliteConnection {
 	    	  }
 	      }
 	      sql = "CREATE TABLE IF NOT EXISTS SCHEDULE("
-	     		+ "PATIENTSSN TEXT,"
+	     		+ "USERNAME TEXT,"
 	     		+ "DAY TEXT,"
 	     		+ "TIME,"
 	     		+ "DOCTERSSN,"
-	     		+ "PRIMARY KEY(PATIENTSSN));";
+	     		+ "PRIMARY KEY(USERNAME));";
 	      stmt.executeUpdate(sql);
 	      
 	      sql = "CREATE TABLE IF NOT EXISTS CONDITION("
-		     		+ "PATIENTSSN TEXT,"
+		     		+ "USERNAME TEXT,"
 		     		+ "COND TEXT,"
 		     		+ "LEVEL,"
-		     		+ "PRIMARY KEY(PATIENTSSN));";
+		     		+ "PRIMARY KEY(USERNAME));";
 	      stmt.executeUpdate(sql);
 	      
 	      sql = "CREATE TABLE IF NOT EXISTS PRESCRIPT("
-		     		+ "PATIENTSSN TEXT,"
+		     		+ "USERNAME TEXT,"
 		     		+ "PRESCRIPTIONNAME TEXT,"
 		     		+ "TIME,"
 		     		+ "DOCTERSSN,"
-		     		+ "PRIMARY KEY(PATIENTSSN));";
+		     		+ "PRIMARY KEY(USERNAME));";
 	      stmt.executeUpdate(sql);
 	      
 	      sql = "CREATE TABLE IF NOT EXISTS LAB("
-		     		+ "PATIENTSSN TEXT,"
+		     		+ "USERNAME TEXT,"
 		     		+ "HEARTRATE TEXT,"
 		     		+ "BLOODPRESSURE,"
 		     		+ "LABSSN,"
-		     		+ "PRIMARY KEY(PATIENTSSN));";
+		     		+ "PRIMARY KEY(USERNAME));";
 	      stmt.executeUpdate(sql);
 	      
 	      sql = "CREATE TABLE IF NOT EXISTS HISTORY("
-		     		+ "PATIENTSSN TEXT,"
+		     		+ "USERNAME TEXT,"
 		     		+ "MEDHISTORY TEXT,"
-		     		+ "PRIMARY KEY(PATIENTSSN));";
+		     		+ "PRIMARY KEY(USERNAME));";
 	      stmt.executeUpdate(sql);
 	    		  
 	
