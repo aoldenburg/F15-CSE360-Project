@@ -12,10 +12,12 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JPasswordField;
 
 public class LogInWindow extends JFrame {
 	public JTextField username;
-	public JTextField password;
+/*	public JTextField password;*/
+	private JPasswordField password;
 	
 	public JButton btnNewPatient;
 	public JButton btnLogin;
@@ -42,14 +44,19 @@ public class LogInWindow extends JFrame {
 		lblPassword.setBounds(10, 42, 86, 14);
 		getContentPane().add(lblPassword);
 		
-		password = new JTextField();
+/*		password = new JTextField();
 		password.setColumns(10);
 		password.setBounds(106, 39, 224, 20);
+		getContentPane().add(password);*/
+		
+		password = new JPasswordField();
+		password.setColumns(10);
+		password.setBounds(106, 40, 224, 20);
 		getContentPane().add(password);
 		
 		//Login Button
 		btnLogin = new JButton("Login");
-		btnLogin.setBounds(239, 70, 89, 23);
+		btnLogin.setBounds(239, 70, 89, 29);
 		getContentPane().add(btnLogin);
 		btnLogin.addActionListener(new ActionListener() 
 		{
@@ -60,7 +67,7 @@ public class LogInWindow extends JFrame {
 					JOptionPane.showMessageDialog(getContentPane(), "Please enter a Username", "ERROR", JOptionPane.ERROR_MESSAGE);
 					username.setBorder(BorderFactory.createLineBorder(Color.RED));
 				}
-				else if(password.getText().equals(""))
+				else if(password.equals(""))
 				{
 					JOptionPane.showMessageDialog(getContentPane(), "Please enter a Password", "ERROR", JOptionPane.ERROR_MESSAGE);
 					password.setBorder(BorderFactory.createLineBorder(Color.RED));
@@ -68,7 +75,8 @@ public class LogInWindow extends JFrame {
 				else
 				{
 					user = username.getText();
-					pass = password.getText();
+					pass = String.valueOf(password.getPassword());
+					System.out.println(pass);
 					
 					//======================================================
 					//3.)LoginWindow->Patient, Doc, nurse, nsp, or lab MainMenu
@@ -132,8 +140,9 @@ public class LogInWindow extends JFrame {
 		
 		//New Patient Button
 		btnNewPatient = new JButton("New User");
-		btnNewPatient.setBounds(106, 70, 123, 23);
+		btnNewPatient.setBounds(106, 70, 123, 29);
 		getContentPane().add(btnNewPatient);
+		
 		btnNewPatient.addActionListener(new ActionListener()
 		{
 			//==================================
@@ -150,5 +159,4 @@ public class LogInWindow extends JFrame {
 		});
 		//return returnValue;
 	}
-	
 }
