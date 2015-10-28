@@ -36,12 +36,12 @@ public class Frames
 		{
 			String test  = "";
 			con.setAutoCommit(false);
-			String acctype = "";
+		//	String acctype = "";
 			Statement stmt = con.createStatement();
 			String sql = "";
 			
 			
-			 for(int i = 0; i < 5; i++)
+			/* for(int i = 0; i < 5; i++)
 		     {
 		    	  switch(i)
 		    	  {
@@ -71,12 +71,13 @@ public class Frames
 		    	  		acctype = "NSP";
 		    	  		break;
 		    	  	}
-		    	  }
+		    	  }*/
 			
 			
-				String query = "SELECT USERNAME " +
-						" FROM " + "'"+ acctype + "'"
-						+ " WHERE USERNAME = " + "\"" + find +"\""+";";
+			/*	String query = "SELECT " + "'" + attr + "'" +
+						" FROM " + "'"+ table + "'"
+						+ " WHERE " + "'" +  = " + "\"" + find +"\""+";";
+				
 				
 				ResultSet rs = stmt.executeQuery(query);
 				
@@ -85,9 +86,9 @@ public class Frames
 					test = rs.getString("USERNAME");
 				}
 			
-		
+		*/
 				
-		     }
+		    // }
 		}
 		catch(Exception e)
 		{
