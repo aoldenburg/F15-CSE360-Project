@@ -9,7 +9,7 @@ public class EPrescribeWindow extends JFrame{
 	
 	private JPanel contentPane;
 	
-	public static void main(String[] args){
+	/*public static void main(String[] args){
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -21,7 +21,9 @@ public class EPrescribeWindow extends JFrame{
 			}
 		});
 		
+		
 	}
+	*/
 	public EPrescribeWindow(){
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setBounds(100, 100, 454, 400);
