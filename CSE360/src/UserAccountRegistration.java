@@ -612,6 +612,7 @@ public class UserAccountRegistration extends JDialog{
 						{
 							case "PATIENT":
 							{
+								Frames.user = userName.getText();
 								Frames.userMenu.setSize(580,580);
 								Frames.userMenu.setLocationRelativeTo(null);
 								Frames.userReg.setVisible(false); 
@@ -620,6 +621,7 @@ public class UserAccountRegistration extends JDialog{
 							}
 							case "DOCTOR":
 							{
+								Frames.user = userName.getText();
 								Frames.docMenu.setSize(580,580);
 								Frames.docMenu.setLocationRelativeTo(null);
 								Frames.userReg.setVisible(false); 
@@ -628,6 +630,7 @@ public class UserAccountRegistration extends JDialog{
 							}
 							case "NURSE": 
 							{
+								Frames.user = userName.getText();
 								Frames.nurseMenu.setSize(580,580);
 								Frames.nurseMenu.setLocationRelativeTo(null);
 								Frames.userReg.setVisible(false); 
@@ -636,6 +639,7 @@ public class UserAccountRegistration extends JDialog{
 							}
 							case "LAB":
 							{
+								Frames.user = userName.getText();
 								Frames.labMenu.setSize(580,580);
 								Frames.labMenu.setLocationRelativeTo(null);
 								Frames.userReg.setVisible(false); 
@@ -644,6 +648,7 @@ public class UserAccountRegistration extends JDialog{
 							}
 							case "NSP":
 							{
+								Frames.user = userName.getText();
 								Frames.nspMenu.setSize(580,580);
 								Frames.nspMenu.setLocationRelativeTo(null);
 								Frames.userReg.setVisible(false); 

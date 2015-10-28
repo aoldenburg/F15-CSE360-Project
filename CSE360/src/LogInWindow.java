@@ -74,11 +74,11 @@ public class LogInWindow extends JFrame {
 					//3.)LoginWindow->Patient, Doc, nurse, nsp, or lab MainMenu
 					//======================================================
 					acctType = act.find(user, pass);
-					System.out.println("the acctype is" + acctType);
+					
 					switch(acctType)
 					{
 						case "PATIENT":
-						{
+						{	Frames.user = user;
 							Frames.userMenu.setSize(580,580);
 							Frames.userMenu.setLocationRelativeTo(null);
 							Frames.login.setVisible(false); 
@@ -86,7 +86,7 @@ public class LogInWindow extends JFrame {
 							break;
 						}
 						case "DOCTOR":
-						{
+						{	Frames.user = user;
 							Frames.docMenu.setSize(580,580);
 							Frames.docMenu.setLocationRelativeTo(null);
 							Frames.login.setVisible(false); 
@@ -95,6 +95,7 @@ public class LogInWindow extends JFrame {
 						}
 						case "NURSE": 
 						{
+							Frames.user = user;
 							Frames.nurseMenu.setSize(580,580);
 							Frames.nurseMenu.setLocationRelativeTo(null);
 							Frames.login.setVisible(false); 
@@ -103,6 +104,7 @@ public class LogInWindow extends JFrame {
 						}
 						case "LAB":
 						{
+							Frames.user = user;
 							Frames.labMenu.setSize(580,580);
 							Frames.labMenu.setLocationRelativeTo(null);
 							Frames.login.setVisible(false); 
@@ -111,6 +113,7 @@ public class LogInWindow extends JFrame {
 						}
 						case "NSP":
 						{
+							Frames.user = user;
 							Frames.nspMenu.setSize(580,580);
 							Frames.nspMenu.setLocationRelativeTo(null);
 							Frames.login.setVisible(false); 

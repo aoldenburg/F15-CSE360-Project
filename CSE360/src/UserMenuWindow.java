@@ -72,7 +72,6 @@ public class UserMenuWindow extends JFrame {
 				Frames.appt.setLocationRelativeTo(null);
 				Frames.userMenu.setVisible(false); 
 				Frames.appt.setVisible(true);
-				
 			}
 		});
 		panel_1.add(btnScheduleAppointment);
