@@ -48,7 +48,7 @@ public class LogInWindow extends JFrame {
 		password.setColumns(10);
 		password.setBounds(106, 39, 224, 20);
 		getContentPane().add(password);*/
-		
+		 
 		password = new JPasswordField();
 		password.setColumns(10);
 		password.setBounds(106, 40, 224, 20);
