@@ -17,7 +17,8 @@ public class ScheduleAppointment extends JDialog {
 
 	private JPanel contentPane;
 	private JTextField textFieldReason;
-
+	String day = "";
+	String time = "";
 	/**
 	 * Launch the application.
 	 */
@@ -45,7 +46,7 @@ public class ScheduleAppointment extends JDialog {
 		setContentPane(contentPane);
 		contentPane.setLayout(null); 
 		
-		JLabel lblHaveYouSeen = new JLabel("Have you seen this doctor before?*");
+	/*	JLabel lblHaveYouSeen = new JLabel("Have you seen this doctor before?*");
 		lblHaveYouSeen.setBounds(10, 11, 172, 14);
 		contentPane.add(lblHaveYouSeen);
 		
@@ -64,8 +65,8 @@ public class ScheduleAppointment extends JDialog {
 		});
 		rdbtnNo.setBounds(110, 32, 109, 23);
 		contentPane.add(rdbtnNo);
-		
-		JLabel lblDoYouPrefer = new JLabel("Do you Prefer a Male or Female Physician?*");
+		*/
+	/*	JLabel lblDoYouPrefer = new JLabel("Do you Prefer a Male or Female Physician?*");
 		lblDoYouPrefer.setBounds(10, 86, 209, 14);
 		contentPane.add(lblDoYouPrefer);
 		
@@ -84,6 +85,7 @@ public class ScheduleAppointment extends JDialog {
 		});
 		rdbtnFemale.setBounds(110, 107, 109, 23);
 		contentPane.add(rdbtnFemale);
+		*/
 		
 		JLabel lblWhatDaysOf = new JLabel("What Days of the week are you available?*");
 		lblWhatDaysOf.setBounds(10, 162, 247, 14);
@@ -93,7 +95,8 @@ public class ScheduleAppointment extends JDialog {
 		chckbxMonday.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) 
 			{
-				
+				day = "";
+				day = arg0.getActionCommand();
 			}
 		});
 		chckbxMonday.setBounds(6, 184, 64, 23);
@@ -102,6 +105,8 @@ public class ScheduleAppointment extends JDialog {
 		JCheckBox chckbxTuesday = new JCheckBox("Tuesday");
 		chckbxTuesday.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				day = "";
+				day = e.getActionCommand();
 			}
 		});
 		chckbxTuesday.setBounds(68, 184, 70, 23);
@@ -110,6 +115,8 @@ public class ScheduleAppointment extends JDialog {
 		JCheckBox chckbxWednesday = new JCheckBox("Wednesday");
 		chckbxWednesday.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				day = "";
+				day = e.getActionCommand();
 			}
 		});
 		chckbxWednesday.setBounds(140, 184, 83, 23);
@@ -118,6 +125,8 @@ public class ScheduleAppointment extends JDialog {
 		JCheckBox chckbxThurday = new JCheckBox("Thurday");
 		chckbxThurday.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				day = "";
+				day = e.getActionCommand();
 			}
 		});
 		chckbxThurday.setBounds(224, 184, 83, 23);
@@ -126,12 +135,14 @@ public class ScheduleAppointment extends JDialog {
 		JCheckBox chckbxFriday = new JCheckBox("Friday");
 		chckbxFriday.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				day = "";
+				day = e.getActionCommand();
 			}
 		});
 		chckbxFriday.setBounds(6, 210, 64, 23);
 		contentPane.add(chckbxFriday);
 		
-		JCheckBox chckbxSaturday = new JCheckBox("Saturday");
+	/*	JCheckBox chckbxSaturday = new JCheckBox("Saturday");
 		chckbxSaturday.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -145,7 +156,7 @@ public class ScheduleAppointment extends JDialog {
 			}
 		});
 		chckbxSunday.setBounds(139, 210, 97, 23);
-		contentPane.add(chckbxSunday);
+		contentPane.add(chckbxSunday);*/
 		
 		JLabel lblWhatTimesOf = new JLabel("What times of the day are you available?*");
 		lblWhatTimesOf.setBounds(10, 266, 209, 14);
@@ -161,6 +172,15 @@ public class ScheduleAppointment extends JDialog {
 		textFieldReason.setColumns(10);
 		
 		JButton btnSubmit = new JButton("Submit");
+		btnSubmit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) 
+			{
+				Frames.insert("SCHEDULE", Frames.user);
+				Frames.update("SCHEDULE","DAY", Frames.user, day);
+				/*Frames.insert(table, userattr, username, attr, attrtext);
+				Frames.insert(table, userattr, username, attr, attrtext);*/
+			}
+		});
 		btnSubmit.setBounds(378, 488, 89, 23);
 		contentPane.add(btnSubmit);
 		

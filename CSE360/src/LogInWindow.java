@@ -91,7 +91,6 @@ public class LogInWindow extends JFrame {
 							Frames.userMenu.setLocationRelativeTo(null);
 							Frames.login.setVisible(false); 
 							Frames.userMenu.setVisible(true);
-							Frames.find("1234567", "USERNAME", "PATIENT");
 							break;
 						}
 						case "DOCTOR":
