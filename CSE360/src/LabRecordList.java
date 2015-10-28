@@ -13,13 +13,13 @@ import javax.swing.table.DefaultTableModel;
 public class LabRecordList extends JDialog {
 	private static final long serialVersionUID = -3168483869283270295L;
 	private JPanel contentPane;
-	private JTable table;
 	private JButton btnNewButton;
 	public int numberOfLabRecords = 10; //whereverTheDoctorsAreStored.length(); 55 was arbitrarily chosen for testing 
+	private JTable table;
 	
 	public LabRecordList() {
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 484, 540); //window size
+		setBounds(100, 100, 484, 253); //window size
 		setMinimumSize(new Dimension(384, 200)); //prevents the user from shrinking the window to silly sizes
 		setTitle("IPIMS"); //window title
 		contentPane = new JPanel();
@@ -28,25 +28,48 @@ public class LabRecordList extends JDialog {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		JScrollPane scrollPane = new JScrollPane();
 		contentPane.add(scrollPane, BorderLayout.CENTER);
-		table = new JTable(new DefaultTableModel(new Object[]{"Test Type", "Lab Technician", "Date Conducted", "Requested by"},numberOfLabRecords)) {
-			private static final long serialVersionUID = -8187053556158357139L; //gets rid of some warning; something to do with serialization
-			public boolean isCellEditable(int row, int column){ //prevents user from editing cells; there apparently is not a cleaner way of doing this
-		        return false;
-		   }
-		};
-		table.setShowHorizontalLines(false);
-		table.setShowVerticalLines(false);
-		table.setShowGrid(false);
-		table.getTableHeader().setReorderingAllowed(false); //prevent user from swapping columns
-		table.getTableHeader().setResizingAllowed(false); //prevent user from resizing columns
-		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION); //prevent user from selecting multiple doctors
-		table.setAutoCreateColumnsFromModel(false); //forgot why I have this here; it's probably important
-		scrollPane.setViewportView(table); //lets table be scrollable
+		
+		table = new JTable();
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+			},
+			new String[] {
+				"Test Type", "Date Conducted", "Lab Technician", "Requested by"
+			}
+		) {
+			boolean[] columnEditables = new boolean[] {
+				false, false, false, false
+			};
+			public boolean isCellEditable(int row, int column) {
+				return columnEditables[column];
+			}
+		});
+		table.getColumnModel().getColumn(0).setResizable(false);
+		table.getColumnModel().getColumn(0).setPreferredWidth(100);
+		table.getColumnModel().getColumn(1).setResizable(false);
+		table.getColumnModel().getColumn(1).setPreferredWidth(90);
+		table.getColumnModel().getColumn(2).setResizable(false);
+		table.getColumnModel().getColumn(2).setPreferredWidth(125);
+		table.getColumnModel().getColumn(3).setResizable(false);
+		table.getColumnModel().getColumn(3).setPreferredWidth(100);
+		table.setColumnSelectionAllowed(true);
+		table.setCellSelectionEnabled(true);
+		scrollPane.setViewportView(table);
 		btnNewButton = new JButton("Open Report");
 		//LabButtonListener listener = new LabButtonListener();
 		//btnNewButton.addActionListener(listener);
 		contentPane.add(btnNewButton, BorderLayout.SOUTH); 
-		getRootPane().setDefaultButton(btnNewButton); //makes button highlightable
+		getRootPane().setDefaultButton(btnNewButton);
 		btnNewButton.requestFocus(); //highlights button
 		
 
