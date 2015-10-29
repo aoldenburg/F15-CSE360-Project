@@ -9,9 +9,15 @@ import javax.swing.JRadioButton;
 import javax.swing.JCheckBox;
 import javax.swing.JDialog;
 import javax.swing.JTextField;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
+import javax.swing.JComboBox;
 
 public class ScheduleAppointment extends JDialog {
 
@@ -23,6 +29,7 @@ public class ScheduleAppointment extends JDialog {
 	String day = "";
 	String time = "";
 	String id = "";
+	
 	/**
 	 * Launch the application.
 	 */
@@ -39,10 +46,9 @@ public class ScheduleAppointment extends JDialog {
 		});
 	}*/
 
-	/**
-	 * Create the frame.
-	 */
-	public ScheduleAppointment() {
+	
+	public ScheduleAppointment() 
+	{
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 493, 561);
 		contentPane = new JPanel();
@@ -289,5 +295,37 @@ public class ScheduleAppointment extends JDialog {
 		chckbxPm_3.setBounds(224, 313, 66, 23);
 		contentPane.add(chckbxPm_3);
 		
+		
+		
+		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setBounds(21, 50, 164, 20);
+		contentPane.add(comboBox);
+		
+		try
+		{
+		//	ArrayList<Object> list = new ArrayList<Object>(Frames.list());
+
+		}
+		catch(NullPointerException e)
+		{
+			e.printStackTrace();
+		}
+		comboBox.addItemListener(new ItemListener()
+		{
+	
+			public void itemStateChanged(ItemEvent evt) 
+			{
+				
+				
+					
+				
+				
+			}
+		});
+		
+		JLabel lblDoctors = new JLabel("Doctors");
+		lblDoctors.setBounds(21, 25, 46, 14);
+		contentPane.add(lblDoctors);
 	}
 }

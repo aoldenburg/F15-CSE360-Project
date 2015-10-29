@@ -1,6 +1,8 @@
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Random;
 
 import javax.swing.JFrame;
@@ -125,5 +127,40 @@ public class Frames
 		
 		randreturn = new StringBuilder().append("").append(Character.toUpperCase(c)).append(num).toString();
 		return randreturn;
+	}
+	public static ArrayList<String> list()
+	{
+		int counter = 0;
+		ArrayList<String> retstr = new ArrayList<String>();
+		try 
+		{
+			Frames.con.setAutoCommit(false);
+			Statement stmt = Frames.con.createStatement();
+			String list = "SELECT USERNAME FROM DOCTOR;";
+			
+			ResultSet rs = stmt.executeQuery(list);
+			while(rs.next())
+			{
+				
+				
+					retstr.add(rs.getString("USERNAME"));
+					System.out.println(retstr.get(counter));
+					counter++;
+				
+			}
+			
+			stmt.executeUpdate(list);
+			stmt.close();
+			Frames.con.commit();
+			return retstr;
+		} 
+		catch (SQLException e) 
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return retstr;
+		}
+		
+	
 	}
 }
