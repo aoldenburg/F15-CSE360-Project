@@ -85,8 +85,13 @@ public class Frames
 			int counter = 0;
 			Frames.con.setAutoCommit(false);
 			Statement stmt = Frames.con.createStatement();
-			sql = 	"UPDATE " + "'" + table + "'" + " set " + "'" + attr + "'"+
+		/*	sql = 	"UPDATE " + "'" + table + "'" + " set " + "'" + attr + "'"+
 					" = " + "\""+ value + "\"" + " where USERNAME =" + " \""+ user +"\";";
+					*/
+			
+			sql = 	"UPDATE " + "'" + table + "'" + " set " + "'" + attr + "'"+
+					" = " + "\""+ value + "\"" + " where USERNAME =" + " \""+ user +"\""
+							+ "AND ID = " + "'" + id + "';";
 			
 		/*	num = "SELECT USERNAME " +
 					" FROM " + "'"+ table + "'"

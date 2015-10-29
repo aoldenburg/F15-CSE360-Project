@@ -17,6 +17,9 @@ public class ScheduleAppointment extends JDialog {
 
 	private JPanel contentPane;
 	private JTextField textFieldReason;
+	private JCheckBox chckbxMonday, chckbxTuesday,chckbxWednesday,chckbxThurday,chckbxFriday,
+						chckbxAm, chckbxAm_1, chckbxAm_2,chckbxAm_3, chckbxPm_1,chckbxPm_2,
+						chckbxPm,chckbxPm_3;
 	String day = "";
 	String time = "";
 	String id = "";
@@ -92,7 +95,7 @@ public class ScheduleAppointment extends JDialog {
 		lblWhatDaysOf.setBounds(10, 162, 247, 14);
 		contentPane.add(lblWhatDaysOf);
 		
-		JCheckBox chckbxMonday = new JCheckBox("Monday");
+		 chckbxMonday = new JCheckBox("Monday");
 		chckbxMonday.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) 
 			{
@@ -103,7 +106,7 @@ public class ScheduleAppointment extends JDialog {
 		chckbxMonday.setBounds(6, 184, 64, 23);
 		contentPane.add(chckbxMonday);
 		
-		JCheckBox chckbxTuesday = new JCheckBox("Tuesday");
+		 chckbxTuesday = new JCheckBox("Tuesday");
 		chckbxTuesday.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				day = "";
@@ -123,7 +126,7 @@ public class ScheduleAppointment extends JDialog {
 		chckbxWednesday.setBounds(140, 184, 83, 23);
 		contentPane.add(chckbxWednesday);
 		
-		JCheckBox chckbxThurday = new JCheckBox("Thurday");
+		 chckbxThurday = new JCheckBox("Thurday");
 		chckbxThurday.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				day = "";
@@ -133,7 +136,7 @@ public class ScheduleAppointment extends JDialog {
 		chckbxThurday.setBounds(224, 184, 83, 23);
 		contentPane.add(chckbxThurday);
 		
-		JCheckBox chckbxFriday = new JCheckBox("Friday");
+		 chckbxFriday = new JCheckBox("Friday");
 		chckbxFriday.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				day = "";
@@ -180,22 +183,43 @@ public class ScheduleAppointment extends JDialog {
 				Frames.insert("SCHEDULE", Frames.user, id);
 				Frames.update("SCHEDULE","DAY", Frames.user, day, id);
 				Frames.update("SCHEDULE","TIME", Frames.user, time, id);
+				Frames.userMenu.setSize(580,580);
+				
+				
+				chckbxMonday.setSelected(false);
+				chckbxTuesday.setSelected(false);
+				chckbxWednesday.setSelected(false);
+				chckbxThurday.setSelected(false);
+				chckbxFriday.setSelected(false);
+				chckbxAm.setSelected(false);
+				chckbxAm_1.setSelected(false);
+				chckbxAm_2.setSelected(false);
+				chckbxAm_3.setSelected(false);
+				chckbxPm_1.setSelected(false);
+				chckbxPm_2.setSelected(false);
+				chckbxPm.setSelected(false);
+				chckbxPm_3.setSelected(false);
+				
+				Frames.userMenu.setLocationRelativeTo(null);
+				Frames.appt.setVisible(false); 
+				Frames.userMenu.setVisible(true);
 			}
 		});
 		btnSubmit.setBounds(378, 488, 89, 23);
 		contentPane.add(btnSubmit);
 		
-		JCheckBox chckbxAm = new JCheckBox("8 am");
+		 chckbxAm = new JCheckBox("8 am");
 		chckbxAm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				time = "";
 				time = e.getActionCommand();
+				
 			}
 		});
 		chckbxAm.setBounds(10, 287, 49, 23);
 		contentPane.add(chckbxAm);
 		
-		JCheckBox chckbxAm_1 = new JCheckBox("9 am");
+		 chckbxAm_1 = new JCheckBox("9 am");
 		chckbxAm_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				time = "";
@@ -205,7 +229,7 @@ public class ScheduleAppointment extends JDialog {
 		chckbxAm_1.setBounds(78, 287, 56, 23);
 		contentPane.add(chckbxAm_1);
 		
-		JCheckBox chckbxAm_2 = new JCheckBox("10 am");
+		 chckbxAm_2 = new JCheckBox("10 am");
 		chckbxAm_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				time = "";
@@ -215,7 +239,7 @@ public class ScheduleAppointment extends JDialog {
 		chckbxAm_2.setBounds(153, 287, 66, 23);
 		contentPane.add(chckbxAm_2);
 		
-		JCheckBox chckbxAm_3 = new JCheckBox("11 am");
+		 chckbxAm_3 = new JCheckBox("11 am");
 		chckbxAm_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				time = "";
@@ -225,7 +249,7 @@ public class ScheduleAppointment extends JDialog {
 		chckbxAm_3.setBounds(224, 287, 66, 23);
 		contentPane.add(chckbxAm_3);
 		
-		JCheckBox chckbxPm = new JCheckBox("12 pm");
+		 chckbxPm = new JCheckBox("12 pm");
 		chckbxPm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				time = "";
@@ -235,7 +259,7 @@ public class ScheduleAppointment extends JDialog {
 		chckbxPm.setBounds(10, 313, 66, 23);
 		contentPane.add(chckbxPm);
 		
-		JCheckBox chckbxPm_1 = new JCheckBox("1 pm");
+		 chckbxPm_1 = new JCheckBox("1 pm");
 		chckbxPm_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				time = "";
@@ -245,7 +269,7 @@ public class ScheduleAppointment extends JDialog {
 		chckbxPm_1.setBounds(78, 313, 66, 23);
 		contentPane.add(chckbxPm_1);
 		
-		JCheckBox chckbxPm_2 = new JCheckBox("2 pm");
+		 chckbxPm_2 = new JCheckBox("2 pm");
 		chckbxPm_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				time = "";
@@ -255,7 +279,7 @@ public class ScheduleAppointment extends JDialog {
 		chckbxPm_2.setBounds(153, 313, 66, 23);
 		contentPane.add(chckbxPm_2);
 		
-		JCheckBox chckbxPm_3 = new JCheckBox("3 pm");
+		 chckbxPm_3 = new JCheckBox("3 pm");
 		chckbxPm_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				time = "";
@@ -264,5 +288,6 @@ public class ScheduleAppointment extends JDialog {
 		});
 		chckbxPm_3.setBounds(224, 313, 66, 23);
 		contentPane.add(chckbxPm_3);
+		
 	}
 }
