@@ -19,6 +19,7 @@ public class ScheduleAppointment extends JDialog {
 	private JTextField textFieldReason;
 	String day = "";
 	String time = "";
+	String id = "";
 	/**
 	 * Launch the application.
 	 */
@@ -175,10 +176,10 @@ public class ScheduleAppointment extends JDialog {
 		btnSubmit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) 
 			{
-				Frames.insert("SCHEDULE", Frames.user);
-				Frames.update("SCHEDULE","DAY", Frames.user, day);
-				Frames.update("SCHEDULE","TIME", Frames.user, time);
-				
+				id = Frames.rand();
+				Frames.insert("SCHEDULE", Frames.user, id);
+				Frames.update("SCHEDULE","DAY", Frames.user, day, id);
+				Frames.update("SCHEDULE","TIME", Frames.user, time, id);
 			}
 		});
 		btnSubmit.setBounds(378, 488, 89, 23);

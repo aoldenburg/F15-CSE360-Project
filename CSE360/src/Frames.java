@@ -1,6 +1,7 @@
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.Random;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -52,15 +53,18 @@ public class Frames
 		    System.exit(0);
 		}
 	}
-	public static void insert(String table, String username)
+	//public static void insert(String table, String username)
+	public static void insert(String table, String username, String id)
 	{
 		try
 		{
 			String sql = "";
 			Frames.con.setAutoCommit(false);
 			Statement stmt = Frames.con.createStatement();
-			sql = 	"INSERT INTO" + "'" + table + "'" + "(USERNAME)" 
-					+ "VALUES (" + "'"+ username + "'"+")";
+		
+			
+			sql = 	"INSERT INTO" + "'" + table + "'" + "(USERNAME, ID)" 
+					+ "VALUES (" + "'"+ username + "'" + ",'" + id + "')";
 			stmt.executeUpdate(sql);
 			stmt.close();
 			Frames.con.commit();
@@ -71,7 +75,7 @@ public class Frames
 		    System.exit(0);
 		}
 	}
-	public static void update(String table, String attr, String user, String value)
+	public static void update(String table, String attr, String user, String value, String id)
 	{
 		try
 		{
@@ -105,5 +109,16 @@ public class Frames
 			System.err.println( e.getClass().getName() + ": " + e.getMessage() );
 		    System.exit(0);
 		}
+	}
+	public static String rand()
+	{
+		Random rn = new Random();
+		String randreturn;
+		char c = (char)(rn.nextInt(26)+'a');
+
+		int num = rn.nextInt(10);
+		
+		randreturn = new StringBuilder().append("").append(Character.toUpperCase(c)).append(num).toString();
+		return randreturn;
 	}
 }

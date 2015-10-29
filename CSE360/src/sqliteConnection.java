@@ -84,6 +84,7 @@ public class sqliteConnection {
 	      }
 	      sql = "CREATE TABLE IF NOT EXISTS SCHEDULE("
 	     		+ "USERNAME TEXT,"
+	     		+ "ID TEXT,"
 	     		+ "DAY TEXT,"
 	     		+ "TIME,"
 	     		+ "DOCTERSSN);";
@@ -91,12 +92,14 @@ public class sqliteConnection {
 	      
 	      sql = "CREATE TABLE IF NOT EXISTS CONDITION("
 		     		+ "USERNAME TEXT,"
+		     		+ "ID TEXT,"
 		     		+ "COND TEXT,"
 		     		+ "LEVEL);";
 	      stmt.executeUpdate(sql);
 	      
 	      sql = "CREATE TABLE IF NOT EXISTS PRESCRIPT("
 		     		+ "USERNAME TEXT,"
+		     		+ "ID TEXT,"
 		     		+ "PRESCRIPTIONNAME TEXT,"
 		     		+ "TIME,"
 		     		+ "DOCTERSSN);";
@@ -104,6 +107,7 @@ public class sqliteConnection {
 	      
 	      sql = "CREATE TABLE IF NOT EXISTS LAB("
 		     		+ "USERNAME TEXT,"
+		     		+ "ID TEXT,"
 		     		+ "HEARTRATE TEXT,"
 		     		+ "BLOODPRESSURE,"
 		     		+ "LABSSN);";

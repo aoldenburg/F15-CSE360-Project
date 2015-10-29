@@ -62,6 +62,7 @@ public class LogInWindow extends JFrame {
 		{
 			public void actionPerformed(ActionEvent arg0)
 			{
+			
 				if(username.getText().equals(""))
 				{
 					JOptionPane.showMessageDialog(getContentPane(), "Please enter a Username", "ERROR", JOptionPane.ERROR_MESSAGE);
@@ -74,6 +75,7 @@ public class LogInWindow extends JFrame {
 				}
 				else
 				{
+					
 					user = username.getText();
 					pass = String.valueOf(password.getPassword());
 					//System.out.println(pass); //for testing
