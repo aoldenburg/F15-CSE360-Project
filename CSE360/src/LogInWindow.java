@@ -52,11 +52,31 @@ public class LogInWindow extends JDialog {
 							JOptionPane.showMessageDialog(getContentPane(), "Please enter a Username", "ERROR", JOptionPane.ERROR_MESSAGE);
 							username.setBorder(BorderFactory.createLineBorder(Color.RED));
 						}
-				if(password.getText().equals(""))
+				else
 				{
-					JOptionPane.showMessageDialog(getContentPane(), "Please enter a Password", "ERROR", JOptionPane.ERROR_MESSAGE);
-					password.setBorder(BorderFactory.createLineBorder(Color.RED));
+					if(password.getText().equals(""))
+					{
+						JOptionPane.showMessageDialog(getContentPane(), "Please enter a Password", "ERROR", JOptionPane.ERROR_MESSAGE);
+						password.setBorder(BorderFactory.createLineBorder(Color.RED));
+					}
+					else
+					{
+						SQLiteDB db = new SQLiteDB();
+						Account userAccount = db.accessAccount(username.getText(), password.getText());
+						if(userAccount == null)
+						{
+							JOptionPane.showMessageDialog(getContentPane(), "Invalid Login. Either your username or password was unsuccessful. Please try again.", "LOGIN FAILED", JOptionPane.ERROR_MESSAGE);
+							
+						}
+						else
+						{
+							JOptionPane.showMessageDialog(getContentPane(), "Login Successful! Welcome " + userAccount.getFirstName() + userAccount.getLastName());
+						
+						}
+					}
 				}
+				
+				
 			}
 		});
 		btnLogin.setBounds(239, 70, 89, 23);
