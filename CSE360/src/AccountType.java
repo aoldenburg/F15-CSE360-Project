@@ -1,4 +1,4 @@
-/*
+/**
  * Enumeration for Account Type
  */
 public enum AccountType {

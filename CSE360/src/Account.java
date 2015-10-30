@@ -16,7 +16,7 @@ public class Account {
 	private String email;
 	private int cellNumber;
 	private int workNumber;
-	private Date birthDate;
+	private String birthDate;
 	private Gender gender;
 	private String maritalStatus;
 	private String streetAddress;
@@ -24,6 +24,7 @@ public class Account {
 	private String state;
 	private int ssn;
 	private boolean allowSms;
+	private DoctorType docType;
 	
 	//Emergency Contact Variables
 	private String emergencyContactName;
@@ -35,7 +36,7 @@ public class Account {
 	private String primaryInsuranceAddress;
 	private String policyNumber;
 	private String groupNumber;
-	private Date effectiveDate;
+	private String effectiveDate;
 	private String policyHolder;
 	
 	private AccountType accountType;
@@ -44,9 +45,31 @@ public class Account {
 	{
 		userName = u;
 		password = p;
-	}
-	public Account()
-	{
+		firstName = "";
+		lastName = "";
+		email = "";
+		cellNumber = 0;
+		workNumber = 0;
+		birthDate = "";
+		gender = Gender.Male;
+		maritalStatus = "";
+		streetAddress = "";
+		city = "";
+		state = "";
+		ssn = 0;
+		allowSms = false;
+		docType = DoctorType.NonDoctor;
+		emergencyContactName = "";
+		emergencyContactRelationship = "";
+		emergencyContactPhone = 0;
+		primaryInsuranceName = "";
+		primaryInsuranceAddress = "";
+		policyNumber = "";
+		groupNumber = "";
+		effectiveDate = "";
+		policyHolder = "";
+		accountType = AccountType.Patient;
+		
 		
 	}
 	public void setUserName(String s)
@@ -105,31 +128,14 @@ public class Account {
 	{
 		return workNumber;
 	}
-	public void setBirthDate(Date d)
-	{
-		birthDate = d;
-	}
+	
 	public void setBirthDate(String s)
 	{
-		SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
-		
-		try {
-			birthDate = format.parse(s);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		birthDate = s;
 	}
-	public Date getBirthDate()
+	public String getBirthDate()
 	{
 		return birthDate;
-	}
-	public String getBirthString()
-	{
-		SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
-		
-		return format.format(birthDate);
-		
 	}
 	public void setGender(Gender g)
 	{
@@ -159,7 +165,7 @@ public class Account {
 	{
 		city = s;
 	}
-	public String getCity(String s)
+	public String getCity()
 	{
 		return city;
 	}
@@ -243,30 +249,13 @@ public class Account {
 	{
 		return groupNumber;
 	}
-	public void setEffectiveDate(Date d)
-	{
-		effectiveDate = d;
-	}
 	public void setEffectiveDate(String s)
 	{
-		SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
-		
-		try {
-			effectiveDate = format.parse(s);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		effectiveDate = s;
 	}
-	public Date getEffectiveDate()
+	public String getEffectiveDate()
 	{
 		return effectiveDate;
-	}
-	public String getEffectiveString()
-	{
-		SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
-		
-		return format.format(birthDate);
 	}
 	public void setPolicyHolder(String s)
 	{
@@ -283,6 +272,14 @@ public class Account {
 	public AccountType getAccountType()
 	{
 		return accountType;
+	}
+	public DoctorType getDoctorType()
+	{
+		return docType;
+	}
+	public void setDoctorType(DoctorType doctorType)
+	{
+		this.docType = doctorType;
 	}
 }
 

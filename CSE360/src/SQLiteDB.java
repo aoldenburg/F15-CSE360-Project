@@ -13,19 +13,44 @@ public class SQLiteDB implements Database {
 	
 	/** Adds an account to the user login database
 	 *  as well as their appropriate table (patient, doctor, staff, etc.).
-	 * 
+	 *  Does not check to see if the account already exists in current implementation.
 	 *  @param a The account to be added.
 	 */
 	public void createAccount(Account a) {
 		
 		try {
+			
 			if(a == null) throw new IllegalArgumentException("Account passed was null");
 			File file = new File("data/EmployeeData.sqlite");
-			file.getAbsolutePath();
 			Class.forName("org.sqlite.JDBC");
 			Connection connector=DriverManager.getConnection("jdbc:sqlite:" + file.getAbsolutePath());
-			String query = "INSERT INTO UserTable (username, password, type) VALUES (\'" + a.getUserName() + "\', "
-					+ "\'" + a.getPassword() + "\', \'" + a.getAccountType().toString() + "\')";
+			String query = "INSERT INTO UserTable (username,password,type,firstname,lastname,workPhone,cellPhone,email,doctorType,bday,gender,maritalStatus,address,city,state,ssn,allowSMS,ecName,ecRelationship,ecPhone,piname,piaddress,policynum,groupnum,effectivedate,policyholder) VALUES "
+					+ "(\'" + a.getUserName() + "\', "
+					+ "\'" + a.getPassword() + "\', \'"
+					+ a.getAccountType().toString() + "\', \'"
+					+ a.getFirstName() + "\', \'"
+					+ a.getLastName() + "\',"
+					+ a.getWorkNumber() + ","
+					+ a.getCellNumber() + ", \'"
+					+ a.getEmail() + "\', \'"
+					+ a.getDoctorType().toString() + "\', \'"
+					+ a.getBirthDate() + "\', \'"
+					+ a.getGender() + "\', \'"
+					+ a.getMaritalStatus() + "\', \'"
+					+ a.getStreetAddress() + "\', \'"
+					+ a.getCity() + "\', \'"
+					+ a.getState() + "\',"
+					+ a.getSSN() + ", \'"
+					+ (a.getAllowSms() ? "1" : "0") + "\', \'"
+					+ a.getEmergencyContactName() + "\', \'"
+					+ a.getEmergencyContactRelationship() + "\',"	
+					+ a.getEmergencyContactPhone() + ", \'"
+					+ a.getInsuranceName() + "\', \'"
+					+ a.getInsuranceAddress() + "\', \'"
+					+ a.getPolicyNumber() + "\', \'"
+					+ a.getGroupNumber() + "\', \'"
+					+ a.getEffectiveDate() + "\', \'"
+					+ a.getPolicyHolder() + "\')";
 			Statement st = connector.createStatement();
 			st.executeUpdate(query);
 		} catch (SQLException | ClassNotFoundException e) {
@@ -33,15 +58,42 @@ public class SQLiteDB implements Database {
 			e.printStackTrace();
 		}
 	}
-
-	public Account accessAccount(String username, String password) {
-		// TODO Auto-generated method stub
+	/** Queries the database for a given username and password.
+	 *  If found, parses the values of the associated account.
+	 * @param username The username of the account to be queried.
+	 * @param password The password of the account to be queried.
+	 * @throws IllegalArgumentException Either username or password was empty.
+	 * @return if the associated username + password combo is correct, the Account associated with it. Otherwise returns NULL Account.
+	 */
+	public Account accessAccount(String username, String password) throws IllegalArgumentException{
+		try {
+			if(username.equals("") || password.equals("")) 
+			{
+				throw new IllegalArgumentException("");
+			}
+			File file = new File("data/EmployeeData.sqlite");
+			file.getAbsolutePath();
+			Class.forName("org.sqlite.JDBC");
+			Connection connector = DriverManager.getConnection("jdbc:sqlite:" + file.getAbsolutePath());
+			PreparedStatement statement = connector.prepareStatement("SELECT * FROM UserTable WHERE username=? AND password=?");
+			statement.setString(1, username);
+			statement.setString(2, password);
+			ResultSet results = statement.executeQuery();
+			Account foundAcc = new Account(results.getString(1),results.getString(2));
+			return foundAcc;
+			
+		}
+		catch (SQLException | ClassNotFoundException e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
 
 	public void updateAccount(Account a) {
 		// TODO Auto-generated method stub
-
+		//try {
+			
+	//	}
 	}
 
 	@Override
