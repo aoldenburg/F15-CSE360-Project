@@ -1,10 +1,14 @@
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -12,13 +16,16 @@ import javax.swing.JList;
 
 public class AppointmentList extends JDialog {
 
+	private static final long serialVersionUID = -3168483869283270295L;
 	private JPanel contentPane;
 	private JTable table;
+	private JButton btnNewButton;
+	public int numberOfDoctors = 55;
 
 	/**
 	 * Launch the application.
 	 */
-/*	public static void main(String[] args) {
+	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -30,40 +37,45 @@ public class AppointmentList extends JDialog {
 			}
 		});
 	}
-*/
+
 	/**
 	 * Create the frame.
 	 */
 	public AppointmentList() {
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 454, 504);
+		setBounds(100, 100, 500, 600); //window size
+		setTitle("Appointment List"); //window title
 		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5)); //distance the plane is from the edges of the window
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		table = new JTable();
-		table.setBounds(10, 63, 418, 352);
-		contentPane.add(table);
+		JScrollPane scrollPane = new JScrollPane();
+	
 		
-		JLabel lblDoctorsName = new JLabel("Doctors Name");
-		lblDoctorsName.setBounds(10, 39, 67, 14);
-		contentPane.add(lblDoctorsName);
+		table = new JTable(new DefaultTableModel(new Object[]{"Doctor's Name", "Location", "Day", "Time"},numberOfDoctors)) {
+		//	private static final long serialVersionUID = -8187053556158357139L; //gets rid of some warning; something to do with serialization
+			public boolean isCellEditable(int row, int column){ //prevents user from editing cells; there apparently is not a cleaner way of doing this
+		        return false;
+		   }
+		};
 		
-		JLabel lblLocation = new JLabel("Location");
-		lblLocation.setBounds(122, 38, 46, 14);
-		contentPane.add(lblLocation);
+		table.setShowHorizontalLines(false);
+		table.setShowVerticalLines(false);
+		table.setShowGrid(false);
+		table.getTableHeader().setReorderingAllowed(false); //prevent user from swapping columns
+		table.getTableHeader().setResizingAllowed(false); //prevent user from resizing columns
+		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION); //prevent user from selecting multiple doctors
+		table.setAutoCreateColumnsFromModel(false); //forgot why I have this here; it's probably important
+		table.setBounds(0, 15, 475, 450);
+		scrollPane.setViewportView(table); //lets table be scrollable
+
+		contentPane.add(scrollPane);
 		
-		JLabel lblDay = new JLabel("Day");
-		lblDay.setBounds(217, 39, 46, 14);
-		contentPane.add(lblDay);
-		
-		JLabel lblTime = new JLabel("Time");
-		lblTime.setBounds(297, 38, 46, 14);
-		contentPane.add(lblTime);
-		
-		JButton btnSelect = new JButton("Select");
-		btnSelect.setBounds(339, 426, 89, 23);
-		contentPane.add(btnSelect);
+		btnNewButton = new JButton("Request Appointment"); 
+		btnNewButton.setBounds(10, 550, 150, 50);
+		contentPane.add(btnNewButton);
+		getRootPane().setDefaultButton(btnNewButton); //makes button highlight table
+		btnNewButton.requestFocus(); //highlights button
 	}
 }
