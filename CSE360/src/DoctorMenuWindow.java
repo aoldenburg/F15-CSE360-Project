@@ -74,6 +74,8 @@ public class DoctorMenuWindow extends JFrame{
 		btnEPrescribe.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
+				Frames.prescribe.setVisible(true);
+				Frames.docMenu.setVisible(false);
 				
 			}
 		});

@@ -58,7 +58,9 @@ public class EPrescribeWindow extends JFrame{
 		btnPrescribe.setFont(new Font("Serif", Font.PLAIN, 24));
 		btnPrescribe.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				JOptionPane.showMessageDialog(getContentPane(), "Perscription Placed for: "+ tfAmount.getText() + " mgs of " + tfMedication.getText() , "Perscription Placed Sucessfully", JOptionPane.PLAIN_MESSAGE);
+				Frames.prescribe.setVisible(false);
+				Frames.docMenu.setVisible(true);
 			}
 		});
 		contentPane.add(btnPrescribe);
@@ -66,9 +68,10 @@ public class EPrescribeWindow extends JFrame{
 		JButton btnCancel = new JButton("Cancel");
 		btnCancel.setBounds(250, 250, 150, 50);
 		btnCancel.setFont(new Font("Serif", Font.PLAIN, 24));
-		btnPrescribe.addActionListener(new ActionListener() {
+		btnCancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				Frames.prescribe.setVisible(false);
+				Frames.docMenu.setVisible(true);
 			}
 		});
 		contentPane.add(btnCancel);

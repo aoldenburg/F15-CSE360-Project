@@ -5,63 +5,54 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-
-import java.io.*;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-//import javax.swing.JTextField;
 import javax.swing.JTextArea;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.awt.event.ActionEvent;
 
-public class UploadLab extends JDialog {
+public class AccessLabReport extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
-	//private JTextField textFieldContent;
 	private JTextArea textFieldContent;
-
-	
-	
 
 	/**
 	 * Launch the application.
 	 */
-/*	public static void main(String[] args) {
+	public static void main(String[] args) {
 		try {
-			
-			UploadLab dialog = new UploadLab();
+			AccessLabReport dialog = new AccessLabReport();
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
-			dialog.setTitle("Lap Report");
+			dialog.setTitle("Access Lap Report");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}*/
+	}
 
 	/**
 	 * Create the dialog.
 	 */
-	public UploadLab() {
-	
+	public AccessLabReport() {
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
-		{
-			//textFieldContent = new JTextField();
-			textFieldContent = new JTextArea();
-			textFieldContent.setBounds(10, 11, 414, 206);
-			contentPanel.add(textFieldContent);
-			textFieldContent.setColumns(10);
-			textFieldContent.setLineWrap(true);
-		}
+		
+		textFieldContent = new JTextArea();
+		textFieldContent.setBounds(10, 11, 414, 206);
+		contentPanel.add(textFieldContent);
+		textFieldContent.setLineWrap(true);
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
-				JButton okButton = new JButton("Open");
+				JButton okButton = new JButton("Access");
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						JFileChooser fs = new JFileChooser(new File("c:\\"));
@@ -79,49 +70,20 @@ public class UploadLab extends JDialog {
 									s += line;
 								}
 								textFieldContent.setText(s);
+								JOptionPane.showMessageDialog(null, "Access Successful");
 								if(br != null)
 									br.close();
 							}catch(Exception e2){
 								JOptionPane.showMessageDialog(null, e2.getMessage());
 							}
-							
-							
 						}
-						
-						
 					}
 				});
 				okButton.setActionCommand("OK");
 				buttonPane.add(okButton);
 				getRootPane().setDefaultButton(okButton);
 			}
-			{
-				JButton cancelButton = new JButton("Save");
-				cancelButton.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						JFileChooser fs = new JFileChooser(new File("c:\\"));
-						fs.setDialogTitle("Save a File");
-			//			fs.setFileFilter(new FileTypeFilter(".txt","Text File"));
-						int result = fs.showSaveDialog(null);
-						if (result == JFileChooser.APPROVE_OPTION){
-							String content = textFieldContent.getText();
-							File fi = fs.getSelectedFile();
-							try{
-								FileWriter fw = new FileWriter(fi.getPath());
-								fw.write(content);
-								fw.flush();
-								fw.close();
-								JOptionPane.showMessageDialog(null, "Upload Successful");
-							}catch(Exception e2){
-								JOptionPane.showMessageDialog(null, e2.getMessage());
-							}
-						}
-					}
-				});
-				cancelButton.setActionCommand("Cancel");
-				buttonPane.add(cancelButton);
-			}
 		}
-	}
-
+	}	
 }
+
