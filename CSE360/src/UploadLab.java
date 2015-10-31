@@ -9,14 +9,16 @@ import javax.swing.JOptionPane;
 import java.io.*;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JTextField;
+//import javax.swing.JTextField;
+import javax.swing.JTextArea;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class UploadLab extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
-	private JTextField textFieldContent;
+	//private JTextField textFieldContent;
+	private JTextArea textFieldContent;
 
 	
 	
@@ -47,10 +49,12 @@ public class UploadLab extends JDialog {
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
 		{
-			textFieldContent = new JTextField();
+			//textFieldContent = new JTextField();
+			textFieldContent = new JTextArea();
 			textFieldContent.setBounds(10, 11, 414, 206);
 			contentPanel.add(textFieldContent);
 			textFieldContent.setColumns(10);
+			textFieldContent.setLineWrap(true);
 		}
 		{
 			JPanel buttonPane = new JPanel();
@@ -107,6 +111,7 @@ public class UploadLab extends JDialog {
 								fw.write(content);
 								fw.flush();
 								fw.close();
+								JOptionPane.showMessageDialog(null, "Upload Successful");
 							}catch(Exception e2){
 								JOptionPane.showMessageDialog(null, e2.getMessage());
 							}
