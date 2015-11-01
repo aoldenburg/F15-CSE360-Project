@@ -23,26 +23,26 @@ import javax.swing.JToolBar;
 public class RetrieveInfoWindowDoctor extends JDialog {
 	private static final long serialVersionUID = 5025721258742123338L;
 	public String
-	patientName = "Larry Smith",
-	gender = "Male",
-	birthday = "6/4/1966",
-	phoneNumber = "4808675309",
-	email = "larry@larryshouse.com",
-	address = "1111 West Riverside Lane",
-	socialSecurity = "31323",
-	insuranceName = "Quality Insurance",
-	patientCondition = "Healthy",
-	medications = "Advil";
-//		patientName,
-//		gender,
-//		birthday,
-//		phoneNumber,
-//		email,
-//		address,
-//		socialSecurity,
-//		insuranceName,
-//		patientCondition,
-//		medications;
+	// patientName = "Larry Smith",
+	// gender = "Male",
+	// birthday = "6/4/1966",
+	// phoneNumber = "4808675309",
+	// email = "larry@larryshouse.com",
+	// address = "1111 West Riverside Lane",
+	// socialSecurity = "31323",
+	// insuranceName = "Quality Insurance",
+	// patientCondition = "Healthy",
+	// medications = "Advil";
+		patientName,
+		gender,
+		birthday,
+		phoneNumber,
+		email,
+		address,
+		socialSecurity,
+		insuranceName,
+		patientCondition,
+		medications;
 	private Object[][] data = {
 			{"Patient Name:", patientName},
 	        {"Gender:", gender},
