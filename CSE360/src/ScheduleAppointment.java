@@ -304,8 +304,8 @@ public class ScheduleAppointment extends JDialog {
 		
 		try
 		{
-			//ArrayList<String> list = new ArrayList<String>(Frames.list());
-
+			ArrayList<String> list = new ArrayList<String>();
+		//	list = (ArrayList<String>)Frames.list().clone();//causing error
 		}
 		catch(NullPointerException e)
 		{

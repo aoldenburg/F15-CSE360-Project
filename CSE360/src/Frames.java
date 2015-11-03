@@ -107,7 +107,7 @@ public class Frames
 			}
 			System.out.println(counter);*/
 			
-			stmt.executeUpdate(sql);
+		//	stmt.executeUpdate(sql);
 			stmt.close();
 			Frames.con.commit();
 		}
@@ -130,10 +130,11 @@ public class Frames
 	}
 	public static ArrayList<String> list()
 	{
-		int counter = 0;
-		ArrayList<String> retstr = new ArrayList<String>();
 		try 
 		{
+			int counter = 0;
+			ArrayList<String> retstr = new ArrayList<String>();
+			
 			Frames.con.setAutoCommit(false);
 			Statement stmt = Frames.con.createStatement();
 			String list = "SELECT USERNAME FROM DOCTOR;";
@@ -150,7 +151,7 @@ public class Frames
 			}
 			
 			stmt.executeUpdate(list);
-			stmt.close();
+		stmt.close();
 			Frames.con.commit();
 			return retstr;
 		} 
@@ -158,9 +159,8 @@ public class Frames
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return retstr;
-		}
-		
-	
+			return null;
+		}	
+
 	}
 }
