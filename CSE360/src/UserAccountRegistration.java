@@ -370,7 +370,7 @@ public class UserAccountRegistration extends JDialog{
 		label_16.setBounds(313, 58, 85, 14);
 		getContentPane().add(label_16);
 		
-		JLabel label_17 = new JLabel("Allow SMS");
+	/*	JLabel label_17 = new JLabel("Allow SMS");
 		label_17.setBounds(312, 92, 70, 14);
 		getContentPane().add(label_17);
 		
@@ -424,7 +424,9 @@ public class UserAccountRegistration extends JDialog{
 		JButton btnSubmit = new JButton("Submit");
 		btnSubmit.setBounds(466, 449, 89, 23);
 		getContentPane().add(btnSubmit);
-		getContentPane().setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{userName, password, confirmPassword, email, firstName, lastName, dobMonth, dobDay, dobYear, rdbtnMale, rdbtnFemale, comboBox, currentAddress, city, state, sSN, workPhone, cellPhone, radioButton, radioButton_1, emergencyContactName, emergencyContactRelationship, emergencyContactPhone, insuranceName, insuranceAddress, policyNumber, groupNumber, effectiveMonth, effectiveDay, effectiveYear, policyHolder, btnSubmit}));
+	//	getContentPane().setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{userName, password, confirmPassword, email, firstName, lastName, dobMonth, dobDay, dobYear, rdbtnMale, rdbtnFemale, comboBox, currentAddress, city, state, sSN, workPhone, cellPhone, radioButton, radioButton_1, emergencyContactName, emergencyContactRelationship, emergencyContactPhone, insuranceName, insuranceAddress, policyNumber, groupNumber, effectiveMonth, effectiveDay, effectiveYear, policyHolder, btnSubmit}));
+		getContentPane().setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{userName, password, confirmPassword, email, firstName, lastName, dobMonth, dobDay, dobYear, rdbtnMale, rdbtnFemale, comboBox, currentAddress, city, state, sSN, workPhone, cellPhone, emergencyContactName, emergencyContactRelationship, emergencyContactPhone, insuranceName, insuranceAddress, policyNumber, groupNumber, effectiveMonth, effectiveDay, effectiveYear, policyHolder, btnSubmit}));
+
 		btnSubmit.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
