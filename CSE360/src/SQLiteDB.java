@@ -138,13 +138,55 @@ public class SQLiteDB implements Database {
 	{
 		// TODO
 	}
-	public void addPrescription(Account a)
+	public void addPrescription(Account patient, String medicine, int amount)
 	{
-		//TODO
+		try {
+			if(patient == null)
+			{
+				throw new IllegalArgumentException("Account passed was null");
+			}
+		
+			File file = new File("data/EmployeeData.sqlite");
+			Class.forName("org.sqlite.JDBC");
+			Connection connector=DriverManager.getConnection("jdbc:sqlite:" + file.getAbsolutePath());
+			String query = "INSERT INTO Perscriptions (patient, medicine, amount) VALUES "
+				+ "(\'" + patient.getUserName() + "\', "
+				+ "\'" + medicine + "\', "
+				+ "\'" + amount + "\');";
+			Statement st = connector.createStatement();
+			st.executeUpdate(query);
+		} catch (SQLException | ClassNotFoundException e) {
+		// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	public Prescription[] getPrescriptions(Account a)
 	{
-		//TODO
+		try {
+			File file = new File("data/EmployeeData.sqlite");
+			file.getAbsolutePath();
+			Class.forName("org.sqlite.JDBC");
+			Connection connector = DriverManager.getConnection("jdbc:sqlite:" + file.getAbsolutePath());
+			PreparedStatement statement = connector.prepareStatement("SELECT * FROM Prescriptions WHERE patient=?");
+			statement.setString(1, a.getUserName());
+			ResultSet results = statement.executeQuery();
+			int rowCount = results.getInt("rowcount");
+			Prescription[] prescription = new Prescription[rowCount];
+			for(int i = 0; i < rowCount; i++)
+			{
+				prescription[i] = new Prescription(results.getString(1),results.getString(2), results.getInt(3));
+				results.next();
+			}
+			
+			
+			return prescription;
+			
+		}
+		catch (SQLException | ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 	}
 	public Condition[] getPatientConditions(Account a)
 	{
