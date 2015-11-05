@@ -199,32 +199,32 @@ public class UserAccountRegistration extends JDialog{
 		comboBox.addItemListener(new ItemListener()
 		{
 	
-		public void itemStateChanged(ItemEvent evt) 
-		{
-			if(evt.getStateChange() == ItemEvent.SELECTED)
-			
-				if(evt.getItem() == "PATIENT")
-				{
-					type = "PATIENT";
-				}
-				else if(evt.getItem() == "DOCTOR")
-				{
-					type = "DOCTOR";
-				}
-				else if(evt.getItem() == "NURSE")
-				{
-					type = "NURSE";
-				}
-				else if(evt.getItem() == "HSP")
-				{
-					type = "NSP";
-				}
-				else if(evt.getItem() == "LAB")
-				{
-					type = "LAB";
-				}
-			System.out.println(type);
-		}
+			public void itemStateChanged(ItemEvent evt) 
+			{
+				if(evt.getStateChange() == ItemEvent.SELECTED)
+				
+					if(evt.getItem() == "PATIENT")
+					{
+						type = "PATIENT";
+					}
+					else if(evt.getItem() == "DOCTOR")
+					{
+						type = "DOCTOR";
+					}
+					else if(evt.getItem() == "NURSE")
+					{
+						type = "NURSE";
+					}
+					else if(evt.getItem() == "HSP")
+					{
+						type = "NSP";
+					}
+					else if(evt.getItem() == "LAB")
+					{
+						type = "LAB";
+					}
+				System.out.println(type);
+			}
 		});
 		
 		

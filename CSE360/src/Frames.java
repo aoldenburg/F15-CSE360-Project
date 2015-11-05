@@ -1,4 +1,5 @@
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -95,19 +96,7 @@ public class Frames
 					" = " + "\""+ value + "\"" + " where USERNAME =" + " \""+ user +"\""
 							+ "AND ID = " + "'" + id + "';";
 			
-		/*	num = "SELECT USERNAME " +
-					" FROM " + "'"+ table + "'"
-					+ " WHERE USERNAME " + " = " + "\"" + user +"\""+";";
-			
-			ResultSet rs = stmt.executeQuery(num);
-			while(rs.next())
-			{
-				test = rs.getString("USERNAME");
-				counter++;
-			}
-			System.out.println(counter);*/
-			
-		//	stmt.executeUpdate(sql);
+		
 			stmt.close();
 			Frames.con.commit();
 		}
@@ -134,25 +123,21 @@ public class Frames
 		{
 			int counter = 0;
 			ArrayList<String> retstr = new ArrayList<String>();
-			
-			Frames.con.setAutoCommit(false);
-			Statement stmt = Frames.con.createStatement();
+			 Connection con = sqliteConnection.dbConnector();
+			con.setAutoCommit(false);
+			Statement stmt = con.createStatement();
 			String list = "SELECT USERNAME FROM DOCTOR;";
-			
-			ResultSet rs = stmt.executeQuery(list);
+			PreparedStatement pre = con.prepareStatement(list);
+			ResultSet rs = pre.executeQuery();
 			while(rs.next())
 			{
-				
-				
-					retstr.add(rs.getString("USERNAME"));
-					System.out.println(retstr.get(counter));
-					counter++;
-				
+				retstr.add(rs.getString("USERNAME"));
+				counter++;
 			}
 			
 			stmt.executeUpdate(list);
-		stmt.close();
-			Frames.con.commit();
+			stmt.close();
+			con.commit();
 			return retstr;
 		} 
 		catch (SQLException e) 

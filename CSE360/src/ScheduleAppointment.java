@@ -56,47 +56,6 @@ public class ScheduleAppointment extends JDialog {
 		setContentPane(contentPane);
 		contentPane.setLayout(null); 
 		
-	/*	JLabel lblHaveYouSeen = new JLabel("Have you seen this doctor before?*");
-		lblHaveYouSeen.setBounds(10, 11, 172, 14);
-		contentPane.add(lblHaveYouSeen);
-		
-		JRadioButton rdbtnYes = new JRadioButton("Yes");
-		rdbtnYes.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		rdbtnYes.setBounds(10, 32, 64, 23);
-		contentPane.add(rdbtnYes);
-		
-		JRadioButton rdbtnNo = new JRadioButton("No");
-		rdbtnNo.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		rdbtnNo.setBounds(110, 32, 109, 23);
-		contentPane.add(rdbtnNo);
-		*/
-	/*	JLabel lblDoYouPrefer = new JLabel("Do you Prefer a Male or Female Physician?*");
-		lblDoYouPrefer.setBounds(10, 86, 209, 14);
-		contentPane.add(lblDoYouPrefer);
-		
-		JRadioButton rdbtnMale = new JRadioButton("Male");
-		rdbtnMale.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		rdbtnMale.setBounds(6, 107, 70, 23);
-		contentPane.add(rdbtnMale);
-		
-		JRadioButton rdbtnFemale = new JRadioButton("Female");
-		rdbtnFemale.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		rdbtnFemale.setBounds(110, 107, 109, 23);
-		contentPane.add(rdbtnFemale);
-		*/
-		
 		JLabel lblWhatDaysOf = new JLabel("What Days of the week are you available?*");
 		lblWhatDaysOf.setBounds(10, 162, 247, 14);
 		contentPane.add(lblWhatDaysOf);
@@ -151,22 +110,6 @@ public class ScheduleAppointment extends JDialog {
 		});
 		chckbxFriday.setBounds(6, 210, 64, 23);
 		contentPane.add(chckbxFriday);
-		
-	/*	JCheckBox chckbxSaturday = new JCheckBox("Saturday");
-		chckbxSaturday.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		chckbxSaturday.setBounds(68, 210, 70, 23);
-		contentPane.add(chckbxSaturday);
-		
-		JCheckBox chckbxSunday = new JCheckBox("Sunday");
-		chckbxSunday.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		chckbxSunday.setBounds(139, 210, 97, 23);
-		contentPane.add(chckbxSunday);*/
 		
 		JLabel lblWhatTimesOf = new JLabel("What times of the day are you available?*");
 		lblWhatTimesOf.setBounds(10, 266, 209, 14);
@@ -305,7 +248,11 @@ public class ScheduleAppointment extends JDialog {
 		try
 		{
 			ArrayList<String> list = new ArrayList<String>();
-		//	list = (ArrayList<String>)Frames.list().clone();//causing error
+			list = new ArrayList(Frames.list());
+			for(int i = 0; i < list.size(); i++)
+			{
+				comboBox.addItem(list.get(i));
+			}
 		}
 		catch(NullPointerException e)
 		{
