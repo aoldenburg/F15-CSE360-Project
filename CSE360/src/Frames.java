@@ -31,7 +31,7 @@ public class Frames
 
 	//======================================
 	//Frames.java -> sqliteConnection.java
-	//=======================================
+	//======================================
 	public static Connection con = sqliteConnection.dbConnector();
 	
 	public static void find(String find, String attr, String table)
@@ -56,6 +56,38 @@ public class Frames
 		    System.exit(0);
 		}
 	}
+	
+	public static String get(String find, String attr, String table)
+	{
+		String returnString = "";
+
+		try
+		{
+			String test  = null;
+			con.setAutoCommit(false);
+			Statement stmt = con.createStatement();
+			String query = "SELECT " + "'" + attr + "'" +
+						" FROM " + "'"+ table + "'"
+						+ " WHERE "  + attr  + " = " + "'" + find +"'"+";";
+			ResultSet rs = stmt.executeQuery(query);
+			while(rs.next())
+			{
+				test = rs.getString("'"+attr+"'");
+			}
+			if(test != null)
+			{
+				returnString = test;
+			}
+			return returnString;
+		}
+		catch(Exception e)
+		{
+			System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+		    System.exit(0);
+			return returnString;
+		}
+	}
+	
 	//public static void insert(String table, String username)
 	public static void insert(String table, String username, String id)
 	{
@@ -123,7 +155,7 @@ public class Frames
 		{
 			int counter = 0;
 			ArrayList<String> retstr = new ArrayList<String>();
-			 Connection con = sqliteConnection.dbConnector();
+			Connection con = sqliteConnection.dbConnector();
 			con.setAutoCommit(false);
 			Statement stmt = con.createStatement();
 			String list = "SELECT USERNAME FROM DOCTOR;";

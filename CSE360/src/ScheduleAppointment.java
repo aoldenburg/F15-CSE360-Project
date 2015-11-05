@@ -132,6 +132,8 @@ public class ScheduleAppointment extends JDialog {
 				Frames.insert("SCHEDULE", Frames.user, id);
 				Frames.update("SCHEDULE","DAY", Frames.user, day, id);
 				Frames.update("SCHEDULE","TIME", Frames.user, time, id);
+			//	String = Frames.get(find, attr, table);
+			//	Frames.update("SCHEDULE","TIME", Frames.user, )
 				Frames.userMenu.setSize(580,580);
 				
 				
