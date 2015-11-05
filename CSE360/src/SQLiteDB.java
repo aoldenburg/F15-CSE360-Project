@@ -95,7 +95,11 @@ public class SQLiteDB implements Database {
 			
 	//	}
 	}
-
+	public Account getAccount(int ID)
+	{
+		return null;
+		//TODO
+	}
 	@Override
 	public Account[] getDoctors(String name) {
 		// TODO Auto-generated method stub
@@ -113,19 +117,6 @@ public class SQLiteDB implements Database {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	@Override
-	public void addFile(String filePath) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void removeFile(String filePath) {
-		// TODO Auto-generated method stub
-
-	}
-
 	@Override
 	public void addAppointment(Appointment a) {
 		// TODO Auto-generated method stub
@@ -143,11 +134,20 @@ public class SQLiteDB implements Database {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	@Override
-	public String getFile(int fileId) {
-		// TODO Auto-generated method stub
-		return null;
+	public void updateAppointment(Appointment a)
+	{
+		// TODO
 	}
-
+	public void addPrescription(Account a)
+	{
+		//TODO
+	}
+	public Prescription[] getPrescriptions(Account a)
+	{
+		//TODO
+	}
+	public Condition[] getPatientConditions(Account a)
+	{
+		
+	}
 }
