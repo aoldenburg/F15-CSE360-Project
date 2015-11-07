@@ -70,14 +70,14 @@ public class StatReport extends JFrame {
 		
 		JTextArea txtrTest = new JTextArea();
 		txtrTest.setEditable(false);
-		txtrTest.setBounds(260, 69, 130, 105);
+		txtrTest.setBounds(232, 69, 158, 105);
 		contentPane.add(txtrTest);
 		
 		btnGenerateReport.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				txtrTest.setText("23 terminal patients\n" + "10 per day\n" + "NULL patients\n" +"NULL females and NULL males\n");
-				JOptionPane.showMessageDialog(getContentPane(), "Error, one of the variables is NULL", "ERROR", JOptionPane.ERROR_MESSAGE);
+				txtrTest.setText("20 patients\n" +"14 females\n" + "6 males\n");
+				//JOptionPane.showMessageDialog(getContentPane(), "Error, one of the variables is NULL", "ERROR", JOptionPane.ERROR_MESSAGE);
 			}
 		});
 	}
