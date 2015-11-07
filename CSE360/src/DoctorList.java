@@ -64,6 +64,7 @@ public class DoctorList extends JDialog {
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION); //prevent user from selecting multiple doctors
 		table.setAutoCreateColumnsFromModel(false); //forgot why I have this here; it's probably important
 		scrollPane.setViewportView(table); //lets table be scrollable
+		System.out.println("Displaying list of doctors in Database");
 		btnNewButton = new JButton("Request Appointment");
 		contentPane.add(btnNewButton, BorderLayout.SOUTH); 
 		getRootPane().setDefaultButton(btnNewButton); //makes button highlightable
