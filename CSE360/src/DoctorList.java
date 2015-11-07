@@ -41,7 +41,16 @@ public class DoctorList extends JDialog {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		JScrollPane scrollPane = new JScrollPane();
 		contentPane.add(scrollPane, BorderLayout.CENTER);
-		table = new JTable(new DefaultTableModel(new Object[]{"Name", "Location", "Category", "Insurance"},numberOfDoctors)) {
+		String[] columnNames = {"Name",
+							 "Location",
+							 "Category",
+							 "Insurace"};
+		
+		Object[][] data = {
+				{"George Martin", "Phoenix", "Heart Surgeon", "All Types"}
+		};
+							 
+		table = new JTable(new DefaultTableModel(data,columnNames)) {
 			private static final long serialVersionUID = -8187053556158357139L; //gets rid of some warning; something to do with serialization
 			public boolean isCellEditable(int row, int column){ //prevents user from editing cells; there apparently is not a cleaner way of doing this
 		        return false;
