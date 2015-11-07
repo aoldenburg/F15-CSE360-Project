@@ -31,7 +31,7 @@ public class StatReport extends JFrame {
 				}
 			}
 		});
-	}
+	} 
  
 	/**
 	 * Create the frame.
