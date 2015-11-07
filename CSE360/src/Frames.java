@@ -26,6 +26,7 @@ public class Frames
 	public static UpdateAppointment update = new UpdateAppointment();
 	public static CancelAppointment cancel = new CancelAppointment();
 	public static EPrescribeWindow prescribe = new EPrescribeWindow();
+	public static StatReport stats = new StatReport();
 	
 	public static String user = "";
 

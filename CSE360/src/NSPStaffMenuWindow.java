@@ -78,13 +78,19 @@ public class NSPStaffMenuWindow extends JFrame {
 		panel_1.add(btnUpdateMedicalHistory);
 	//	btnUpdateMedicalHistory.setEnabled(false);
 		
-		JButton btnAlert = new JButton("Issue Emergency Alert to HSP Staff");
+		JButton btnAlert = new JButton("Generate Statistical Report");
 		btnAlert.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e) 
+			{
+				
+				Frames.stats.setSize(580,580);
+				Frames.stats.setLocationRelativeTo(null);
+				Frames.nspMenu.setVisible(false); 
+				Frames.stats.setVisible(true);	
+				
 			}
 		});
 		panel_1.add(btnAlert);
-		btnAlert.setEnabled(false);
 		
 		JButton btnLogOut = new JButton("Log Out");
 	//	btnLogOut.setEnabled(false);
