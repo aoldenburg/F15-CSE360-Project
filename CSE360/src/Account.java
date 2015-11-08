@@ -222,7 +222,7 @@ public class Account
 	{
 		city = s;
 	}
-	public String getCity(String s)
+	public String getCity()
 	{
 		return city;
 	}
