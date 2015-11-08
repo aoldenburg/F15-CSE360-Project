@@ -429,7 +429,7 @@ public class SQLiteDB {
 		}
 		return null;
 	}
-	public ArrayList<Account> getPatients() {
+	public static ArrayList<Account> getPatients() {
 		try{
 			ArrayList<Account> doctors = new ArrayList<Account>();
 			File file = new File("data/EmployeeData.sqlite");
@@ -437,7 +437,7 @@ public class SQLiteDB {
 			Connection connector=DriverManager.getConnection("jdbc:sqlite:" + file.getAbsolutePath());
 			String sql = "SELECT * FROM UserTable WHERE type=?";
 			PreparedStatement state = connector.prepareStatement(sql);
-			state.setString(1, "Doctor");
+			state.setString(1, "Patient");
 			ResultSet results = state.executeQuery();
 			String foundUser = results.getString(2);
 			String foundPass = results.getString(3);
@@ -568,6 +568,147 @@ public class SQLiteDB {
 		}
 		return null;
 	}
+	public static ArrayList<Account> getPatients(String lastName) {
+		try{
+			ArrayList<Account> doctors = new ArrayList<Account>();
+			File file = new File("data/EmployeeData.sqlite");
+			Class.forName("org.sqlite.JDBC");
+			Connection connector=DriverManager.getConnection("jdbc:sqlite:" + file.getAbsolutePath());
+			String sql = "SELECT * FROM UserTable WHERE type=? AND lastname=?";
+			PreparedStatement state = connector.prepareStatement(sql);
+			state.setString(1, "Patient");
+			state.setString(2, lastName);
+			ResultSet results = state.executeQuery();
+			String foundUser = results.getString(2);
+			String foundPass = results.getString(3);
+			AccountType foundAccType = AccountType.valueOf(results.getString(4));
+			String foundFirst = results.getString(5);
+			String foundLast = results.getString(6);
+			String foundWork = results.getString(7);
+			String foundPhone = results.getString(8);
+			String email = results.getString(9);
+			DoctorType foundDocType = DoctorType.valueOf(results.getString(10));
+			SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+			Date foundBday = new Date();
+			Date foundEffDate = new Date();
+			try {
+				foundBday = dateFormat.parse(results.getString(11));
+				foundEffDate = dateFormat.parse(results.getString(26));
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			Gender foundGender = Gender.valueOf(results.getString(12));
+			String foundMarried = results.getString(13);
+			String foundAdd = results.getString(14);
+			String foundCity = results.getString(15);
+			String foundState = results.getString(16);
+			String ssn = results.getString(17);
+			boolean allowSMS = (results.getInt(18) == 1) ? true : false;
+			String foundEcName = results.getString(19);
+			String foundEcRelationship = results.getString(20);
+			String foundEcPhone = results.getString(21);
+			String piname = results.getString(22);
+			String piaddress = results.getString(23);
+			String policyNum = results.getString(24);
+			String groupNum = results.getString(25);
+			String policyHolder = results.getString(27);
+			
+			Account foundAcc = new Account(foundUser,foundPass);
+			foundAcc.setAccountType(foundAccType);
+			foundAcc.setFirstName(foundFirst);
+			foundAcc.setLastName(foundLast);
+			foundAcc.setWorkNumber(foundWork);
+			foundAcc.setCellNumber(foundPhone);
+			foundAcc.setBirthDate(foundBday);
+			foundAcc.setEffectiveDate(foundEffDate);
+			foundAcc.setGender(foundGender);
+			foundAcc.setMaritalStatus(foundMarried);
+			foundAcc.setStreetAddress(foundAdd);
+			foundAcc.setState(foundState);
+			foundAcc.setSSN(ssn);
+			foundAcc.setAllowSms(allowSMS);
+			foundAcc.setEmergencyContactName(foundEcName);
+			foundAcc.setEmergencyContactRelationship(foundEcRelationship);
+			foundAcc.setEmergencyContactPhone(foundEcPhone);
+			foundAcc.setInsuranceName(piname);
+			foundAcc.setInsuranceAddress(piaddress);
+			foundAcc.setPolicyNumber(policyNum);
+			foundAcc.setGroupNumber(groupNum);
+			foundAcc.setPolicyHolder(policyHolder);
+			
+			doctors.add(foundAcc);
+			while(results.next())
+			{
+				foundUser = results.getString(2);
+				foundPass = results.getString(3);
+				foundAccType = AccountType.valueOf(results.getString(4));
+				foundFirst = results.getString(5);
+				foundLast = results.getString(6);
+				foundWork = results.getString(7);
+				foundPhone = results.getString(8);
+				email = results.getString(9);
+				foundDocType = DoctorType.valueOf(results.getString(10));
+				dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+				foundBday = new Date();
+				foundEffDate = new Date();
+				try {
+					foundBday = dateFormat.parse(results.getString(11));
+					foundEffDate = dateFormat.parse(results.getString(26));
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				foundGender = Gender.valueOf(results.getString(12));
+				foundMarried = results.getString(13);
+				foundAdd = results.getString(14);
+				foundCity = results.getString(15);
+				foundState = results.getString(16);
+				ssn = results.getString(17);
+				allowSMS = (results.getInt(18) == 1) ? true : false;
+				foundEcName = results.getString(19);
+				foundEcRelationship = results.getString(20);
+				foundEcPhone = results.getString(21);
+				piname = results.getString(22);
+				piaddress = results.getString(23);
+				policyNum = results.getString(24);
+				groupNum = results.getString(25);
+				policyHolder = results.getString(27);
+				
+				foundAcc = new Account(foundUser,foundPass);
+				foundAcc.setAccountType(foundAccType);
+				foundAcc.setFirstName(foundFirst);
+				foundAcc.setLastName(foundLast);
+				foundAcc.setWorkNumber(foundWork);
+				foundAcc.setCellNumber(foundPhone);
+				foundAcc.setBirthDate(foundBday);
+				foundAcc.setEffectiveDate(foundEffDate);
+				foundAcc.setGender(foundGender);
+				foundAcc.setMaritalStatus(foundMarried);
+				foundAcc.setStreetAddress(foundAdd);
+				foundAcc.setState(foundState);
+				foundAcc.setSSN(ssn);
+				foundAcc.setAllowSms(allowSMS);
+				foundAcc.setEmergencyContactName(foundEcName);
+				foundAcc.setEmergencyContactRelationship(foundEcRelationship);
+				foundAcc.setEmergencyContactPhone(foundEcPhone);
+				foundAcc.setInsuranceName(piname);
+				foundAcc.setInsuranceAddress(piaddress);
+				foundAcc.setPolicyNumber(policyNum);
+				foundAcc.setGroupNumber(groupNum);
+				foundAcc.setPolicyHolder(policyHolder);
+				
+				doctors.add(foundAcc);
+			}
+			return doctors;
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 	public void addAppointment(Appointment a) {
 		// TODO Auto-generated method stub
 
