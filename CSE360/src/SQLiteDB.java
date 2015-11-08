@@ -65,6 +65,7 @@ public class SQLiteDB {
 					+ a.getPolicyHolder() + "\')";
 			Statement st = connector.createStatement();
 			st.executeUpdate(query);
+			connector.close();
 		} catch (SQLException | ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -127,7 +128,7 @@ public class SQLiteDB {
 			String groupNum = results.getString(25);
 			String policyHolder = results.getString(27);
 			
-			
+			connector.close();
 			
 			Account foundAcc = new Account(foundUser,foundPass);
 			foundAcc.setAccountType(foundAccType);
@@ -240,7 +241,7 @@ public class SQLiteDB {
 			foundAcc.setGroupNumber(groupNum);
 			foundAcc.setPolicyHolder(policyHolder);
 			
-			
+			connector.close();
 			return foundAcc;
 			
 		}
@@ -291,6 +292,7 @@ public class SQLiteDB {
 			state.setString(26, a.getPolicyHolder());
 			
 			state.executeUpdate();
+			connector.close();
 		}
 	catch (Exception e)
 	{
@@ -428,6 +430,7 @@ public class SQLiteDB {
 				
 				doctors.add(foundAcc);
 			}
+			connector.close();
 			return doctors;
 		}
 		catch(Exception e)
@@ -446,6 +449,7 @@ public class SQLiteDB {
 			PreparedStatement state = connector.prepareStatement(sql);
 			state.setString(1, "Patient");
 			ResultSet results = state.executeQuery();
+			connector.close();
 			String foundUser = results.getString(2);
 			String foundPass = results.getString(3);
 			AccountType foundAccType = AccountType.valueOf(results.getString(4));
@@ -572,6 +576,7 @@ public class SQLiteDB {
 		catch(Exception e)
 		{
 			e.printStackTrace();
+			
 		}
 		return null;
 	}
@@ -586,6 +591,7 @@ public class SQLiteDB {
 			state.setString(1, "Patient");
 			state.setString(2, lastName);
 			ResultSet results = state.executeQuery();
+			connector.close();
 			String foundUser = results.getString(2);
 			String foundPass = results.getString(3);
 			AccountType foundAccType = AccountType.valueOf(results.getString(4));
