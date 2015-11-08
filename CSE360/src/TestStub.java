@@ -1,11 +1,11 @@
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class TestStub {
 	public static void main(String[] args)
 	{
-		Account a = new Account("aoldenbu","password");
+		Account a = new Account("burger","password");
 		SQLiteDB.createAccount(a);
-		System.out.println(a.getBirthString());
-		a = SQLiteDB.accessAccount("aoldenbu", "password");
-		a.getBirthDate();
+		
 	}
 }

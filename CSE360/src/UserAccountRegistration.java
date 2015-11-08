@@ -165,7 +165,7 @@ public class UserAccountRegistration extends JDialog{
 			{
 				if(evt.getActionCommand() == "Male")
 				{
-					genderStr = "M";
+					genderStr = "Male";
 				}				
 			}
 		});
@@ -180,7 +180,7 @@ public class UserAccountRegistration extends JDialog{
 			{
 				if(evt.getActionCommand() == "Female")
 				{
-					genderStr = "F";
+					genderStr = "Female";
 				}		
 			}
 		});
@@ -205,23 +205,23 @@ public class UserAccountRegistration extends JDialog{
 				
 					if(evt.getItem() == "PATIENT")
 					{
-						type = "PATIENT";
+						type = "Patient";
 					}
 					else if(evt.getItem() == "DOCTOR")
 					{
-						type = "DOCTOR";
+						type = "Doctor";
 					}
 					else if(evt.getItem() == "NURSE")
 					{
-						type = "NURSE";
+						type = "Nurse";
 					}
 					else if(evt.getItem() == "HSP")
 					{
-						type = "NSP";
+						type = "HSPStaff";
 					}
 					else if(evt.getItem() == "LAB")
 					{
-						type = "LAB";
+						type = "LabStaff";
 					}
 				System.out.println(type);
 			}
@@ -568,51 +568,49 @@ public class UserAccountRegistration extends JDialog{
 					Account acct = new Account();
 					
 					
-					int okay = 0;
 					
 					
-					okay = acct.setUserName(userName.getText(), type);
-					if(okay == 1)
+					if(type != null)
 					{
-								
-						acct.setPassword(password.getText(), type, userName.getText());
-						acct.setFirstName(firstName.getText(), type, userName.getText());
-						acct.setLastName(lastName.getText(), type, userName.getText());
-						acct.setEmail(email.getText(), type, userName.getText());
-						//acct.setCellNumber(cellPhone.getText());
+						acct.setUserName(userName.getText());
+						acct.setAccountType(AccountType.valueOf(type));
+						acct.setPassword(password.getText());
+						acct.setFirstName(firstName.getText());
+						acct.setLastName(lastName.getText());
+						acct.setEmail(email.getText());
+						acct.setCellNumber(cellPhone.getText());
 						//acct.setWorkNumber(workPhone.getText());
-				//		acct.setBirthDate(dobMonth.getText() +"/"+dobDay.getText()+"/"+dobYear.getText());
-						acct.setGender(genderStr, type, userName.getText());
-					//	acct.setStreetAddress(currentAddress.getText());
-					//	acct.setCity(city.getText());
-					//	acct.setState(state.getText());
-						acct.setSSN(sSN.getText(), type, userName.getText());
+						acct.setBirthDate(dobMonth.getText() +"/"+dobDay.getText()+"/"+dobYear.getText());
+						acct.setGender(Gender.valueOf(genderStr));
+						//acct.setStreetAddress(currentAddress.getText());
+						//acct.setCity(city.getText());
+						//acct.setState(state.getText());
+						acct.setSSN(sSN.getText());
 						//acct.setEmergencyContactName(emergencyContactName.getText());
-					//	acct.setEmergencyContactRelationship(emergencyContactRelationship.getText());
+						//acct.setEmergencyContactRelationship(emergencyContactRelationship.getText());
 						//acct.setEmergencyContactPhone(Integer.parseInt(emergencyContactPhone.getText()));
-						acct.setInsuranceName(insuranceName.getText(), type, userName.getText());
-				/*		acct.setInsuranceAddress(insuranceAddress.getText());
-						acct.setPolicyNumber(policyNumber.getText());
-						acct.setGroupNumber(groupNumber.getText());
-						acct.setEffectiveDate(
-								effectiveMonth.getText() 
-								+ "/"
-								+ effectiveDay.getText()
-								+ "/"
-								+ effectiveYear.getText()
-								);
-						acct.setPolicyHolder(policyHolder.getText());
-						DatabaseStub db = new DatabaseStub();
-						db.createAccount(acct);			*/
+						//acct.setInsuranceName(insuranceName.getText());
+						//acct.setInsuranceAddress(insuranceAddress.getText());
+						//acct.setPolicyNumber(policyNumber.getText());
+						//acct.setGroupNumber(groupNumber.getText());
+						//acct.setEffectiveDate(
+						//		effectiveMonth.getText() 
+						//		+ "/"
+						//		+ effectiveDay.getText()
+						//		+ "/"
+						//		+ effectiveYear.getText()
+						//		);
+						//acct.setPolicyHolder(policyHolder.getText());
+						SQLiteDB.createAccount(acct);
 						once = false; //so submit is only pressed once
 						
 						//========================================================
 						//USERACCOUNTREGISTRATION.JAVA -> PARTICULAR USERMENU.JAVA
 						//=========================================================
 					
-						switch(type)
+						switch(acct.getAccountType())
 						{
-							case "PATIENT":
+							case Patient:
 							{
 								Frames.user = userName.getText();
 								Frames.userMenu.setSize(580,580);
@@ -621,7 +619,7 @@ public class UserAccountRegistration extends JDialog{
 								Frames.userMenu.setVisible(true);
 								break;
 							}
-							case "DOCTOR":
+							case Doctor:
 							{
 								Frames.user = userName.getText();
 								Frames.docMenu.setSize(580,580);
@@ -630,7 +628,7 @@ public class UserAccountRegistration extends JDialog{
 								Frames.docMenu.setVisible(true);
 								break;
 							}
-							case "NURSE": 
+							case Nurse: 
 							{
 								Frames.user = userName.getText();
 								Frames.nurseMenu.setSize(580,580);
@@ -639,7 +637,7 @@ public class UserAccountRegistration extends JDialog{
 								Frames.nurseMenu.setVisible(true);
 								break;
 							}
-							case "LAB":
+							case LabStaff:
 							{
 								Frames.user = userName.getText();
 								Frames.labMenu.setSize(580,580);
@@ -648,7 +646,7 @@ public class UserAccountRegistration extends JDialog{
 								Frames.labMenu.setVisible(true);
 								break;
 							}
-							case "NSP":
+							case HSPStaff:
 							{
 								Frames.user = userName.getText();
 								Frames.nspMenu.setSize(580,580);
@@ -657,6 +655,8 @@ public class UserAccountRegistration extends JDialog{
 								Frames.nspMenu.setVisible(true);
 								break;
 							}
+							case Admin:
+								break;
 						}
 					}
 				}
