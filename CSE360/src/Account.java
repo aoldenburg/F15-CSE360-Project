@@ -29,11 +29,12 @@ public class Account
 	private String state;
 	private String ssn;
 	private boolean allowSms;
+	public DoctorType docType;
 	
 	//Emergency Contact Variables
 	private String emergencyContactName;
 	private String emergencyContactRelationship;
-	private int emergencyContactPhone;
+	private String emergencyContactPhone;
 	
 	//Primary Insurance Info
 	private String primaryInsuranceName;
@@ -50,10 +51,64 @@ public class Account
 	{
 		userName = u;
 		password = p;
+		firstName = "";
+		lastName = "";
+		email = "";
+		cellNumber = "0";
+		workNumber = "0";
+		SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
+		birthDate = new Date();
+		format.format(birthDate);
+		gender = Gender.Male;
+		maritalStatus = "";
+		streetAddress = "";
+		city = "";
+		state = "";
+		ssn = "0";
+		allowSms = false;
+		docType = DoctorType.NonDoctor;
+		emergencyContactName = "";
+		emergencyContactRelationship = "";
+		emergencyContactPhone = "0";
+		primaryInsuranceName = "";
+		primaryInsuranceAddress = "";
+		policyNumber = "";
+		groupNumber = "";
+		effectiveDate = new Date();
+		format.format(birthDate);
+		policyHolder = "";
+		accountType = AccountType.Patient;
+		
 	}
 	public Account()
 	{
-		
+		firstName = "";
+		lastName = "";
+		email = "";
+		cellNumber = "0";
+		workNumber = "0";
+		SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
+		birthDate = new Date();
+		format.format(birthDate);
+		gender = Gender.Male;
+		maritalStatus = "";
+		streetAddress = "";
+		city = "";
+		state = "";
+		ssn = "0";
+		allowSms = false;
+		docType = DoctorType.NonDoctor;
+		emergencyContactName = "";
+		emergencyContactRelationship = "";
+		emergencyContactPhone = "0";
+		primaryInsuranceName = "";
+		primaryInsuranceAddress = "";
+		policyNumber = "";
+		groupNumber = "";
+		effectiveDate = new Date();
+		format.format(birthDate);
+		policyHolder = "";
+		accountType = AccountType.Patient;
 	}
 	public int setUserName(String s, String t)
 	{
@@ -73,33 +128,33 @@ public class Account
 	{
 		return password;
 	}
-	public void setFirstName(String s, String t, String key)
+	public void setFirstName(String firstName)
 	{
-		update(t, "FIRSTNAME", s, key);
+		this.firstName = firstName;
 	}
 	public String getFirstName()
 	{
 		return firstName;	
 	}
-	public void setLastName(String s, String t, String key)
+	public void setLastName(String lastName)
 	{
-		update(t, "LASTNAME", s, key);
+		this.lastName = lastName;
 	}
 	public String getLastName()
 	{
 		return lastName;
 	}
-	public void setEmail(String s, String t, String key)
+	public void setEmail(String email)
 	{
-		update(t, "EMAIL", s, key);
+		this.email = email;
 	}
 	public String getEmail()
 	{
 		return email;
 	}
-	public void setCellNumber(String i, String t)
+	public void setCellNumber(String phoneNumber)
 	{
-		cellNumber = i;
+		cellNumber = phoneNumber;
 	}
 	public String getCellNumber()
 	{
@@ -113,7 +168,7 @@ public class Account
 	{
 		return workNumber;
 	}
-	public void setBirthDate(Date d, String t)
+	public void setBirthDate(Date d)
 	{
 		birthDate = d;
 	}
@@ -139,9 +194,9 @@ public class Account
 		return format.format(birthDate);
 		
 	}
-	public void setGender(String g, String t, String key)
+	public void setGender(Gender g)
 	{
-		update(t, "GENDER", g, key);
+		gender = g;
 	}
 	public Gender getGender()
 	{
@@ -179,15 +234,15 @@ public class Account
 	{
 		return state;
 	}
-	public void setSSN(String i, String t, String key)
+	public void setSSN(String ssn)
 	{
-		update(t, "SSN", i, key);
+		this.ssn = ssn;
 	}
 	public String getSSN()
 	{
 		return ssn;
 	}
-	public void setAllowSms(boolean b, String t)
+	public void setAllowSms(boolean b)
 	{
 		allowSms = b;
 	}
@@ -211,17 +266,17 @@ public class Account
 	{
 		return emergencyContactRelationship;
 	}
-	public void setEmergencyContactPhone(int i)
+	public void setEmergencyContactPhone(String number)
 	{
-		emergencyContactPhone = i;
+		emergencyContactPhone = number;
 	}
-	public int getEmergencyContactPhone()
+	public String getEmergencyContactPhone()
 	{
 		return emergencyContactPhone;
 	}
-	public void setInsuranceName(String s, String t, String key)
+	public void setInsuranceName(String s)
 	{
-		update(t, "INSURANCENAME", s, key);
+		this.primaryInsuranceName = s;
 	}
 	public String getInsuranceName()
 	{
@@ -499,7 +554,13 @@ public class Account
 		}
 		return "";
 	}
-	
+	public DoctorType getDoctorType() {
+		return docType;
+	}
+	public void setDoctorType(DoctorType d)
+	{
+		docType = d;
+	}
 }
 
 
