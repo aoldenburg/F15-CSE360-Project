@@ -110,19 +110,17 @@ public class Account
 		policyHolder = "";
 		accountType = AccountType.Patient;
 	}
-	public int setUserName(String s, String t)
+	public void setUserName(String s)
 	{
-		int ret;
-		ret = insert(t, "USERNAME", s);
-		return ret;
+		this.userName = s;
 	}
 	public String getUserName()
 	{
 		return userName;
 	}
-	public void setPassword(String s, String t, String key)
+	public void setPassword(String password)
 	{
-		update(t, "PASSWORD", s, key);
+		this.password = password;
 	}
 	public String getPassword()
 	{

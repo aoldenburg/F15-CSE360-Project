@@ -78,65 +78,64 @@ public class LogInWindow extends JFrame {
 					
 					user = username.getText();
 					pass = String.valueOf(password.getPassword());
-					//System.out.println(pass); //for testing
-					
-					//======================================================
-					//3.)LoginWindow->Patient, Doc, nurse, nsp, or lab MainMenu
-					//======================================================
-					acctType = act.find(user, pass);
-					
-					switch(acctType)
+					act = SQLiteDB.accessAccount(user, pass);
+					if(act != null)
 					{
-						case "PATIENT":
-						{	Frames.user = user;
-							Frames.userMenu.setSize(580,580);
-							Frames.userMenu.setLocationRelativeTo(null);
-							Frames.login.setVisible(false); 
-							Frames.userMenu.setVisible(true);
-							break;
-						}
-						case "DOCTOR":
-						{	Frames.user = user;
-							Frames.docMenu.setSize(580,580);
-							Frames.docMenu.setLocationRelativeTo(null);
-							Frames.login.setVisible(false); 
-							Frames.docMenu.setVisible(true);
-							break;
-						}
-						case "NURSE": 
+						switch(act.getAccountType())
 						{
-							Frames.user = user;
-							Frames.nurseMenu.setSize(580,580);
-							Frames.nurseMenu.setLocationRelativeTo(null);
-							Frames.login.setVisible(false); 
-							Frames.nurseMenu.setVisible(true);
+							case Patient:
+							{	Frames.user = user;
+								Frames.userMenu.setSize(580,580);
+								Frames.userMenu.setLocationRelativeTo(null);
+								Frames.login.setVisible(false); 
+								Frames.userMenu.setVisible(true);
+								break;
+							}
+							case Doctor:
+							{	Frames.user = user;
+								Frames.docMenu.setSize(580,580);
+								Frames.docMenu.setLocationRelativeTo(null);
+								Frames.login.setVisible(false); 
+								Frames.docMenu.setVisible(true);
+								break;
+							}
+							case Nurse: 
+							{
+								Frames.user = user;
+								Frames.nurseMenu.setSize(580,580);
+								Frames.nurseMenu.setLocationRelativeTo(null);
+								Frames.login.setVisible(false); 
+								Frames.nurseMenu.setVisible(true);
+								break;
+							}
+							case LabStaff:
+							{
+								Frames.user = user;
+								Frames.labMenu.setSize(580,580);
+								Frames.labMenu.setLocationRelativeTo(null);
+								Frames.login.setVisible(false); 
+								Frames.labMenu.setVisible(true);
+								break;
+							}
+							case HSPStaff:
+							{
+								Frames.user = user;
+								Frames.nspMenu.setSize(580,580);
+								Frames.nspMenu.setLocationRelativeTo(null);
+								Frames.login.setVisible(false); 
+								Frames.nspMenu.setVisible(true);
+								break;
+							}
+						case Admin:
 							break;
-						}
-						case "LAB":
-						{
-							Frames.user = user;
-							Frames.labMenu.setSize(580,580);
-							Frames.labMenu.setLocationRelativeTo(null);
-							Frames.login.setVisible(false); 
-							Frames.labMenu.setVisible(true);
-							break;
-						}
-						case "NSP":
-						{
-							Frames.user = user;
-							Frames.nspMenu.setSize(580,580);
-							Frames.nspMenu.setLocationRelativeTo(null);
-							Frames.login.setVisible(false); 
-							Frames.nspMenu.setVisible(true);
-							break;
-						}
 						default:
-						{
-							JOptionPane.showMessageDialog(getContentPane(), "Sorry, Username or Password not valid", "ERROR", JOptionPane.ERROR_MESSAGE);
-
+							break;
 						}
+					}	
+					else
+					{
+						JOptionPane.showMessageDialog(getContentPane(), "Sorry, Username or Password not valid", "ERROR", JOptionPane.ERROR_MESSAGE);
 					}
-					
 				}
 			}
 			

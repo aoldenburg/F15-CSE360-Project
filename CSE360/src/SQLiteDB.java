@@ -149,9 +149,8 @@ public class SQLiteDB {
 			
 		}
 		catch (SQLException | ClassNotFoundException e) {
-			e.printStackTrace();
+			return null;
 		}
-		return null;
 	}
 	/** Queries the database for a given username.
 	 *  If found, parses the values of the associated account. Not for use during login.
