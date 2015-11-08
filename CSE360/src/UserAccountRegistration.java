@@ -601,63 +601,80 @@ public class UserAccountRegistration extends JDialog{
 						//		+ effectiveYear.getText()
 						//		);
 						//acct.setPolicyHolder(policyHolder.getText());
-						SQLiteDB.createAccount(acct);
+						boolean dbSuccess = true;
+						try
+						{
+							SQLiteDB.createAccount(acct);
+						}
+						catch (IllegalArgumentException e)
+						{
+							JOptionPane.showConfirmDialog(null, "An account with that username already exists!", "Alert Message", JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE);
+							dbSuccess = false;
+						}
+						
 						once = false; //so submit is only pressed once
 						
 						//========================================================
 						//USERACCOUNTREGISTRATION.JAVA -> PARTICULAR USERMENU.JAVA
 						//=========================================================
-					
-						switch(acct.getAccountType())
+						if(dbSuccess)
 						{
-							case Patient:
+							switch(acct.getAccountType())
 							{
-								Frames.user = userName.getText();
-								Frames.userMenu.setSize(580,580);
-								Frames.userMenu.setLocationRelativeTo(null);
-								Frames.userReg.setVisible(false); 
-								Frames.userMenu.setVisible(true);
-								break;
+								case Patient:
+								{
+									Frames.user = userName.getText();
+									Frames.userMenu.setSize(580,580);
+									Frames.userMenu.setLocationRelativeTo(null);
+									Frames.userReg.setVisible(false); 
+									Frames.userMenu.setVisible(true);
+									break;
+								}
+								case Doctor:
+								{
+									Frames.user = userName.getText();
+									Frames.docMenu.setSize(580,580);
+									Frames.docMenu.setLocationRelativeTo(null);
+									Frames.userReg.setVisible(false); 
+									Frames.docMenu.setVisible(true);
+									break;
+								}
+								case Nurse: 
+								{
+									Frames.user = userName.getText();
+									Frames.nurseMenu.setSize(580,580);
+									Frames.nurseMenu.setLocationRelativeTo(null);
+									Frames.userReg.setVisible(false); 
+									Frames.nurseMenu.setVisible(true);
+									break;
+								}
+								case LabStaff:
+								{
+									Frames.user = userName.getText();
+									Frames.labMenu.setSize(580,580);
+									Frames.labMenu.setLocationRelativeTo(null);
+									Frames.userReg.setVisible(false); 
+									Frames.labMenu.setVisible(true);
+									break;
+								}
+								case HSPStaff:
+								{
+									Frames.user = userName.getText();
+									Frames.nspMenu.setSize(580,580);
+									Frames.nspMenu.setLocationRelativeTo(null);
+									Frames.userReg.setVisible(false); 
+									Frames.nspMenu.setVisible(true);
+									break;
+								}
+								case Admin:
+									break;
 							}
-							case Doctor:
-							{
-								Frames.user = userName.getText();
-								Frames.docMenu.setSize(580,580);
-								Frames.docMenu.setLocationRelativeTo(null);
-								Frames.userReg.setVisible(false); 
-								Frames.docMenu.setVisible(true);
-								break;
-							}
-							case Nurse: 
-							{
-								Frames.user = userName.getText();
-								Frames.nurseMenu.setSize(580,580);
-								Frames.nurseMenu.setLocationRelativeTo(null);
-								Frames.userReg.setVisible(false); 
-								Frames.nurseMenu.setVisible(true);
-								break;
-							}
-							case LabStaff:
-							{
-								Frames.user = userName.getText();
-								Frames.labMenu.setSize(580,580);
-								Frames.labMenu.setLocationRelativeTo(null);
-								Frames.userReg.setVisible(false); 
-								Frames.labMenu.setVisible(true);
-								break;
-							}
-							case HSPStaff:
-							{
-								Frames.user = userName.getText();
-								Frames.nspMenu.setSize(580,580);
-								Frames.nspMenu.setLocationRelativeTo(null);
-								Frames.userReg.setVisible(false); 
-								Frames.nspMenu.setVisible(true);
-								break;
-							}
-							case Admin:
-								break;
 						}
+						else
+						{
+							once = true;
+						}
+						
 					}
 				}
 				else

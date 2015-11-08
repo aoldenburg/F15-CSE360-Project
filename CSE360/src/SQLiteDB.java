@@ -28,6 +28,14 @@ public class SQLiteDB {
 			File file = new File("data/EmployeeData.sqlite");
 			Class.forName("org.sqlite.JDBC");
 			Connection connector=DriverManager.getConnection("jdbc:sqlite:" + file.getAbsolutePath());
+			String checkUsername = "SELECT 1 FROM UserTable WHERE username='" + a.getUserName() + "'";
+			Statement checkState = connector.createStatement();
+			ResultSet rs = checkState.executeQuery(checkUsername);
+			if(rs.next())
+			{
+				throw new IllegalArgumentException("Account already exists in the database.");
+			}
+
 			String query = "INSERT INTO UserTable (username,password,type,firstname,lastname,workPhone,cellPhone,email,doctorType,bday,gender,maritalStatus,address,city,state,ssn,allowSMS,ecName,ecRelationship,ecPhone,piname,piaddress,policynum,groupnum,effectivedate,policyholder) VALUES "
 					+ "(\'" + a.getUserName() + "\', "
 					+ "\'" + a.getPassword() + "\', \'"
