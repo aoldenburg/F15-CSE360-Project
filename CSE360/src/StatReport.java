@@ -37,40 +37,25 @@ public class StatReport extends JFrame {
 	 * Create the frame.
 	 */
 	public StatReport() {
+		setTitle("Statistical Report");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 460, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Health Outcomes");
-		lblNewLabel.setBounds(52, 69, 109, 16);
-		contentPane.add(lblNewLabel);
-		
-		JLabel lblAdmissionRates = new JLabel("Admission Rates");
-		lblAdmissionRates.setBounds(52, 95, 109, 16);
-		contentPane.add(lblAdmissionRates);
-		
 		JLabel lblPatientDemographics = new JLabel("Patient Demographics");
-		lblPatientDemographics.setBounds(52, 123, 138, 16);
+		lblPatientDemographics.setBounds(161, 23, 138, 16);
 		contentPane.add(lblPatientDemographics);
 		
-		JLabel lblPatientPopulations = new JLabel("Patient Populations");
-		lblPatientPopulations.setBounds(52, 151, 121, 16);
-		contentPane.add(lblPatientPopulations);
-		
-		JLabel lblStatisticalReports = new JLabel("Statistical Reports");
-		lblStatisticalReports.setBounds(169, 24, 121, 16);
-		contentPane.add(lblStatisticalReports);
-		
 		JButton btnGenerateReport = new JButton("Generate Report");
-		btnGenerateReport.setBounds(129, 217, 164, 29);
+		btnGenerateReport.setBounds(148, 221, 164, 29);
 		contentPane.add(btnGenerateReport);
 		
 		JTextArea txtrTest = new JTextArea();
 		txtrTest.setEditable(false);
-		txtrTest.setBounds(232, 69, 158, 105);
+		txtrTest.setBounds(161, 73, 138, 105);
 		contentPane.add(txtrTest);
 		
 		btnGenerateReport.addActionListener(new ActionListener() {
